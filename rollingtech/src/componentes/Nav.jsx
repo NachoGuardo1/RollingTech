@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link, Outlet} from "react-router-dom"
-import {Container, Navbar} from 'react-bootstrap'
+import {Container, Nav, Navbar} from 'react-bootstrap'
 
 export const Navegador = () => {
   return <>
@@ -15,18 +15,19 @@ export const Navegador = () => {
               height="30"
               className="d-inline-block align-top"
             />{' '}      
-          <Link to='/' className='text-light'>Rolling Tech</Link>
+          <Link to='/' className='text-light text-decoration-none'>Rolling Tech</Link>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
-      <div>
-          <Link to='admin' className='btn btn-light'>Admin Page</Link>
-          <Link to='/' className='btn btn-light'>Home Page</Link>
+      <div className='d-flex gap-3 ms-auto'>
+          <Link to='admin' className='text-decoration-none text-light'>Admin Page</Link>
+          <Link to='/' className='text-decoration-none  text-light'>Home Page</Link>
       </div>
       </Navbar.Collapse>
     </Container>
   </Navbar>
   <Outlet />
+
   </>
   
 }
