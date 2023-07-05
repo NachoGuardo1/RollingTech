@@ -1,7 +1,7 @@
-import {  useState } from 'react';
-import Modal from 'react-bootstrap/Modal';
+import { useState } from "react";
+import Modal from "react-bootstrap/Modal";
 
-function ModalInfo() {
+function ModalInfo({ item }) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -9,15 +9,13 @@ function ModalInfo() {
 
   return (
     <>
-      <button className='btn btn-primary' onClick={handleShow}>
+      <button className="btn btn-primary" onClick={handleShow}>
         + INFO
       </button>
-
       <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Header closeButton>
-            <h2>Descripcion Producto</h2>
+          <p>{item.descripcion}</p>
         </Modal.Header>
-
       </Modal>
     </>
   );

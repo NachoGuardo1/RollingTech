@@ -1,10 +1,10 @@
-import React from 'react'
-import { Productos } from '../componentes/Productos'
+import React from "react";
+import { Productos } from "../componentes/Productos";
 
 export const HomePage = () => {
   return (
     <>
-    <Productos />
+      <Productos />
     </>
-  )
-}
+  );
+};
