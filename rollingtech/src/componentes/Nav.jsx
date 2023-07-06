@@ -1,11 +1,12 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import { Container, Nav, Navbar } from "react-bootstrap";
+import { ModalCarrito } from "./ModalCarrito";
 
 export const Navegador = () => {
   return (
     <>
-      <Navbar expand="md" bg="dark" data-bs-theme="dark">
+      <Navbar expand="md" bg="primary" data-bs-theme="primary" sticky="top">
         <Container fluid>
           <Navbar.Brand>
             <img
@@ -27,6 +28,9 @@ export const Navegador = () => {
               </Link>
               <Link to="/" className="text-decoration-none  text-light">
                 Home Page
+              </Link>
+              <Link className="text-decoration-none  text-light">
+                <ModalCarrito />
               </Link>
             </div>
           </Navbar.Collapse>

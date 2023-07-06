@@ -58,6 +58,7 @@ const CarritoProvider = ({ children }) => {
   const total = carrito.reduce((acumulador, item) => {
     return acumulador + item.precio;
   }, 0);
+
   return (
     <>
       <Carritocontext.Provider

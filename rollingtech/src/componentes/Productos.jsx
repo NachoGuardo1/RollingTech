@@ -2,27 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import { Carritocontext } from "../hooks/CarritoContext";
 import productos from "../data/data";
 import { Card } from "react-bootstrap";
-import { ModalCarrito } from "./ModalCarrito";
 import ModalInfo from "./ModalInfoProd";
 
 export const Productos = () => {
-  const { agregarProductos, carrito } = useContext(Carritocontext);
-  const [mostrarModal, setMostrarModal] = useState(true);
-
-  useEffect(() => {
-    if (carrito.length > 0) {
-      setMostrarModal(true);
-    } else {
-      setMostrarModal(false);
-    }
-  });
+  const { agregarProductos } = useContext(Carritocontext);
 
   return (
-    <div>
-      <div className="sticky-top text-end mt-3 me-3">
-        {mostrarModal && <ModalCarrito />}
-      </div>
-      <h2 className="text-center">Productos</h2>
+    <div className="container-fluid m-0 p-0 d-flex row ">
       <div className="row d-flex gap-2 justify-content-center">
         {productos.map((item) => (
           <Card style={{ width: "14rem" }} key={item.id}>
@@ -33,12 +19,10 @@ export const Productos = () => {
             <Card.Body className="text-center">
               <Card.Title>{item.nombre}</Card.Title>
               <div className="row">
-                <div className="bg-danger  text-light border border rounded">
-                  ${item.precio}
-                </div>
+                <p className="text-dark m-1">${item.precio}</p>
                 <div className="d-flex gap-2 justify-content-center">
                   <button
-                    className="btn btn-success"
+                    className="btn btn-outline-success"
                     onClick={() => agregarProductos(item)}
                   >
                     <img
@@ -49,6 +33,14 @@ export const Productos = () => {
                     ></img>
                   </button>
                   <ModalInfo item={item} />
+                  <button className="btn btn-outline-danger">
+                    <img
+                      src="https://assets.stickpng.com/images/5a02bfca18e87004f1ca4395.png"
+                      width="30"
+                      height="30"
+                      className="d-inline-block align-top"
+                    />
+                  </button>
                 </div>
               </div>
             </Card.Body>

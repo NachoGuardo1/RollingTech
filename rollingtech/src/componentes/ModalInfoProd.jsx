@@ -9,13 +9,14 @@ function ModalInfo({ item }) {
 
   return (
     <>
-      <button className="btn btn-primary" onClick={handleShow}>
+      <button className="btn btn-outline-primary" onClick={handleShow}>
         + INFO
       </button>
       <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Header closeButton>
-          <p>{item.descripcion}</p>
+          <Modal.Title>{item.nombre}</Modal.Title>
         </Modal.Header>
+        <Modal.Body>{item.descripcion}</Modal.Body>
       </Modal>
     </>
   );
