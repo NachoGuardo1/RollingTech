@@ -8,9 +8,9 @@ export const Carrito = () => {
   const { eliminarProducto, carrito, vaciarCarrito, total } =
     useContext(Carritocontext);
 
-  const confirmarCompra = () => {
+  const iniciarPago = () => {
     Swal.fire({
-      title: "¿Quieres confirmar tu compra?",
+      title: "¿Quieres iniciar pago?",
       icon: "success",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -69,8 +69,8 @@ export const Carrito = () => {
         <button onClick={vaciarCarrito} className="btn btn-danger ">
           Vaciar Carrito
         </button>
-        <button onClick={confirmarCompra} className="btn btn-success">
-          Confirmar Compra
+        <button onClick={iniciarPago} className="btn btn-success">
+          Iniciar Pago
         </button>
       </div>
     </>
