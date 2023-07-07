@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Container, Navbar } from "react-bootstrap";
 import { ModalCarrito } from "./ModalCarrito";
 
 export const Navegador = () => {
@@ -25,6 +25,9 @@ export const Navegador = () => {
             <div className="d-flex gap-3 ms-auto">
               <Link to="admin" className="text-decoration-none text-light">
                 Admin Page
+              </Link>
+              <Link to="favoritos" className="text-decoration-none text-light">
+                Fav page
               </Link>
               <Link to="/" className="text-decoration-none  text-light">
                 Home Page
