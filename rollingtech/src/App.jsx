@@ -6,6 +6,7 @@ import { Navegador } from "./componentes/Nav";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { CarritoProvider } from "./hooks/CarritoContext";
 import { CarritoPage } from "./pages/CarritoPage";
+import { FavoritosPage } from "./pages";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
               <Route index element={<HomePage />} />
               <Route path="admin" element={<AdminPage />} />
               <Route path="carrito" element={<CarritoPage />} />
+              <Route path="favoritos" element={<FavoritosPage />} />
             </Route>
           </Routes>
         </CarritoProvider>

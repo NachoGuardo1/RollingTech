@@ -5,6 +5,15 @@ const Carritocontext = createContext();
 
 const CarritoProvider = ({ children }) => {
   const [carrito, setCarrito] = useState([]);
+  const [favoritos, setFavoritos] = useState([]);
+
+  const agregarFavoritos = (item) => {
+    setFavoritos([...favoritos, item]);
+  };
+  const eliminarFavorito = (itemId) => {
+    const nuevosFavoritos = favoritos.filter((i) => i.id !== itemId);
+    setFavoritos(nuevosFavoritos);
+  };
 
   const agregarProductos = (item) => {
     Swal.fire({
@@ -68,6 +77,9 @@ const CarritoProvider = ({ children }) => {
           eliminarProducto,
           vaciarCarrito,
           total,
+          agregarFavoritos,
+          favoritos,
+          eliminarFavorito,
         }}
       >
         {children}
