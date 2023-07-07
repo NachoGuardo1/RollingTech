@@ -1,0 +1,13 @@
+.foot-cont{
+    margin: auto;
+    background: linear-gradient(45deg, #178b43, #0da1b1);
+}
+@media (max-width: 768px) {
+    .foot-cont{
+        display: flex;
+        text-align: center;
+    }
+    .foot-name{
+        display: none;
+    }
+}
