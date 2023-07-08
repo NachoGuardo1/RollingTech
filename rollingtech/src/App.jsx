@@ -1,13 +1,28 @@
+<<<<<<< HEAD
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+=======
+
+import React from "react";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { HomePage } from "./pages/HomePage";
+import { AdminPage } from "./pages/AdminPage";
+import { Navegador } from "./componentes/Nav";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { CarritoProvider } from "./hooks/CarritoContext";
+import { CarritoPage } from "./pages/CarritoPage";
+import { FavoritosPage } from "./pages";
+
+>>>>>>> 0e0107737f8f302957ad322c82dd63607b9c2e9a
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
+<<<<<<< HEAD
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -28,6 +43,21 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+=======
+      <BrowserRouter>
+        <CarritoProvider>
+          <Routes>
+            <Route path="/" element={<Navegador />}>
+              <Route index element={<HomePage />} />
+              <Route path="admin" element={<AdminPage />} />
+              <Route path="carrito" element={<CarritoPage />} />
+              <Route path="favoritos" element={<FavoritosPage />} />
+            </Route>
+          </Routes>
+        </CarritoProvider>
+      </BrowserRouter>
+
+>>>>>>> 0e0107737f8f302957ad322c82dd63607b9c2e9a
     </>
   )
 }
