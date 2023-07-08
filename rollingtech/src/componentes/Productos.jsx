@@ -42,7 +42,7 @@ export const Productos = () => {
                   <ModalInfo item={item} />
                   {esFav(item) ? (
                     <button
-                      className="btn btn-danger"
+                      className="btn btn-danger btn-sm"
                       onClick={() => eliminarFavorito(item.id)}
                     >
                       <img
@@ -54,7 +54,7 @@ export const Productos = () => {
                     </button>
                   ) : (
                     <button
-                      className="btn btn-outline-danger"
+                      className="btn btn-outline-danger btn-sm"
                       onClick={() => agregarFavoritos(item)}
                     >
                       <img
