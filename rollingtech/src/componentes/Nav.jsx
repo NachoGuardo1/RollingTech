@@ -2,6 +2,8 @@ import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import { Container, Navbar } from "react-bootstrap";
 import { ModalCarrito } from "./ModalCarrito";
+import { Footer } from './Footer'
+
 
 export const Navegador = () => {
   return (
@@ -39,7 +41,9 @@ export const Navegador = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+<Footer/>
       <Outlet />
     </>
   );
 };
+

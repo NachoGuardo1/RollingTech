@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { HomePage } from "./pages/HomePage";
@@ -7,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { CarritoProvider } from "./hooks/CarritoContext";
 import { CarritoPage } from "./pages/CarritoPage";
 import { FavoritosPage } from "./pages";
+
 
 function App() {
   return (
@@ -23,6 +25,7 @@ function App() {
           </Routes>
         </CarritoProvider>
       </BrowserRouter>
+
     </>
   );
 }
