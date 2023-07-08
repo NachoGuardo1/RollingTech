@@ -1,7 +1,12 @@
-import React from 'react'
+import React from "react";
+import { Productos } from "../componentes/Productos";
+import Slider from "../componentes/Carrousel";
 
 export const HomePage = () => {
   return (
-    <h1>HomePage</h1>
-  )
-}
+    <div className="p-0 m-0 d-flex row container-fluid justify-content-center">
+      <Slider />
+      <Productos />
+    </div>
+  );
+};
