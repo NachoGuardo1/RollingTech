@@ -5,9 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 export const Carrito = () => {
   const navigate = useNavigate();
-  const { eliminarProducto, carrito, vaciarCarrito, total } =
+  const { eliminarProducto, carrito, vaciarCarrito, total, contador } =
     useContext(Carritocontext);
-
   const iniciarPago = () => {
     Swal.fire({
       title: "¿Quieres iniciar pago?",
@@ -30,6 +29,7 @@ export const Carrito = () => {
           <thead>
             <tr>
               <th>Producto</th>
+              <th>Cantidad</th>
               <th>Precio</th>
               <th></th>
             </tr>
@@ -41,7 +41,11 @@ export const Carrito = () => {
               carrito.map((item) => (
                 <tr key={item.id}>
                   <td> {item.nombre}</td>
-                  <td>${item.precio}</td>
+                  <td>
+                    ({contador(item.id)})
+                    <span>Precio x 1 un ${item.precio}</span>
+                  </td>
+                  <td>${item.precio * contador(item.id)}</td>
                   <td>
                     <button
                       onClick={() => {

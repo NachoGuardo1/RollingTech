@@ -46,7 +46,7 @@ export const Productos = () => {
                       onClick={() => eliminarFavorito(item.id)}
                     >
                       <img
-                        src="https://assets.stickpng.com/images/5a02bfca18e87004f1ca4395.png"
+                        src="https://w7.pngwing.com/pngs/923/219/png-transparent-heart-heart-love-heart-logo.png"
                         width="30"
                         height="30"
                         className="d-inline-block align-top"
@@ -58,7 +58,7 @@ export const Productos = () => {
                       onClick={() => agregarFavoritos(item)}
                     >
                       <img
-                        src="https://assets.stickpng.com/images/5a02bfca18e87004f1ca4395.png"
+                        src="https://w7.pngwing.com/pngs/923/219/png-transparent-heart-heart-love-heart-logo.png"
                         width="30"
                         height="30"
                         className="d-inline-block align-top"

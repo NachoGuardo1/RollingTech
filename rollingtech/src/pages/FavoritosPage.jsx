@@ -4,7 +4,8 @@ import { Card } from "react-bootstrap";
 import ModalInfo from "../componentes/ModalInfoProd";
 
 export const FavoritosPage = () => {
-  const { favoritos, eliminarFavorito } = useContext(Carritocontext);
+  const { favoritos, eliminarFavorito, agregarProductos } =
+    useContext(Carritocontext);
   return (
     <div className="row d-flex gap-3 justify-content-center my-5">
       {favoritos.map((item) => (
@@ -27,7 +28,7 @@ export const FavoritosPage = () => {
                   onClick={() => eliminarFavorito(item.id)}
                 >
                   <img
-                    src="https://assets.stickpng.com/images/5a02bfca18e87004f1ca4395.png"
+                    src="https://w7.pngwing.com/pngs/923/219/png-transparent-heart-heart-love-heart-logo.png"
                     width="20"
                     height="20"
                     className="d-inline-block align-top"
