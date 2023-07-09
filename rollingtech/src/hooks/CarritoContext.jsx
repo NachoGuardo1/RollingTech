@@ -25,7 +25,12 @@ const CarritoProvider = ({ children }) => {
       confirmButtonText: "Si, estoy seguro!",
     }).then((result) => {
       if (result.isConfirmed) {
-        setCarrito([...carrito, item]);
+        const itemAgregado = carrito.find((i) => i.id === item.id);
+        if (!itemAgregado) {
+          setCarrito([...carrito, item]);
+        } else {
+          alert("ya se agrego este item al carrito");
+        }
       }
     });
   };
@@ -68,6 +73,15 @@ const CarritoProvider = ({ children }) => {
     return acumulador + item.precio;
   }, 0);
 
+  const contador = (itemId) => {
+    return carrito.reduce((cantidad, i) => {
+      if (i.id === itemId) {
+        return cantidad + 1;
+      }
+      return cantidad;
+    }, 0);
+  };
+
   return (
     <>
       <Carritocontext.Provider
@@ -80,6 +94,7 @@ const CarritoProvider = ({ children }) => {
           agregarFavoritos,
           favoritos,
           eliminarFavorito,
+          contador,
         }}
       >
         {children}
