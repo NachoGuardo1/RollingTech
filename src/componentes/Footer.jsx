@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/footer.css";
+
 import Logo from '../../src/assets/img/logotipo-rolling1.png'
 import { Link } from "react-router-dom";
 
@@ -25,10 +26,12 @@ export const Footer = () => {
               Lun a Vier. 9:00 AM - 18:00 PM
             </li>
             <li>
+
               Sab 10:00 AM - 14:30 PM
             </li>
           </ul>
         </div>
+
         <div className="col-xs-12 col-md-4 col-lg-3 foot-info">
           <h5 className="mb-1">Contáctanos!</h5>
           <ul className="list-unstyled">
@@ -81,11 +84,13 @@ export const Footer = () => {
                   src="https://img.icons8.com/3d-fluency/94/youtube-play.png" alt="youtube-play"
                 />
               </a>
+
             </li>
           </ul>
         </div>
         <div className="text-white text-center col-xs-12 pt-4">
           <div>
+
             <Link>
               <img
                 src="https://cace.org.ar/wp-content/themes/cace/assets/dist/images/logo.svg"
@@ -94,6 +99,7 @@ export const Footer = () => {
                 height="100"
               />
             </Link>
+
             <p>
               Defensa del Consumidor. Para reclamos ingrese{" "}
               <a
@@ -108,7 +114,9 @@ export const Footer = () => {
             <p>
               {" "}
               &copy;{new Date().getFullYear()} Rolling-Tech | Todos los derechos
+
               reservados.
+
             </p>
           </div>
           <p>Gracias por Visitarnos!</p>

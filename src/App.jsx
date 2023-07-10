@@ -5,9 +5,12 @@ import { AdminPage } from "./pages/AdminPage";
 import { Navegador } from "./componentes/Nav";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { CarritoProvider } from "./hooks/CarritoContext";
-import { CarritoPage } from "./pages/CarritoPage";
-import { FavoritosPage } from "./pages";
+
 import { Footer } from "./componentes/Footer";
+
+import { FavoritosPage } from "./pages";
+import { PagoPage } from "./pages/PagoPage";
+
 
 function App() {
   return (
@@ -18,16 +21,20 @@ function App() {
             <Route path="/" element={<Navegador />}>
               <Route index element={<HomePage />} />
               <Route path="admin" element={<AdminPage />} />
-              <Route path="carrito" element={<CarritoPage />} />
+
+              <Route path="pago" element={<PagoPage />} />
+
               <Route path="favoritos" element={<FavoritosPage />} />
             </Route>
           </Routes>
         </CarritoProvider>
+
         <Footer>
           <Routes>
             <Route path="/" element={<Footer />}></Route>
           </Routes>
         </Footer>
+
       </BrowserRouter>
     </>
   );

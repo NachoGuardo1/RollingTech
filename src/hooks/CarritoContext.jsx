@@ -16,24 +16,23 @@ const CarritoProvider = ({ children }) => {
   };
 
   const agregarProductos = (item) => {
-    Swal.fire({
-      title: "¿Estas seguro que quieres agregar este producto?",
-      icon: "success",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Si, estoy seguro!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        const itemAgregado = carrito.find((i) => i.id === item.id);
-        if (!itemAgregado) {
-          setCarrito([...carrito, item]);
-        } else {
-          alert("ya se agrego este item al carrito");
+
+    const itemAgregado = carrito.find((i) => i.id === item.id);
+    if (itemAgregado) {
+      const nuevoCarrito = carrito.map((producto) => {
+        if (producto.id === item.id) {
+          return { ...producto, cantidad: producto.cantidad + 1 };
         }
-      }
-    });
+        return producto;
+      });
+
+      setCarrito(nuevoCarrito);
+    } else {
+      setCarrito([...carrito, { ...item, cantidad: 1 }]);
+    }
   };
+
+
   const eliminarProducto = (productoId) => {
     Swal.fire({
       title: "¿Estas seguro que quieres eliminar este producto?",
@@ -70,17 +69,10 @@ const CarritoProvider = ({ children }) => {
     });
   };
   const total = carrito.reduce((acumulador, item) => {
-    return acumulador + item.precio;
+
+    return acumulador + item.precio * item.cantidad;
   }, 0);
 
-  const contador = (itemId) => {
-    return carrito.reduce((cantidad, i) => {
-      if (i.id === itemId) {
-        return cantidad + 1;
-      }
-      return cantidad;
-    }, 0);
-  };
 
   return (
     <>
@@ -94,7 +86,7 @@ const CarritoProvider = ({ children }) => {
           agregarFavoritos,
           favoritos,
           eliminarFavorito,
-          contador,
+
         }}
       >
         {children}

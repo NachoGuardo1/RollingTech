@@ -5,7 +5,9 @@ import { useNavigate } from "react-router-dom";
 
 export const Carrito = () => {
   const navigate = useNavigate();
-  const { eliminarProducto, carrito, vaciarCarrito, total, contador } =
+
+  const { eliminarProducto, carrito, vaciarCarrito, total, agregarProductos } =
+
     useContext(Carritocontext);
   const iniciarPago = () => {
     Swal.fire({
@@ -17,60 +19,72 @@ export const Carrito = () => {
       confirmButtonText: "Si, estoy seguro!",
     }).then((result) => {
       if (result.isConfirmed) {
-        navigate("/carrito");
+
+        navigate("/pago");
+
       }
     });
   };
 
   return (
     <>
-      <div className="container d-flex gap-2 row">
-        <table className="table table-dark  table-md table-striped m-3">
+
+      <div className="container d-flex gap-1 justify-content-center row">
+        <table className="table table-dark table-md table-striped">
+
           <thead>
             <tr>
               <th>Producto</th>
               <th>Cantidad</th>
-              <th>Precio</th>
+
+              <th>Precio total</th>
+
               <th></th>
             </tr>
           </thead>
           <tbody>
-            {carrito.length === 0 ? (
-              <p>El carrito esta vacio</p>
-            ) : (
-              carrito.map((item) => (
-                <tr key={item.id}>
-                  <td> {item.nombre}</td>
-                  <td>
-                    ({contador(item.id)})
-                    <span>Precio x 1 un ${item.precio}</span>
-                  </td>
-                  <td>${item.precio * contador(item.id)}</td>
-                  <td>
-                    <button
-                      onClick={() => {
-                        eliminarProducto(item.id);
-                      }}
-                    >
-                      <img
-                        src="https://w7.pngwing.com/pngs/228/54/png-transparent-logo-trademark-brand-delete-button-miscellaneous-text-trademark.png"
-                        width="30"
-                        height="30"
-                        className="d-inline-block align-top"
-                      ></img>
-                    </button>
-                  </td>
-                </tr>
-              ))
-            )}
+
+            {carrito.map((item) => (
+              <tr key={item.id}>
+                <td> {item.nombre}</td>
+                <td>
+                  <button className="btn btn-light btn-sm me-1">-</button>
+                  {item.cantidad}
+                  <button
+                    className="btn btn-light btn-sm ms-1"
+                    onClick={() => agregarProductos(item)}
+                  >
+                    +
+                  </button>
+                  <span> x un ${item.precio}</span>
+                </td>
+                <td>${item.precio * item.cantidad}</td>
+                <td>
+                  <button
+                    className="btn btn-danger btn-sm"
+                    onClick={() => {
+                      eliminarProducto(item.id);
+                    }}
+                  >
+                    <img
+                      src="https://w7.pngwing.com/pngs/228/54/png-transparent-logo-trademark-brand-delete-button-miscellaneous-text-trademark.png"
+                      width="30"
+                      height="30"
+                      className="d-inline-block align-top"
+                    ></img>
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
 
-        <div className="d-flex justify-content-center">
-          Total de su compra:${total.toFixed(2)}
+        <div className="d-flex justify-content-center ">
+          <strong> Total de su compra: ${total.toFixed(2)} </strong>
         </div>
 
-        <button onClick={vaciarCarrito} className="btn btn-danger ">
+        <button onClick={vaciarCarrito} className="btn btn-danger">
+
           Vaciar Carrito
         </button>
         <button onClick={iniciarPago} className="btn btn-success">

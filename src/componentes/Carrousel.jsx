@@ -1,3 +1,4 @@
+
 import Carousel from "react-bootstrap/Carousel";
 import Slider1 from '../../src/assets/img/img-slider1.png';
 import Slider2 from '../../src/assets/img/img-slider2.webp';
@@ -32,6 +33,7 @@ function Slider() {
       </Carousel.Item>
     </Carousel>
   );
+
 }
 
 export default Slider;

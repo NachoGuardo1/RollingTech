@@ -2,7 +2,9 @@ import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import { Container, Navbar } from "react-bootstrap";
 import { ModalCarrito } from "./ModalCarrito";
+
 import Logo from '../../src/assets/img/logotipo-rolling1.png';
+
 
 
 export const Navegador = () => {
@@ -11,6 +13,7 @@ export const Navegador = () => {
       <Navbar expand="md" bg="primary" data-bs-theme="primary" sticky="top">
         <Container fluid>
           <Navbar.Brand>
+
             <Link to="/" className="text-light text-decoration-none">
               <img
                 alt=""
@@ -19,6 +22,7 @@ export const Navegador = () => {
                 height="70"
                 className="d-inline-block align-top"
               />{" "}
+
             </Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -40,6 +44,8 @@ export const Navegador = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+
+
       <Outlet />
     </>
   );

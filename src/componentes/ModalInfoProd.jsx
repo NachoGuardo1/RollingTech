@@ -9,8 +9,10 @@ function ModalInfo({ item }) {
 
   return (
     <>
-      <button className="btn btn-outline-primary" onClick={handleShow}>
-        + INFO
+
+      <button className="btn btn-primary btn-sm" onClick={handleShow}>
+        +
+
       </button>
       <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Header closeButton>
