@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { CarritoProvider } from "./hooks/CarritoContext";
 import { CarritoPage } from "./pages/CarritoPage";
 import { FavoritosPage } from "./pages";
+import { Footer } from "./componentes/Footer";
 
 function App() {
   return (
@@ -22,6 +23,11 @@ function App() {
             </Route>
           </Routes>
         </CarritoProvider>
+        <Footer>
+          <Routes>
+            <Route path="/" element={<Footer />}></Route>
+          </Routes>
+        </Footer>
       </BrowserRouter>
     </>
   );
