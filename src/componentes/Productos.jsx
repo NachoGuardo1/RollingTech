@@ -19,17 +19,21 @@ export const Productos = () => {
             key={item.id}
             className=" border border-secondary efectos-card"
           >
-            <Card.Img
-              variant="top"
-              src="https://images.fravega.com/f500/c93187b609899f51b11399d511cc117a.jpg"
-            />
+            <Card.Img variant="top" src={item.img} />
             <Card.Body className="text-center ">
-              <Card.Title>{item.nombre}</Card.Title>
-              <div className="row">
-                <p className="text-dark m-2">${item.precio}</p>
-                <div className="d-flex gap-2 justify-content-center">
+              <div className="row h5 ">
+                <div className="col-9 text-center">{item.nombre}</div>
+                <div className="col-3">
+                  <ModalInfo item={item} />
+                </div>
+                <p className="text-dark mb-2 ">
+                  <strong>${item.precio}</strong>
+                </p>
+              </div>
+              <div className="row ">
+                <div className="d-flex gap-3 justify-content-around">
                   <button
-                    className="btn btn-outline-success"
+                    className="btn btn-outline-dark"
                     onClick={() => agregarProductos(item)}
                   >
                     <img
@@ -39,29 +43,28 @@ export const Productos = () => {
                       className="d-inline-block align-top"
                     ></img>
                   </button>
-                  <ModalInfo item={item} />
                   {esFav(item) ? (
                     <button
-                      className="btn btn-danger btn-sm"
+                      className="btn btn-danger"
                       onClick={() => eliminarFavorito(item.id)}
                     >
                       <img
-                        src="https://w7.pngwing.com/pngs/923/219/png-transparent-heart-heart-love-heart-logo.png"
-                        width="30"
-                        height="30"
-                        className="d-inline-block align-top"
+                        src="https://i.pinimg.com/originals/b3/66/a7/b366a779db1cd096058da50a0026b663.jpg"
+                        alt=""
+                        width="20px"
+                        height="20px"
                       />
                     </button>
                   ) : (
                     <button
-                      className="btn btn-outline-danger btn-sm"
+                      className="btn btn-outline-danger "
                       onClick={() => agregarFavoritos(item)}
                     >
                       <img
-                        src="https://w7.pngwing.com/pngs/923/219/png-transparent-heart-heart-love-heart-logo.png"
-                        width="30"
-                        height="30"
-                        className="d-inline-block align-top"
+                        src="https://i.pinimg.com/originals/b3/66/a7/b366a779db1cd096058da50a0026b663.jpg"
+                        alt=""
+                        width="20px"
+                        height="20px"
                       />
                     </button>
                   )}
