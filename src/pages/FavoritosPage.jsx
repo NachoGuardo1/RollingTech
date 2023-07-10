@@ -14,30 +14,21 @@ export const FavoritosPage = () => {
           key={item.id}
           className=" border border-secondary efectos-card"
         >
-          <Card.Img
-            variant="top"
-            src="https://images.fravega.com/f500/c93187b609899f51b11399d511cc117a.jpg"
-          />
+          <Card.Img variant="top" src={item.img} />
           <Card.Body className="text-center ">
-            <Card.Title className="my-1">${item.precio}</Card.Title>
-            <div className="row">
-              <div className="d-flex justify-content-between my-2">
-                <p className="text-dark my-auto h5">{item.nombre}</p>
-                <button
-                  className="btn btn-danger btn-sm my-auto"
-                  onClick={() => eliminarFavorito(item.id)}
-                >
-                  <img
-                    src="https://w7.pngwing.com/pngs/923/219/png-transparent-heart-heart-love-heart-logo.png"
-                    width="20"
-                    height="20"
-                    className="d-inline-block align-top"
-                  />
-                </button>
+            <Card.Title className="row">
+              <div className="col-9">{item.nombre}</div>
+              <div className="col-3">
+                <ModalInfo item={item} />
               </div>
-              <div className="d-flex gap-2 justify-content-center">
+            </Card.Title>
+            <div className="row">
+              <p className="text-dark mb-3 ">
+                <strong>${item.precio}</strong>
+              </p>
+              <div className="d-flex gap-3 justify-content-center">
                 <button
-                  className="btn btn-outline-success"
+                  className="btn btn-outline-dark"
                   onClick={() => agregarProductos(item)}
                 >
                   <img
@@ -47,7 +38,10 @@ export const FavoritosPage = () => {
                     className="d-inline-block align-top"
                   ></img>
                 </button>
-                <ModalInfo item={item} />
+                <button
+                  className="btn btn-danger"
+                  onClick={() => eliminarFavorito(item.id)}
+                ></button>
               </div>
             </div>
           </Card.Body>

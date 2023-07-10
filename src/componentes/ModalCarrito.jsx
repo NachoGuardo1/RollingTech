@@ -33,11 +33,11 @@ export const ModalCarrito = () => {
         {mostrarCantidad && carrito.length}
       </button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal className="modal-lg" show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Carrito de Compras</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="p-1 d-flex justify-content-center">
           {carrito.length === 0 ? (
             <h5 className="text-center">No hay productos en el carrito</h5>
           ) : (
