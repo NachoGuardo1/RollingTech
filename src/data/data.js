@@ -97,7 +97,7 @@ const productos = [
   },
   {
     id: 13,
-    nombre: "Notebook Lenovo ThinkPad X1 Carbon",
+    nombre: "Notebook Lenovo  ",
     descripcion: "Procesador Intel Core i7, 16GB RAM, 1TB SSD",
     precio: 1800,
     categoria: "notebooks",
@@ -129,7 +129,7 @@ const productos = [
   },
   {
     id: 17,
-    nombre: "Notebook Microsoft Surface Laptop 4",
+    nombre: "Notebook Microsoft",
     descripcion: "Procesador Intel Core i7, 16GB RAM, 512GB SSD",
     precio: 1700,
     categoria: "notebooks",
@@ -137,7 +137,7 @@ const productos = [
   },
   {
     id: 18,
-    nombre: "Notebook Lenovo Yoga C940",
+    nombre: "Notebook Lenovo",
     descripcion: "Procesador Intel Core i7, 12GB RAM, 512GB SSD",
     precio: 1400,
     categoria: "notebooks",

@@ -31,6 +31,20 @@ const CarritoProvider = ({ children }) => {
     }
   };
 
+  const restarProductos = (item) => {
+    const itemAgregado = carrito.find((i) => i.id === item.id);
+    if (itemAgregado) {
+      const nuevoCarrito = carrito.map((producto) => {
+        if (producto.id === item.id) {
+          return { ...producto, cantidad: producto.cantidad - 1 };
+        }
+        return producto;
+      });
+
+      setCarrito(nuevoCarrito);
+    }
+  };
+
   const eliminarProducto = (productoId) => {
     Swal.fire({
       title: "¿Estas seguro que quieres eliminar este producto?",
@@ -82,6 +96,7 @@ const CarritoProvider = ({ children }) => {
           agregarFavoritos,
           favoritos,
           eliminarFavorito,
+          restarProductos,
         }}
       >
         {children}

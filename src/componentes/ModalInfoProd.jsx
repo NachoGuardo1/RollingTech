@@ -9,7 +9,13 @@ function ModalInfo({ item }) {
 
   return (
     <>
-      <button className="btn btn-primary btn-sm" onClick={handleShow}>
+      <button
+        className="btn btn-primary btn-sm"
+        onClick={handleShow}
+        style={{
+          maxHeight: "31px",
+        }}
+      >
         +
       </button>
       <Modal show={show} onHide={handleClose} animation={false}>

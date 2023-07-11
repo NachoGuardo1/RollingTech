@@ -25,9 +25,11 @@ export const FormPago = () => {
       <form className="row " onSubmit={onSubmit}>
         {mostrarPrimeraP && (
           <div>
-            <h5 className="my-3">Datos del comprador</h5>
+            <h5 className="my-3 fw-bold">Datos del comprador</h5>
 
-            <label htmlFor="">Nombre completo</label>
+            <label htmlFor="" className="fw-bold">
+              Nombre completo
+            </label>
             <input
               type="text"
               value={nombre}
@@ -36,7 +38,9 @@ export const FormPago = () => {
               required
             />
 
-            <label htmlFor="">Email</label>
+            <label htmlFor="" className="fw-bold">
+              Email
+            </label>
             <input
               type="email"
               value={email}
@@ -45,7 +49,9 @@ export const FormPago = () => {
               required
             />
 
-            <label htmlFor="">Direccion de entrega</label>
+            <label htmlFor="" className="fw-bold">
+              Direccion de entrega
+            </label>
             <input
               type="text"
               value={direccion}
@@ -61,8 +67,8 @@ export const FormPago = () => {
 
         {mostrarSegundaP && (
           <div className="row">
-            <h5 className="my-3">Datos de Pago</h5>
-            <label>
+            <h5 className="my-3 fw-bold">Datos de Pago</h5>
+            <label className="fw-bold">
               Número de tarjeta:
               <input
                 type="text"
@@ -72,7 +78,7 @@ export const FormPago = () => {
                 className="my-1 form-control"
               />
             </label>
-            <label>
+            <label className="fw-bold">
               Fecha de vencimiento:
               <input
                 type="text"
@@ -82,7 +88,7 @@ export const FormPago = () => {
                 className="my-1 form-control"
               />
             </label>
-            <label>
+            <label className="fw-bold">
               Código de seguridad:
               <input
                 type="text"
