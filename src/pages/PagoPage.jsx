@@ -3,7 +3,8 @@ import { Carritocontext } from "../hooks/CarritoContext";
 import { FormPago } from "../componentes/FormPago";
 
 export const PagoPage = () => {
-  const { carrito, total, eliminarProducto } = useContext(Carritocontext);
+  const { carrito, total, eliminarProducto, agregarProductos } =
+    useContext(Carritocontext);
   return (
     <div className="container-fluid row">
       <div className="col-5">
@@ -22,9 +23,14 @@ export const PagoPage = () => {
               <tr>
                 <td>{item.nombre}</td>
                 <td>
-                  <button className="btn btn-light btn-sm">-</button>
+                  <button className="btn btn-light btn-sm me-1">-</button>
                   {item.cantidad}
-                  <button className="btn btn-light btn-sm">+</button>
+                  <button
+                    className="btn btn-light btn-sm ms-1"
+                    onClick={() => agregarProductos(item)}
+                  >
+                    +
+                  </button>
                   <span> x un ${item.precio}</span>
                 </td>
                 <td>${item.precio}</td>
@@ -46,10 +52,10 @@ export const PagoPage = () => {
               </tr>
             ))}
             <tr className="table-primary">
-              <td>Total de su compra:</td>
+              <td className="fw-bold">Total de su compra:</td>
               <td></td>
               <td></td>
-              <td>${total.toFixed(2)}</td>
+              <td className="fw-bold">${total.toFixed(2)}</td>
             </tr>
           </tbody>
         </table>

@@ -15,25 +15,27 @@ export const Productos = () => {
       <div className="row d-flex gap-3 justify-content-center">
         {productos.map((item) => (
           <Card
-            style={{ width: "14rem" }}
+            style={{ width: "14rem", height: "25rem" }}
             key={item.id}
-            className=" border border-secondary efectos-card"
+            className=" border border-secondary efectos-card p-0"
           >
-            <Card.Img variant="top" src={item.img} />
+            <Card.Img
+              variant="top"
+              src={item.img}
+              style={{ height: "15rem" }}
+            />
             <Card.Body className="text-center ">
-              <div className="row h5 ">
-                <div className="col-9 text-center">{item.nombre}</div>
-                <div className="col-3">
+              <div className="row h5 card-title">
+                <div className="col-10 text-center ">{item.nombre}</div>
+                <div className="col-2 justify-content-center my-auto d-flex">
                   <ModalInfo item={item} />
                 </div>
-                <p className="text-dark mb-2 ">
-                  <strong>${item.precio}</strong>
-                </p>
+                <p className="my-1 fw-bold ">${item.precio}</p>
               </div>
-              <div className="row ">
+              <div className="row card-footer">
                 <div className="d-flex gap-3 justify-content-around">
                   <button
-                    className="btn btn-outline-dark"
+                    className="btn btn-outline-secondary"
                     onClick={() => agregarProductos(item)}
                   >
                     <img
@@ -45,11 +47,11 @@ export const Productos = () => {
                   </button>
                   {esFav(item) ? (
                     <button
-                      className="btn btn-danger"
+                      className="btn border-danger"
                       onClick={() => eliminarFavorito(item.id)}
                     >
                       <img
-                        src="https://i.pinimg.com/originals/b3/66/a7/b366a779db1cd096058da50a0026b663.jpg"
+                        src="https://e7.pngegg.com/pngimages/980/717/png-clipart-heart-red-heart-thumbnail.png"
                         alt=""
                         width="20px"
                         height="20px"
@@ -57,11 +59,11 @@ export const Productos = () => {
                     </button>
                   ) : (
                     <button
-                      className="btn btn-outline-danger "
+                      className="btn border-danger"
                       onClick={() => agregarFavoritos(item)}
                     >
                       <img
-                        src="https://i.pinimg.com/originals/b3/66/a7/b366a779db1cd096058da50a0026b663.jpg"
+                        src="https://assets.stickpng.com/images/5a02bfca18e87004f1ca4395.png"
                         alt=""
                         width="20px"
                         height="20px"
