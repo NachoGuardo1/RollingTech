@@ -7,7 +7,7 @@ import { Footer } from "./Footer";
 export const Navegador = () => {
   return (
     <>
-      <Navbar expand="md" bg="primary" data-bs-theme="primary" sticky="top">
+      <Navbar expand="md" bg="dark" data-bs-theme="dark" sticky="top">
         <Container fluid>
           <Navbar.Brand>
             <img
