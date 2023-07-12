@@ -22,7 +22,7 @@ export const ModalCarrito = () => {
   });
   return (
     <>
-      <button className="btn btn-outline-light row" onClick={handleShow}>
+      <button className="btn btn-secondary row" onClick={handleShow}>
         <img
           src="https://cdn-icons-png.flaticon.com/512/107/107831.png?w=360"
           width="30"

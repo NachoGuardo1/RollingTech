@@ -32,10 +32,10 @@ const CarritoProvider = ({ children }) => {
   };
 
   const restarProductos = (item) => {
-    const itemAgregado = carrito.find((i) => i.id === item.id);
-    if (itemAgregado) {
+    const itemSeleccionado = carrito.find((i) => i.id === item.id);
+    if (itemSeleccionado) {
       const nuevoCarrito = carrito.map((producto) => {
-        if (producto.id === item.id) {
+        if (producto.id === item.id && producto.cantidad > 1) {
           return { ...producto, cantidad: producto.cantidad - 1 };
         }
         return producto;
