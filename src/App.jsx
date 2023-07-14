@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -33,3 +34,35 @@ function App() {
 }
 
 export default App
+=======
+import React from "react";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { HomePage } from "./pages/HomePage";
+import { AdminPage } from "./pages/AdminPage";
+import { Navegador } from "./componentes/Nav";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { CarritoProvider } from "./hooks/CarritoContext";
+import { FavoritosPage } from "./pages";
+import { PagoPage } from "./pages/PagoPage";
+
+function App() {
+  return (
+    <>
+      <BrowserRouter>
+        <CarritoProvider>
+          <Routes>
+            <Route path="/" element={<Navegador />}>
+              <Route index element={<HomePage />} />
+              <Route path="admin" element={<AdminPage />} />
+              <Route path="pago" element={<PagoPage />} />
+              <Route path="favoritos" element={<FavoritosPage />} />
+            </Route>
+          </Routes>
+        </CarritoProvider>
+      </BrowserRouter>
+    </>
+  );
+}
+
+export default App;
+>>>>>>> e5e75fd1fb5ba31a7260e7c00d348ee4e684d71b

@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.error404 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.error404 img {
+    margin-top: 250px;
+}
+
+.error404 h2 {
+    position: absolute;
+    margin-bottom: 120px;
+    font-size: 3rem;
+    color: #00000063;
+}
+
+.error404 h5 {
+    position: absolute;
+    margin-bottom: 150px;
+    bottom: 6rem;
+    color: #9c9c9c;
+}
+
+.error404 a {
+    position: absolute;
+    bottom: 150px;
+    background: linear-gradient(45deg, #ff0034, #ffbc00);
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 23px;
+    border-radius: 13px;
+}
