@@ -13,7 +13,7 @@ export const Footer = () => {
             height="50"
             className="d-inline-block align-top mx-3"
           />{" "}
-          <p className="foot-name">ROLLING-TECH</p>
+          <p className="foot-name">ROLLING</p>
         </div>
         <div className="col-xs-12 col-md-3 col-lg-3">
           <h4 className="mb-4">Contáctanos!</h4>
