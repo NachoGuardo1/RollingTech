@@ -12,8 +12,12 @@ export const FormPago = () => {
 
   const siguienteParte = (e) => {
     e.preventDefault();
-    setMostrarPrimeraP(false);
-    setMostrarSegundaP(true);
+    if (nombre === "" || direccion === "" || email === "") {
+      alert("Todos los campos son obligatorios");
+    } else {
+      setMostrarPrimeraP(false);
+      setMostrarSegundaP(true);
+    }
   };
 
   const onSubmit = (e) => {
@@ -36,6 +40,8 @@ export const FormPago = () => {
               onChange={(e) => setNombre(e.target.value)}
               className="my-1 form-control"
               required
+              minLength={10}
+              maxLength={30}
             />
 
             <label htmlFor="" className="fw-bold">
@@ -59,7 +65,13 @@ export const FormPago = () => {
               className="my-1 form-control"
               required
             />
-            <button onClick={siguienteParte} className="btn btn-success">
+            <button
+              type="submit"
+              onClick={siguienteParte}
+              className="btn btn-success"
+              minLength={10}
+              maxLength={30}
+            >
               Siguiente Parte
             </button>
           </div>
