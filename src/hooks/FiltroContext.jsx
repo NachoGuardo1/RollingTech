@@ -2,12 +2,20 @@ import { createContext, useState } from "react";
 
 const FiltrosContext = createContext();
 
-const FiltrosProvider = ({ children }) => {
+const CategoriaProvider = ({ children }) => {
+  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("");
+  const cambiarCategoria = (categoria) => {
+    setCategoriaSeleccionada(categoria);
+  };
   return (
     <>
-      <FiltrosContext.Provider>{children}</FiltrosContext.Provider>
+      <FiltrosContext.Provider
+        value={{ categoriaSeleccionada, cambiarCategoria }}
+      >
+        {children}
+      </FiltrosContext.Provider>
     </>
   );
 };
 
-export default { FiltrosContext, FiltrosProvider };
+export { CategoriaProvider, FiltrosContext };
