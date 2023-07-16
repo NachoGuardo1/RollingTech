@@ -7,27 +7,31 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { CarritoProvider } from "./hooks/CarritoContext";
 import { FavoritosPage } from "./pages";
 import { PagoPage } from "./pages/PagoPage";
+import { CategoriaProvider } from "./hooks/FiltroContext";
 import { Footer } from "./componentes/Footer";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <CarritoProvider>
-          <Routes>
-            <Route path="/" element={<Navegador />}>
-              <Route index element={<HomePage />} />
-              <Route path="admin" element={<AdminPage />} />
-              <Route path="pago" element={<PagoPage />} />
-              <Route path="favoritos" element={<FavoritosPage />} />
-            </Route>
-          </Routes>
-        </CarritoProvider>
+        <CategoriaProvider>
+          <CarritoProvider>
+            <Routes>
+              <Route path="/" element={<Navegador />}>
+                <Route index element={<HomePage />} />
+                <Route path="admin" element={<AdminPage />} />
+                <Route path="pago" element={<PagoPage />} />
+                <Route path="favoritos" element={<FavoritosPage />} />
+              </Route>
+            </Routes>
+          </CarritoProvider>
+        </CategoriaProvider>
         <Footer>
           <Routes>
             <Route path="/" element={<Footer />}></Route>
           </Routes>
         </Footer>
+
       </BrowserRouter>
     </>
   );
