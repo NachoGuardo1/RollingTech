@@ -9,6 +9,7 @@ import { FavoritosPage } from "./pages";
 import { PagoPage } from "./pages/PagoPage";
 import { CategoriaProvider } from "./hooks/FiltroContext";
 import { Footer } from "./componentes/Footer";
+import { InventarioPage } from "./pages/InventarioPage";
 
 function App() {
   return (
@@ -19,7 +20,13 @@ function App() {
             <Routes>
               <Route path="/" element={<Navegador />}>
                 <Route index element={<HomePage />} />
-                <Route path="admin" element={<AdminPage />} />
+                <Route path="admin">
+                  <Route index element={<AdminPage />} />
+                  <Route path="inventario" element={<InventarioPage />} />
+                  <Route path="usuarios" />
+                  <Route path="ventas" />
+                  <Route path="administradores" />
+                </Route>
                 <Route path="pago" element={<PagoPage />} />
                 <Route path="favoritos" element={<FavoritosPage />} />
               </Route>
@@ -31,7 +38,6 @@ function App() {
             <Route path="/" element={<Footer />}></Route>
           </Routes>
         </Footer>
-
       </BrowserRouter>
     </>
   );
