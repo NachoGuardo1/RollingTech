@@ -3,7 +3,6 @@ import { Link, Outlet } from "react-router-dom";
 import { Container, Navbar } from "react-bootstrap";
 import { ModalCarrito } from "./ModalCarrito";
 
-
 export const Navegador = () => {
   return (
     <>
