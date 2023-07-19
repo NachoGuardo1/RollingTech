@@ -2,23 +2,20 @@ import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import { Container, Navbar } from "react-bootstrap";
 import { ModalCarrito } from "./ModalCarrito";
-import Logo from '../../src/assets/img/logotipo-rolling1.png'
+import Logo from "../../src/assets/img/logotipo-rolling1.png";
 import "../styles/nav.css";
 
 export const Navegador = () => {
   return (
     <>
-    <div className="container-fluid head-cont">
-      <div className="row">
-        <div className="col-xs-12 col-md-12 col-lg-3" >
-        <Link to="/">
-          <img src={ Logo } 
-          alt="RollingTech"
-          width="220"
-          height="100"/>
-        </Link>
-        </div>
-        <div className="col-xs-12 col-md-12 col-lg-5 mt-4">
+      <div className="container-fluid head-cont">
+        <div className="row">
+          <div className="col-4">
+            <Link to="/">
+              <img src={Logo} alt="RollingTech" width="220" height="100" />
+            </Link>
+          </div>
+          <div className="col-6 mt-4">
             <form className="d-flex" role="search">
               <input
                 className="head-form"
@@ -30,12 +27,20 @@ export const Navegador = () => {
                 Buscar
               </button>
             </form>
+          </div>
+          <div className="d-flex gap-2 col-2 my-auto">
+            <Link to="favoritos" className="text-decoration-none">
+              <button className="btn btn-danger mx-2">♥</button>
+            </Link>
+            <Link className="text-decoration-none  text-light">
+              <ModalCarrito />
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
-      <Navbar className="head-cont" expand="md" sticky="top">
+      <Navbar className="head-cont" expand="lg" sticky="top">
         <Container fluid>
-          <Navbar.Brand>
+          <Navbar.Brand className="logo-nav">
             <img
               alt=""
               src="https://w7.pngwing.com/pngs/568/379/png-transparent-technology-computer-icons-technology-electronics-text-logo.png"
@@ -47,10 +52,10 @@ export const Navegador = () => {
               Rolling Tech
             </Link>
           </Navbar.Brand>
-          <div>
+          <div className="cont-search col-4">
             <form className="d-flex" role="search">
               <input
-                className="head-form"
+                className="head-form "
                 type="search"
                 placeholder="Buscar"
                 aria-label="Buscar"
@@ -59,24 +64,26 @@ export const Navegador = () => {
                 Buscar
               </button>
             </form>
-        </div>
+          </div>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <div className="d-flex gap-3 ms-auto">
+            <div className="d-flex gap-3 mx-auto">
               <Link to="admin" className="text-decoration-none text-light">
                 Admin Page
-              </Link>
-              <Link to="favoritos" className="text-decoration-none text-light">
-                Fav page
               </Link>
               <Link to="/" className="text-decoration-none  text-light">
                 Home Page
               </Link>
-              <Link className="text-decoration-none  text-light">
-                <ModalCarrito />
-              </Link>
             </div>
           </Navbar.Collapse>
+          <div className="d-flex gap-2 cont-cartFav">
+            <Link to="favoritos" className="text-decoration-none">
+              <button className="btn btn-danger mx-2">♥</button>
+            </Link>
+            <Link className="text-decoration-none  text-light">
+              <ModalCarrito />
+            </Link>
+          </div>
         </Container>
       </Navbar>
       <Outlet />
