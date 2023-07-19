@@ -22,12 +22,14 @@ export const ModalCarrito = () => {
   });
   return (
     <>
-      <button className="btn btn-secondary row" onClick={handleShow}>
+      <button
+        className="btn btn-secondary btn-sm row mx-0 px-0"
+        onClick={handleShow}
+      >
         <img
           src="https://cdn-icons-png.flaticon.com/512/107/107831.png?w=360"
-          width="30"
-          height="30"
-          className="d-inline-block align-top"
+          width="10"
+          height="28"
         ></img>
 
         {mostrarCantidad && carrito.length}
