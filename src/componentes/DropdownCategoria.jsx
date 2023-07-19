@@ -7,12 +7,13 @@ export const DropdownCategoria = ({ categorias }) => {
     useContext(FiltrosContext);
 
   return (
-    <div className="mb-4 text-center">
+    <div className="mb-4 text-center col-4 mx-auto">
       <select
         value={categoriaSeleccionada}
         onChange={(e) => cambiarCategoria(e.target.value)}
+        className="form-control"
       >
-        <option value="">Todas las categorías</option>
+        <option value="">Todas las categorias</option>
         {categorias.map((categoria) => (
           <option key={categoria} value={categoria}>
             {categoria}
