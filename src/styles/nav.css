@@ -1,0 +1,15 @@
+.head-cont {
+  background-color: #cac1f3a1;
+  display: none;
+  opacity: 0.98;
+}
+.head-cont-nav {
+  background-color: #9986eea1;
+  opacity: 0.98;
+}
+
+@media (min-width: 992px) {
+  .head-cont {
+    display: block;
+  }
+}

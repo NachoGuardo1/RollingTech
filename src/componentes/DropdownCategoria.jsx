@@ -1,18 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
+import { FiltrosContext } from "../hooks/FiltroContext";
 import { Dropdown } from "react-bootstrap";
 
-export const DropdownCategoria = () => {
-  return (
-    <Dropdown className="text-center mb-3">
-      <Dropdown.Toggle variant="dark" id="dropdown-basic">
-        Categorias
-      </Dropdown.Toggle>
+export const DropdownCategoria = ({ categorias }) => {
+  const { categoriaSeleccionada, cambiarCategoria } =
+    useContext(FiltrosContext);
 
-      <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1">Celulares</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Notebooks</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Ofertas</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
+  return (
+    <div className="mb-4 text-center col-4 mx-auto">
+      <select
+        value={categoriaSeleccionada}
+        onChange={(e) => cambiarCategoria(e.target.value)}
+        className="form-control"
+      >
+        <option value="">Todas las categorias</option>
+        {categorias.map((categoria) => (
+          <option key={categoria} value={categoria}>
+            {categoria}
+          </option>
+        ))}
+      </select>
+    </div>
   );
 };

@@ -1,13 +1,40 @@
-.foot-cont {
-  margin: auto;
-  background: linear-gradient(45deg, #178b43, #0da1b1);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+.foot-cont {
+  display: flex;
+  position: absolute;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  color: rgb(254, 254, 254);
+  background: linear-gradient(45deg, #07b3e7, #93dd85);
+}
+
+.foot-redes {
+  position: relative;
+}
+
+@media (max-width: 992px) {
+  .foot-logo {
+    display: flex;
+    justify-content: center;
+  }
+}
+
 @media (max-width: 768px) {
   .foot-cont {
     display: flex;
     text-align: center;
   }
-  .foot-name {
+}
+
+@media (max-width: 576px) {
+  .foot-info {
     display: none;
   }
 }

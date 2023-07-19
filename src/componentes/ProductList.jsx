@@ -1,21 +1,24 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Carritocontext } from "../hooks/CarritoContext";
-import productos from "../data/data";
+import React, { useContext } from "react";
+import { FiltrosContext } from "../hooks/FiltroContext";
 import { Card } from "react-bootstrap";
 import ModalInfo from "./ModalInfoProd";
+import { Carritocontext } from "../hooks/CarritoContext";
 import "../styles/productos.css";
-import { DropdownCategoria } from "./DropdownCategoria";
 
-export const Productos = () => {
+const ProductList = ({ products }) => {
   const { agregarProductos, agregarFavoritos, favoritos, eliminarFavorito } =
     useContext(Carritocontext);
   const esFav = (item) => favoritos.includes(item);
+  const { categoriaSeleccionada } = useContext(FiltrosContext);
+
+  const productosFiltrados = categoriaSeleccionada
+    ? products.filter((product) => product.categoria === categoriaSeleccionada)
+    : products;
 
   return (
-    <div className="container-fluid m-0 p-0 d-flex row ">
+    <div className="container-fluid m-0 p-0 d-flex row">
       <div className="row d-flex gap-3 justify-content-center">
-        <DropdownCategoria />
-        {productos.map((item) => (
+        {productosFiltrados.map((item) => (
           <Card
             style={{ width: "14rem", height: "25rem" }}
             key={item.id}
@@ -81,3 +84,5 @@ export const Productos = () => {
     </div>
   );
 };
+
+export default ProductList;
