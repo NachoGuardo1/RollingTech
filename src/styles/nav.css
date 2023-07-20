@@ -8,6 +8,12 @@
   opacity: 0.98;
 }
 
+@media (min-width: 768px) {
+  .logo-nav {
+    width: 180px;
+    height: 80px;
+  }
+}
 @media (min-width: 992px) {
   .head-cont {
     display: block;

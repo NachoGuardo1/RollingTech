@@ -3,6 +3,7 @@ import { Modal } from "react-bootstrap";
 import { Carrito } from "../componentes/Carrito";
 import { useContext } from "react";
 import { Carritocontext } from "../hooks/CarritoContext";
+import "../styles/boton-carrito.css";
 
 export const ModalCarrito = () => {
   const [show, setShow] = useState(false);
@@ -23,16 +24,16 @@ export const ModalCarrito = () => {
   return (
     <>
       <button
-        className="btn btn-secondary btn-sm row mx-0 px-0"
+        className="btn btn-secondary btn-sm row mx-0 px-1 boton-carrito"
         onClick={handleShow}
       >
         <img
           src="https://cdn-icons-png.flaticon.com/512/107/107831.png?w=360"
           width="10"
           height="28"
+          className="img-carrito"
         ></img>
-
-        {mostrarCantidad && carrito.length}
+        <div className="texto-carrito">{mostrarCantidad && carrito.length}</div>
       </button>
 
       <Modal className="modal-lg" show={show} onHide={handleClose}>
