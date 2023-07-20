@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { FiltrosContext } from "../hooks/FiltroContext";
-import { Dropdown } from "react-bootstrap";
 
 export const DropdownCategoria = ({ categorias }) => {
   const { categoriaSeleccionada, cambiarCategoria } =
