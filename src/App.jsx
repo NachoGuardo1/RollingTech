@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { HomePage } from "./pages/HomePage";
 import { AdminPage } from "./pages/AdminPage";
@@ -12,9 +12,28 @@ import { Footer } from "./componentes/Footer";
 import { InventarioPage } from "./pages/InventarioPage";
 
 function App() {
+//Estados para manejar login y datos de usuario
+const [login, setLogin] = useState(false);
+const [user, setUser] = useState(null);
+
+//Función para guardar datos del usuario autenticado
+const guardarUsuario = (datos) => {
+  setUser(datos);
+};
+
+//Función cuando inicia sesión
+const iniciarSesion = () => {
+  setLogin(true);
+};
+
+//Función cuando cierra sesión
+const cerrarSesion = () => {
+  setLogin(false);
+};  
+
   return (
     <>
-      <BrowserRouter>
+{/*       <BrowserRouter>
         <CategoriaProvider>
           <CarritoProvider>
             <Routes>
@@ -39,7 +58,24 @@ function App() {
           </Routes>
         </Footer>
       </BrowserRouter>
-    </>
+ */}   
+     <BrowserRouter>
+     <CategoriaProvider>
+      <CarritoProvider>
+        <Routes>
+          <Route path="/" element={<Navegador 
+          iniciarSesion={iniciarSesion}
+          guardarUsuario={guardarUsuario}
+          />}>
+            <Route path="/HomePage" element={<HomePage/> } />
+          </Route>
+        </Routes>
+      </CarritoProvider>
+      </CategoriaProvider>
+    </BrowserRouter>
+
+ 
+  </>
   );
 }
 
