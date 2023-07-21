@@ -8,12 +8,12 @@ import { Error404 } from "../pages/ErrorPage";
 
 import ProtectedRoutesAdmin from "./ProtectedRoutesAdmin";
 
-const RoutesDos = ({ cerrarSesion ,user  }) => {
+const RoutesDos = ({ cerrarSesion, user }) => {
   return (
     <>
       <Navegador cerrarSesion={cerrarSesion} user={user} />
       <Routes>
-        <Route path="/" element={<HomePage/>} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/pago" element={<PagoPage />} />
         <Route path="/favoritos" element={<FavoritosPage />} />

@@ -5,6 +5,12 @@ import { ModalCarrito } from "./ModalCarrito";
 import Logo from "../../src/assets/img/logotipo-rolling1.png";
 import "../styles/nav.css";
 import ModalLogin from "./ModalLogin";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faMagnifyingGlass,
+  faUser,
+  faHeart,
+} from "@fortawesome/free-solid-svg-icons";
 
 export const Navegador = ({ iniciarSesion, guardarUsuario }) => {
   const [mostrarOffcanvas, setMostrarOffcanvas] = useState(false);
@@ -31,14 +37,14 @@ export const Navegador = ({ iniciarSesion, guardarUsuario }) => {
                   className="form-control form-sm"
                 />
                 <button className="btn btn-light mx-2" type="submit">
-                  B
+                  <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </button>
               </form>
             </div>
             <div className="d-flex gap-1 justify-content-end col-2  my-auto">
               <Link className="text-decoration-none text-light my-auto">
                 <button className="btn btn-primary" onClick={handleShow}>
-                  L
+                  <FontAwesomeIcon icon={faUser} />
                   <ModalLogin
                     show={showLogin}
                     handleClose={handleClose}
@@ -48,7 +54,9 @@ export const Navegador = ({ iniciarSesion, guardarUsuario }) => {
                 </button>
               </Link>
               <Link to="favoritos" className="text-decoration-none my-auto">
-                <button className="btn btn-danger">♥</button>
+                <button className="btn btn-danger">
+                  <FontAwesomeIcon icon={faHeart} />
+                </button>
               </Link>
               <Link className="text-decoration-none text-light ">
                 <ModalCarrito />
@@ -90,7 +98,7 @@ export const Navegador = ({ iniciarSesion, guardarUsuario }) => {
                         placeholder="Buscar"
                       />
                       <button className="btn btn-light mx-2" type="submit">
-                        B
+                        <FontAwesomeIcon icon={faMagnifyingGlass} />
                       </button>
                     </form>
                   </div>
@@ -113,11 +121,13 @@ export const Navegador = ({ iniciarSesion, guardarUsuario }) => {
                     iniciarSesion={iniciarSesion}
                     guardarUsuario={guardarUsuario}
                   />
-                  L
+                  <FontAwesomeIcon icon={faUser} />
                 </button>
               </Link>
               <Link to="favoritos" className="text-decoration-none my-auto">
-                <button className="btn btn-danger ">♥</button>
+                <button className="btn btn-danger ">
+                  <FontAwesomeIcon icon={faHeart} />
+                </button>
               </Link>
               <Link className="text-decoration-none text-light ">
                 <ModalCarrito />
