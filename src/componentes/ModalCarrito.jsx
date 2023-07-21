@@ -4,6 +4,8 @@ import { Carrito } from "../componentes/Carrito";
 import { useContext } from "react";
 import { Carritocontext } from "../hooks/CarritoContext";
 import "../styles/boton-carrito.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 export const ModalCarrito = () => {
   const [show, setShow] = useState(false);
@@ -23,16 +25,12 @@ export const ModalCarrito = () => {
   });
   return (
     <>
-      <button
-        className="btn btn-secondary btn-sm row mx-0 px-1 boton-carrito"
-        onClick={handleShow}
-      >
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/107/107831.png?w=360"
-          width="10"
-          height="28"
+      <button className="btn btn-secondary boton-carrito" onClick={handleShow}>
+        <FontAwesomeIcon
+          icon={faCartShopping}
           className="img-carrito"
-        ></img>
+          style={{ color: "black" }}
+        />
         <div className="texto-carrito">{mostrarCantidad && carrito.length}</div>
       </button>
 

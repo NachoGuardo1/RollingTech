@@ -2,9 +2,7 @@
   position: relative;
   display: inline-block;
 }
-.img-carrito {
-  display: block;
-}
+
 .texto-carrito {
   position: absolute;
   top: 50%;
@@ -12,5 +10,6 @@
   transform: translate(-50%, -50%);
   padding: 10px;
   border-radius: 5px;
-  font-weight: 700;
+  font-weight: 600;
+  z-index: 1;
 }

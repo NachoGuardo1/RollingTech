@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { Carritocontext } from "../hooks/CarritoContext";
 import { FormPago } from "../componentes/FormPago";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 export const PagoPage = () => {
   const {
@@ -51,12 +53,7 @@ export const PagoPage = () => {
                       eliminarProducto(item.id);
                     }}
                   >
-                    <img
-                      src="https://w7.pngwing.com/pngs/228/54/png-transparent-logo-trademark-brand-delete-button-miscellaneous-text-trademark.png"
-                      width="30"
-                      height="30"
-                      className="d-inline-block align-top"
-                    ></img>
+                    <FontAwesomeIcon icon={faTrashAlt} />
                   </button>
                 </td>
               </tr>
