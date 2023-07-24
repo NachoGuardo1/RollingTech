@@ -21,6 +21,7 @@ const ModalLogin = ({ iniciarSesion, guardarUsuario }) => {
         <Modal.Body>
           <div>
             <FormLogin
+              handleClose={handleClose}
               iniciarSesion={iniciarSesion}
               guardarUsuario={guardarUsuario}
             />
