@@ -9,10 +9,10 @@ import ModalLogin  from "./ModalLogin";
 export const Navegador = ({ iniciarSesion, guardarUsuario }) => {
   const [mostrarOffcanvas, setMostrarOffcanvas] = useState(false);
 
-  const [show, setShow] = useState(false);
+  const [showML, setShowML] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true); 
+  const handleClose = () => setShowML(false);
+  const handleShow = () => setShowML(true); 
 
   return (
     <>
@@ -38,8 +38,8 @@ export const Navegador = ({ iniciarSesion, guardarUsuario }) => {
             </div>
             <div className="d-flex gap-1 justify-content-end col-2  my-auto">
               <Link className="text-decoration-none text-light my-auto">
-                <button className="btn btn-primary">L</button>
-                <ModalLogin show={show} handleClose={handleClose} iniciarSesion={iniciarSesion} guardarUsuario={guardarUsuario}/>                
+                <button className="btn btn-primary" type="submit" onClick={handleShow} >L</button>
+                <ModalLogin  show={showML} handleClose={handleClose} iniciarSesion={iniciarSesion} guardarUsuario={guardarUsuario}/>                
               </Link>
               <Link to="favoritos" className="text-decoration-none my-auto">
                 <button className="btn btn-danger">♥</button>

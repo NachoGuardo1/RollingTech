@@ -4,13 +4,13 @@ import Modal from "react-bootstrap/Modal";
 import { FormLogin } from "../componentes/FormLogin";
 
 
-const ModalLogin =({show,handleClose,iniciarSesion,guardarUsuario}) =>{
+const ModalLogin =({showML,handleClose,iniciarSesion,guardarUsuario}) =>{
 
 
 return (
 
 
-     <Modal show={show} onHide={handleClose}>
+     <Modal show={showML} onHide={handleClose}>
     <Modal.Header closeButton>
       <Modal.Title>Ingresar con Email y contraseña</Modal.Title>
     </Modal.Header>

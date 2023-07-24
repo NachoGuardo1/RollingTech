@@ -68,6 +68,17 @@ const cerrarSesion = () => {
           guardarUsuario={guardarUsuario}
           />}>
             <Route path="/HomePage" element={<HomePage/> } />
+            <Route path="pago" element={<PagoPage />} />
+            <Route path="favoritos" element={<FavoritosPage />} />
+            <Route path="admin">
+                  <Route index element={<AdminPage />} />
+                  <Route path="inventario" element={<InventarioPage />} />
+                  <Route path="usuarios" />
+                  <Route path="ventas" />
+                  <Route path="administradores" />
+                </Route>
+
+
           </Route>
         </Routes>
       </CarritoProvider>
