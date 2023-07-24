@@ -7,6 +7,9 @@
   z-index: 1;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
 }
+.texto-cartas {
+  font-size: large;
+}
 
 @media (max-width: 768px) {
   .efectos-card:hover {

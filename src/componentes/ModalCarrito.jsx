@@ -25,18 +25,18 @@ export const ModalCarrito = () => {
   });
   return (
     <>
-      <button className="btn btn-secondary boton-carrito" onClick={handleShow}>
+      <button className="btn boton-carrito" onClick={handleShow}>
         <FontAwesomeIcon
           icon={faCartShopping}
           className="img-carrito"
-          style={{ color: "black" }}
+          color="grey"
         />
         <div className="texto-carrito">{mostrarCantidad && carrito.length}</div>
       </button>
 
       <Modal className="modal-lg" show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Carrito de Compras</Modal.Title>
+          <Modal.Title>Mi carrito</Modal.Title>
         </Modal.Header>
         <Modal.Body className="p-1 d-flex justify-content-center">
           {carrito.length === 0 ? (
