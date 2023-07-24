@@ -4,11 +4,8 @@ import { authLogin } from "../helpers/ApiLogin";
 //import "../styles/login.css";
 //import "../componentes/MessageApp";
 
-export const FormLogin = ({ iniciarSesion, guardarUsuario }) => {
+export const FormLogin = ({ iniciarSesion, guardarUsuario, handleClose }) => {
   //agregado domingo 11:22
-  //Estados para manejar login y datos de usuario
-  const [login, setLogin] = useState(false);
-  const [user, setUser] = useState(null);
 
   const navigate = useNavigate();
 
@@ -57,6 +54,7 @@ export const FormLogin = ({ iniciarSesion, guardarUsuario }) => {
       setInputContrasena("");
       setInputCorreo("");
       //redireccionar
+      handleClose();
       navigate("/");
     }
     console.log("viene al set resultado");
