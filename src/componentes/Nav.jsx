@@ -15,10 +15,6 @@ import {
 export const Navegador = ({ iniciarSesion, guardarUsuario }) => {
   const [mostrarOffcanvas, setMostrarOffcanvas] = useState(false);
 
-  const [showLogin, setShowLogin] = useState(false);
-
-  const handleClose = () => setShowLogin(false);
-  const handleShow = () => setShowLogin(true);
   return (
     <>
       <div className="sticky-top">
@@ -36,26 +32,21 @@ export const Navegador = ({ iniciarSesion, guardarUsuario }) => {
                   placeholder="Buscar"
                   className="form-control form-sm"
                 />
-                <button className="btn btn-light mx-2" type="submit">
+                <button className="btn  mx-2" type="submit">
                   <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </button>
               </form>
             </div>
             <div className="d-flex gap-1 justify-content-end col-2  my-auto">
-              <Link className="text-decoration-none text-light my-auto">
-                <button className="btn btn-primary" onClick={handleShow}>
-                  <FontAwesomeIcon icon={faUser} />
-                  <ModalLogin
-                    show={showLogin}
-                    handleClose={handleClose}
-                    iniciarSesion={iniciarSesion}
-                    guardarUsuario={guardarUsuario}
-                  />
-                </button>
+              <Link className="text-decoration-none  my-auto">
+                <ModalLogin
+                  iniciarSesion={iniciarSesion}
+                  guardarUsuario={guardarUsuario}
+                />
               </Link>
               <Link to="favoritos" className="text-decoration-none my-auto">
-                <button className="btn btn-danger">
-                  <FontAwesomeIcon icon={faHeart} />
+                <button className="btn">
+                  <FontAwesomeIcon icon={faHeart} color="red" />
                 </button>
               </Link>
               <Link className="text-decoration-none text-light ">
@@ -72,12 +63,12 @@ export const Navegador = ({ iniciarSesion, guardarUsuario }) => {
               onClick={() => setMostrarOffcanvas(true)}
             />
 
-            <Navbar.Brand className=" d-lg-none d-xl-none d-xxl-none ">
+            <Navbar.Brand className="  d-lg-none d-xl-none d-xxl-none ">
               <Link to="/">
                 <img
                   src={Logo}
                   alt="RollingTech"
-                  width="150"
+                  width="140"
                   height="70"
                   className="logo-nav"
                 />
@@ -97,7 +88,7 @@ export const Navegador = ({ iniciarSesion, guardarUsuario }) => {
                         type="search"
                         placeholder="Buscar"
                       />
-                      <button className="btn btn-light mx-2" type="submit">
+                      <button className="btn  mx-2" type="submit">
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
                       </button>
                     </form>
@@ -112,21 +103,16 @@ export const Navegador = ({ iniciarSesion, guardarUsuario }) => {
               </Offcanvas.Body>
             </Navbar.Offcanvas>
 
-            <div className="d-flex gap-1 justify-content-end col-2 my-auto d-lg-none d-xl-none d-xxl-none ">
-              <Link className="text-decoration-none text-light my-auto">
-                <button className="btn btn-primary " onClick={handleShow}>
-                  <ModalLogin
-                    showLogin={showLogin}
-                    handleClose={handleClose}
-                    iniciarSesion={iniciarSesion}
-                    guardarUsuario={guardarUsuario}
-                  />
-                  <FontAwesomeIcon icon={faUser} />
-                </button>
+            <div className="d-flex  col-xs-2 col-sm-2 col-md-2 justify-content-end my-auto d-lg-none d-xl-none d-xxl-none ">
+              <Link className="text-decoration-none my-auto">
+                <ModalLogin
+                  iniciarSesion={iniciarSesion}
+                  guardarUsuario={guardarUsuario}
+                />
               </Link>
               <Link to="favoritos" className="text-decoration-none my-auto">
-                <button className="btn btn-danger ">
-                  <FontAwesomeIcon icon={faHeart} />
+                <button className="btn  btn-sm">
+                  <FontAwesomeIcon icon={faHeart} color="red" />
                 </button>
               </Link>
               <Link className="text-decoration-none text-light ">
