@@ -1,6 +1,8 @@
 import React from "react";
 import { FormInventario } from "../componentes/FormInventario";
 import productos from "../data/data";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 export const InventarioPage = () => {
   const products = productos;
@@ -9,11 +11,11 @@ export const InventarioPage = () => {
       <div
         className="col-5 table-responsive"
         style={{
-          maxHeight: "25rem",
+          maxHeight: "28rem",
         }}
       >
         <table className="table table-hover table-secondary ">
-          <thead>
+          <thead className="table-dark">
             <tr>
               <th>Producto</th>
               <th>Precio</th>
@@ -25,7 +27,11 @@ export const InventarioPage = () => {
               <tr key={producto.id}>
                 <td>{producto.nombre}</td>
                 <td>${producto.precio}</td>
-                <td>X</td>
+                <td>
+                  <button className="btn btn-danger mb-3">
+                    <FontAwesomeIcon icon={faTrashAlt} />
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>

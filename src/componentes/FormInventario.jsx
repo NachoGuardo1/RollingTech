@@ -35,7 +35,7 @@ export const FormInventario = () => {
         <label className="fw-bold">Nombre</label>
         <input
           type="text"
-          className="form-control"
+          className="form-control mb-3"
           value={productoNombre}
           onChange={(e) => setProductoNombre(e.target.value)}
           required
@@ -43,7 +43,7 @@ export const FormInventario = () => {
         <label className="fw-bold">Descripcion</label>
         <input
           type="text"
-          className="form-control"
+          className="form-control mb-3"
           value={productoDescripcion}
           onChange={(e) => setProductoDescripcion(e.target.value)}
           required
@@ -51,7 +51,7 @@ export const FormInventario = () => {
         <label className="fw-bold">Precio</label>
         <input
           type="number"
-          className="form-control"
+          className="form-control mb-3"
           value={productoPrecio}
           onChange={(e) => setProductoPrecio(e.target.value)}
           required
@@ -59,7 +59,7 @@ export const FormInventario = () => {
         <label className="fw-bold">Categoria</label>
         <input
           type="text"
-          className="form-control"
+          className="form-control mb-3"
           value={productoCategoria}
           onChange={(e) => setProductoCategoria(e.target.value)}
           required
@@ -67,12 +67,17 @@ export const FormInventario = () => {
         <label className="fw-bold">Imagen URL</label>
         <input
           type="text"
-          className="form-control"
+          className="form-control mb-3"
           value={productoImg}
           onChange={(e) => setProductoImg(e.target.value)}
           required
         />
-        <button className="btn btn-success ">Agregar Producto</button>
+        <div className="d-grid">
+          <button className="btn btn-success mb-3">Agregar Producto</button>
+        </div>
+        <div className="d-grid">
+          <button className="btn btn-success mb-3">Editar Producto</button>
+        </div>
       </form>
     </div>
   );

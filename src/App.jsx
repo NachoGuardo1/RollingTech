@@ -12,32 +12,36 @@ import { Footer } from "./componentes/Footer";
 import { InventarioPage } from "./pages/InventarioPage";
 
 function App() {
-//Estados para manejar login y datos de usuario
-const [login, setLogin] = useState(false);
-const [user, setUser] = useState(null);
+  const [login, setLogin] = useState(false);
+  const [user, setUser] = useState(null);
 
-//Función para guardar datos del usuario autenticado
-const guardarUsuario = (datos) => {
-  setUser(datos);
-};
+  const guardarUsuario = (datos) => {
+    setUser(datos);
+  };
 
-//Función cuando inicia sesión
-const iniciarSesion = () => {
-  setLogin(true);
-};
+  const iniciarSesion = () => {
+    setLogin(true);
+  };
 
-//Función cuando cierra sesión
-const cerrarSesion = () => {
-  setLogin(false);
-};  
+  const cerrarSesion = () => {
+    setLogin(false);
+  };
 
   return (
     <>
-{/*       <BrowserRouter>
+      <BrowserRouter>
         <CategoriaProvider>
           <CarritoProvider>
             <Routes>
-              <Route path="/" element={<Navegador />}>
+              <Route
+                path="/"
+                element={
+                  <Navegador
+                    iniciarSesion={iniciarSesion}
+                    guardarUsuario={guardarUsuario}
+                  />
+                }
+              >
                 <Route index element={<HomePage />} />
                 <Route path="admin">
                   <Route index element={<AdminPage />} />
@@ -58,33 +62,6 @@ const cerrarSesion = () => {
           </Routes>
         </Footer>
       </BrowserRouter>
- */}   
-     <BrowserRouter>
-     <CategoriaProvider>
-      <CarritoProvider>
-        <Routes>
-          <Route path="/" element={<Navegador 
-          iniciarSesion={iniciarSesion}
-          guardarUsuario={guardarUsuario}
-          />}>
-            <Route path="/HomePage" element={<HomePage/> } />
-            <Route path="pago" element={<PagoPage />} />
-            <Route path="favoritos" element={<FavoritosPage />} />
-            <Route path="admin">
-                  <Route index element={<AdminPage />} />
-                  <Route path="inventario" element={<InventarioPage />} />
-                  <Route path="usuarios" />
-                  <Route path="ventas" />
-                  <Route path="administradores" />
-                </Route>
-
-
-          </Route>
-        </Routes>
-      </CarritoProvider>
-      </CategoriaProvider>
-    </BrowserRouter>
-
  
   </>
   );

@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { Carritocontext } from "../hooks/CarritoContext";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 export const Carrito = () => {
   const navigate = useNavigate();
@@ -68,12 +70,7 @@ export const Carrito = () => {
                       eliminarProducto(item.id);
                     }}
                   >
-                    <img
-                      src="https://w7.pngwing.com/pngs/228/54/png-transparent-logo-trademark-brand-delete-button-miscellaneous-text-trademark.png"
-                      width="30"
-                      height="30"
-                      className="d-inline-block align-top"
-                    ></img>
+                    <FontAwesomeIcon icon={faTrashAlt} />
                   </button>
                 </td>
               </tr>

@@ -1,18 +1,15 @@
 import { useEffect,useState  } from 'react';
 import { useNavigate } from "react-router-dom";
 import {authLogin} from "../helpers/ApiLogin";
+import ModalLogin from "./ModalLogin";
+
 //import "../styles/login.css";
 //import "../componentes/MessageApp";
 
-
-export const FormLogin = ({ iniciarSesion, guardarUsuario }) => {
+//export const FormLogin = ({ iniciarSesion, guardarUsuario }) => {
+export const FormLogin = ({handleClose, iniciarSesion, guardarUsuario }) => {
   //agregado domingo 11:22
-  //Estados para manejar login y datos de usuario
-  const [login, setLogin] = useState(false);
-  const [user, setUser] = useState(null);
-
   const navigate = useNavigate();
-
     //Definimos estados
   //Estado para guardar correo y contrasena de los inputs
   const [inputCorreo, setInputCorreo] = useState("");
@@ -23,6 +20,9 @@ export const FormLogin = ({ iniciarSesion, guardarUsuario }) => {
   
   //Estado para manejar un loading o carga de datos
   const [loading, setLoading] = useState(false);
+
+  const [closeModal, setCloseModal] = useState(false);
+
 
   //Función del formulario de login:
   const handleLogin = async (e) => {
@@ -43,10 +43,6 @@ export const FormLogin = ({ iniciarSesion, guardarUsuario }) => {
     
     console.log("here i go ");
     
-    const laputa = resp.token;
-    const laputa2 = resp.usuario;
-    console.log(laputa);
-    console.log(laputa2);
     
     //Guardar token
     if (resp?.token) {
@@ -64,17 +60,25 @@ export const FormLogin = ({ iniciarSesion, guardarUsuario }) => {
         rol,
         uid,
       });
+      //reset form
+      setInputCorreo("");
+      setInputContrasena("");
+    
+      handleClose();
       //redireccionar
       navigate("/");
+
     }
     console.log('viene al set resultado');
+  
+
     setResultado(resp);
     setLoading(false);
   };
 
   return (
         <div>
-            <form className="row " onSubmit={handleLogin} >
+            <form className="row " >
                 <div className="mt-3">
                     <label className="fw-bold">Correo</label>
                     <input
@@ -97,7 +101,7 @@ export const FormLogin = ({ iniciarSesion, guardarUsuario }) => {
                     />
                 </div>
                 <div className="mt-3 d-grid">
-                      <button  className="btn btn-success my-3"  onClick={handleLogin} >  
+                       <button  className="btn btn-success my-3"  onClick={handleLogin} type='submit'>  
                         Iniciar
                     </button>
                 </div>

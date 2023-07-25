@@ -4,15 +4,16 @@ import { Container, Navbar, Offcanvas } from "react-bootstrap";
 import { ModalCarrito } from "./ModalCarrito";
 import Logo from "../../src/assets/img/logotipo-rolling1.png";
 import "../styles/nav.css";
-import ModalLogin  from "./ModalLogin";
+import ModalLogin from "./ModalLogin";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faMagnifyingGlass,
+  faUser,
+  faHeart,
+} from "@fortawesome/free-solid-svg-icons";
 
 export const Navegador = ({ iniciarSesion, guardarUsuario }) => {
   const [mostrarOffcanvas, setMostrarOffcanvas] = useState(false);
-
-  const [showML, setShowML] = useState(false);
-
-  const handleClose = () => setShowML(false);
-  const handleShow = () => setShowML(true); 
 
   return (
     <>
@@ -32,17 +33,23 @@ export const Navegador = ({ iniciarSesion, guardarUsuario }) => {
                   className="form-control form-sm"
                 />
                 <button className="btn btn-light mx-2" type="submit">
-                  B
+                  <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </button>
               </form>
             </div>
             <div className="d-flex gap-1 justify-content-end col-2  my-auto">
               <Link className="text-decoration-none text-light my-auto">
-                <button className="btn btn-primary" type="submit" onClick={handleShow} >L</button>
-                <ModalLogin  show={showML} handleClose={handleClose} iniciarSesion={iniciarSesion} guardarUsuario={guardarUsuario}/>                
+                  <ModalLogin
+                    //show={showLogin}
+                    //handleClose={handleClose}
+                    iniciarSesion={iniciarSesion}
+                    guardarUsuario={guardarUsuario}
+                  />
               </Link>
               <Link to="favoritos" className="text-decoration-none my-auto">
-                <button className="btn btn-danger">♥</button>
+                <button className="btn btn-danger">
+                  <FontAwesomeIcon icon={faHeart} />
+                </button>
               </Link>
               <Link className="text-decoration-none text-light ">
                 <ModalCarrito />
@@ -58,9 +65,15 @@ export const Navegador = ({ iniciarSesion, guardarUsuario }) => {
               onClick={() => setMostrarOffcanvas(true)}
             />
 
-            <Navbar.Brand className="logo-nav d-lg-none d-xl-none d-xxl-none ">
-              <Link to="/" className="text-dark text-decoration-none">
-                Rolling Tech
+            <Navbar.Brand className=" d-lg-none d-xl-none d-xxl-none ">
+              <Link to="/">
+                <img
+                  src={Logo}
+                  alt="RollingTech"
+                  width="150"
+                  height="70"
+                  className="logo-nav"
+                />
               </Link>
             </Navbar.Brand>
 
@@ -78,7 +91,7 @@ export const Navegador = ({ iniciarSesion, guardarUsuario }) => {
                         placeholder="Buscar"
                       />
                       <button className="btn btn-light mx-2" type="submit">
-                        B
+                        <FontAwesomeIcon icon={faMagnifyingGlass} />
                       </button>
                     </form>
                   </div>
@@ -94,10 +107,16 @@ export const Navegador = ({ iniciarSesion, guardarUsuario }) => {
 
             <div className="d-flex gap-1 justify-content-end col-2 my-auto d-lg-none d-xl-none d-xxl-none ">
               <Link className="text-decoration-none text-light my-auto">
-                <button className="btn btn-primary ">L</button>
+                  <ModalLogin
+                    iniciarSesion={iniciarSesion}
+                    guardarUsuario={guardarUsuario}
+                  />
+                  <FontAwesomeIcon icon={faUser} />
               </Link>
               <Link to="favoritos" className="text-decoration-none my-auto">
-                <button className="btn btn-danger ">♥</button>
+                <button className="btn btn-danger ">
+                  <FontAwesomeIcon icon={faHeart} />
+                </button>
               </Link>
               <Link className="text-decoration-none text-light ">
                 <ModalCarrito />
