@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { authLogin } from "../helpers/ApiLogin";
-//import "../styles/login.css";
-//import "../componentes/MessageApp";
+import Swal from "sweetalert2";
+import { FormRegister } from "./FormRegister";
 
 export const FormLogin = ({ iniciarSesion, guardarUsuario, handleClose }) => {
   //agregado domingo 11:22
@@ -16,82 +16,95 @@ export const FormLogin = ({ iniciarSesion, guardarUsuario, handleClose }) => {
 
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = async (e) => {
-    console.log("here i go ");
-    e.preventDefault();
+  const [mostrarPrimeraP, setMostrarPrimeraP] = useState(true);
+  const [mostrarSegundaP, setMostrarSegundaP] = useState(false);
+  const siguienteParte = () => {
+    setMostrarPrimeraP(false);
+    setMostrarSegundaP(true);
+  };
+  const anteriorParte = () => {
+    setMostrarPrimeraP(true);
+    setMostrarSegundaP(false);
+  };
 
+  const handleLogin = async (e) => {
+    e.preventDefault();
     setLoading(true);
     //Obtener datos ingresados
     const datos = {
       correo: inputCorreo,
       contrasena: inputContrasena,
     };
-
-    console.log("el correo es", datos.correo);
-    console.log("el correo es", datos.contrasena);
-    //hacer petición a la API
     const resp = await authLogin(datos);
-
-    console.log("here i go ");
-
-    //Guardar token
     if (resp?.token) {
-      console.log("entro al if del token");
-
       localStorage.setItem("token", JSON.stringify(resp.token));
 
-      //ejecutar función iniciar sesión
       iniciarSesion();
-      //guardar datos del usuario
+
       const { nombre, correo, rol, uid } = resp.usuario;
+
       guardarUsuario({
         nombre,
         correo,
         rol,
         uid,
       });
-      // reset form
+
       setInputContrasena("");
       setInputCorreo("");
-      //redireccionar
+
       handleClose();
       navigate("/");
+      console.log("logeado");
+    } else {
+      console.error(
+        "El usuario no esta registrado o los datos son incorrectos"
+      );
+      Swal.fire("El usuario o la contraseña no son correctos");
     }
-    console.log("viene al set resultado");
     setResultado(resp);
     setLoading(false);
   };
 
   return (
     <div>
-      <form className="row ">
-        <div className="mt-3">
-          <label className="fw-bold">Correo</label>
-          <input
-            type="email"
-            className="form-control"
-            placeholder="Correo@"
-            value={inputCorreo}
-            onChange={(e) => setInputCorreo(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mt-3">
-          <label className="fw-bold">Contraseña</label>
-          <input
-            type="password"
-            className="form-control"
-            value={inputContrasena}
-            onChange={(e) => setInputContrasena(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mt-3 d-grid">
-          <button className="btn btn-success my-3" onClick={handleLogin}>
-            Iniciar
-          </button>
-        </div>
-      </form>
+      {mostrarPrimeraP && (
+        <form className="row ">
+          <div className="mt-3">
+            <label className="fw-bold">Correo</label>
+            <input
+              type="email"
+              className="form-control"
+              placeholder="Correo@"
+              value={inputCorreo}
+              onChange={(e) => setInputCorreo(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mt-3">
+            <label className="fw-bold">Contraseña</label>
+            <input
+              type="password"
+              className="form-control"
+              value={inputContrasena}
+              onChange={(e) => setInputContrasena(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mt-3 d-grid">
+            <button className="btn btn-success my-3" onClick={handleLogin}>
+              Iniciar
+            </button>
+          </div>
+          <div className="text-center">
+            <button className="btn" onClick={siguienteParte}>
+              No tiene una cuenta? Registrese
+            </button>
+          </div>
+        </form>
+      )}
+      {mostrarSegundaP && <FormRegister anteriorParte={anteriorParte} />}
+
       {/*             {resultado?.msg (
               <div className="mt-2">
                 <MessageApp mensaje={resultado.msg} />
