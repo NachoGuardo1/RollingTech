@@ -10,6 +10,8 @@ import { PagoPage } from "./pages/PagoPage";
 import { CategoriaProvider } from "./hooks/FiltroContext";
 import { Footer } from "./componentes/Footer";
 import { InventarioPage } from "./pages/InventarioPage";
+import { Nosotros } from "./pages/Nosotros";
+// import { Contacto } from "./pages/Contacto";
 
 function App() {
   const [login, setLogin] = useState(false);
@@ -50,6 +52,8 @@ function App() {
                   <Route path="ventas" />
                   <Route path="administradores" />
                 </Route>
+                <Route path="nosotros" element={< Nosotros />} />
+                {/* <Route path="contacto" element={< Contacto />} /> */}
                 <Route path="pago" element={<PagoPage />} />
                 <Route path="favoritos" element={<FavoritosPage />} />
               </Route>
