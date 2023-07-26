@@ -1,27 +1,32 @@
 import React, { useState } from "react";
+import { crearProducto } from "../helpers/ApiProductos";
 
 export const FormInventario = () => {
-  // state array producto
-  const [products, setProducts] = useState([]);
   // state form inputs
-  const [productoNombre, setProductoNombre] = useState("");
-  const [productoDescripcion, setProductoDescripcion] = useState("");
-  const [productoPrecio, setProductoPrecio] = useState("");
-  const [productoCategoria, setProductoCategoria] = useState("");
-  const [productoImg, setProductoImg] = useState("");
+  const [inputNombre, setProductoNombre] = useState("");
+  const [inputDescrip, setProductoDescripcion] = useState("");
+  const [inputPrecio, setProductoPrecio] = useState("");
+  const [inputCategoria, setProductoCategoria] = useState("");
+  const [inputImg, setProductoImg] = useState("");
 
-  const CrearProducto = (e) => {
+  const CrearProducto = async (e) => {
     e.preventDefault();
-    // tomar valores y crear nuevo producto
-    const productoNuevo = {
-      nombre: productoNombre,
-      precio: productoPrecio,
-      descripcion: productoDescripcion,
-      categoria: productoCategoria,
-      imagen: productoImg,
+    //Obtener datos ingresados
+    const datos = {
+      nombre: inputNombre,
+      descrip: inputDescrip,
+      precio: inputPrecio,
+      categoria: inputCategoria,
+      img: inputImg,
     };
-    // funcion para guardar producto en el array
-    setProducts([...products, productoNuevo]);
+
+    const resp = await crearProducto(datos);
+
+    if (resp?.token) {
+      console.log("Datos guardados exitosamente");
+    } else {
+      console.error("Error al guardar los datos");
+    }
     // funcion para formreset
     setProductoNombre("");
     setProductoPrecio("");
@@ -36,7 +41,7 @@ export const FormInventario = () => {
         <input
           type="text"
           className="form-control mb-3"
-          value={productoNombre}
+          value={inputNombre}
           onChange={(e) => setProductoNombre(e.target.value)}
           required
         />
@@ -44,7 +49,7 @@ export const FormInventario = () => {
         <input
           type="text"
           className="form-control mb-3"
-          value={productoDescripcion}
+          value={inputDescrip}
           onChange={(e) => setProductoDescripcion(e.target.value)}
           required
         />
@@ -52,7 +57,7 @@ export const FormInventario = () => {
         <input
           type="number"
           className="form-control mb-3"
-          value={productoPrecio}
+          value={inputPrecio}
           onChange={(e) => setProductoPrecio(e.target.value)}
           required
         />
@@ -60,7 +65,7 @@ export const FormInventario = () => {
         <input
           type="text"
           className="form-control mb-3"
-          value={productoCategoria}
+          value={inputCategoria}
           onChange={(e) => setProductoCategoria(e.target.value)}
           required
         />
@@ -68,7 +73,7 @@ export const FormInventario = () => {
         <input
           type="text"
           className="form-control mb-3"
-          value={productoImg}
+          value={inputImg}
           onChange={(e) => setProductoImg(e.target.value)}
           required
         />

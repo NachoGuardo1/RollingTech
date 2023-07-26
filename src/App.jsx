@@ -14,19 +14,10 @@ import { Nosotros } from "./pages/Nosotros";
 // import { Contacto } from "./pages/Contacto";
 
 function App() {
-  const [login, setLogin] = useState(false);
   const [user, setUser] = useState(null);
 
   const guardarUsuario = (datos) => {
     setUser(datos);
-  };
-
-  const iniciarSesion = () => {
-    setLogin(true);
-  };
-
-  const cerrarSesion = () => {
-    setLogin(false);
   };
 
   return (
@@ -37,14 +28,10 @@ function App() {
             <Routes>
               <Route
                 path="/"
-                element={
-                  <Navegador
-                    iniciarSesion={iniciarSesion}
-                    guardarUsuario={guardarUsuario}
-                  />
-                }
+                element={<Navegador guardarUsuario={guardarUsuario} />}
               >
                 <Route index element={<HomePage />} />
+
                 <Route path="admin">
                   <Route index element={<AdminPage />} />
                   <Route path="inventario" element={<InventarioPage />} />
@@ -52,7 +39,8 @@ function App() {
                   <Route path="ventas" />
                   <Route path="administradores" />
                 </Route>
-                <Route path="nosotros" element={< Nosotros />} />
+
+                <Route path="nosotros" element={<Nosotros />} />
                 {/* <Route path="contacto" element={< Contacto />} /> */}
                 <Route path="pago" element={<PagoPage />} />
                 <Route path="favoritos" element={<FavoritosPage />} />

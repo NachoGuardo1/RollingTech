@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { Container, Navbar, Offcanvas } from "react-bootstrap";
 import { ModalCarrito } from "./ModalCarrito";
 import Logo from "../../src/assets/img/logotipo-rolling1.png";
@@ -8,12 +8,31 @@ import ModalLogin from "./ModalLogin";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMagnifyingGlass,
-  faUser,
   faHeart,
+  faPowerOff,
 } from "@fortawesome/free-solid-svg-icons";
+import Swal from "sweetalert2";
 
-export const Navegador = ({ iniciarSesion, guardarUsuario }) => {
+export const Navegador = ({ guardarUsuario }) => {
   const [mostrarOffcanvas, setMostrarOffcanvas] = useState(false);
+  const [login, setLogin] = useState(false);
+  const navigate = useNavigate();
+
+  const favPage = () => {
+    if (login === true) {
+      navigate("/favoritos");
+    } else {
+      Swal.fire("Debes logearte");
+    }
+  };
+
+  const iniciarSesion = () => {
+    setLogin(true);
+  };
+
+  const cerrarSesion = () => {
+    setLogin(false);
+  };
 
   return (
     <>
@@ -39,16 +58,22 @@ export const Navegador = ({ iniciarSesion, guardarUsuario }) => {
             </div>
             <div className="d-flex gap-1 justify-content-end col-2  my-auto">
               <Link className="text-decoration-none  my-auto">
-                <ModalLogin
-                  iniciarSesion={iniciarSesion}
-                  guardarUsuario={guardarUsuario}
-                />
+                {login === true ? (
+                  <button className="btn" onClick={cerrarSesion}>
+                    <FontAwesomeIcon icon={faPowerOff} color="red" />
+                  </button>
+                ) : (
+                  <ModalLogin
+                    iniciarSesion={iniciarSesion}
+                    guardarUsuario={guardarUsuario}
+                  />
+                )}
               </Link>
-              <Link to="favoritos" className="text-decoration-none my-auto">
-                <button className="btn">
-                  <FontAwesomeIcon icon={faHeart} color="red" />
-                </button>
-              </Link>
+
+              <button className="btn" onClick={favPage}>
+                <FontAwesomeIcon icon={faHeart} color="red" />
+              </button>
+
               <Link className="text-decoration-none text-light ">
                 <ModalCarrito />
               </Link>
@@ -99,7 +124,10 @@ export const Navegador = ({ iniciarSesion, guardarUsuario }) => {
                   <Link to="/" className="text-decoration-none  text-dark">
                     Home Page
                   </Link>
-                  <Link to="/nosotros" className="text-decoration-none  text-dark">
+                  <Link
+                    to="/nosotros"
+                    className="text-decoration-none  text-dark"
+                  >
                     Sobre Nosotros
                   </Link>
                   {/* <Link to="/contacto" className="text-decoration-none  text-dark">
