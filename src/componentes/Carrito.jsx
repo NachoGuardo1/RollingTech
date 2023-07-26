@@ -34,7 +34,7 @@ export const Carrito = () => {
     <>
       <div className="container d-flex gap-1 justify-content-center row">
         <div
-          className="col-xl-6 col-lg-6 col-md-10 col-sm-10 col-xs-10 table-responsive"
+          className="table-responsive"
           style={{
             maxHeight: "28rem",
           }}
