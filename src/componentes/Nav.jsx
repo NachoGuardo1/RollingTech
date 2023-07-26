@@ -99,6 +99,12 @@ export const Navegador = ({ iniciarSesion, guardarUsuario }) => {
                   <Link to="/" className="text-decoration-none  text-dark">
                     Home Page
                   </Link>
+                  <Link to="/nosotros" className="text-decoration-none  text-dark">
+                    Sobre Nosotros
+                  </Link>
+                  {/* <Link to="/contacto" className="text-decoration-none  text-dark">
+                    Contacto
+                  </Link> */}
                 </div>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
