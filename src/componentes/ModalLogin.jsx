@@ -13,6 +13,7 @@ const ModalLogin = ({ iniciarSesion, guardarUsuario }) => {
   const tituloLogin = () => setTituloModal("Ingresar con email y contraseña");
   const handleClose = () => setShowLogin(false);
   const handleShow = () => setShowLogin(true);
+
   return (
     <>
       <button className="btn" onClick={handleShow}>
@@ -34,6 +35,7 @@ const ModalLogin = ({ iniciarSesion, guardarUsuario }) => {
           </div>
         </Modal.Body>
       </Modal>
+
     </>
   );
 };

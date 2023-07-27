@@ -12,9 +12,7 @@ export const FormLogin = ({
   tituloLogin,
 }) => {
   //agregado domingo 11:22
-
   const navigate = useNavigate();
-
   const [inputCorreo, setInputCorreo] = useState("");
   const [inputContrasena, setInputContrasena] = useState("");
 
