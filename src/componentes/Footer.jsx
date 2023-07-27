@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export const Footer = () => {
   return (
-    <div className="container-fluid mx-auto foot-cont mt-4">
+    <div className="container-fluid mx-auto foot-cont mt-0">
       <div className="row p-4 pb-2">
         <div className="col-xs-12 col-md-12 col-lg-3 foot-logo">
           <Link to="/">

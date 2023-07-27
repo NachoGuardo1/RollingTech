@@ -24,7 +24,15 @@ export const HomePage = () => {
     <div className="p-0 m-0 d-flex row container-fluid justify-content-center">
       <Carrousel />
       <div>
-        <DropdownCategoria categorias={["celulares", "notebooks"]} />
+        <DropdownCategoria
+          categorias={[
+            "celulares",
+            "notebooks",
+            "tablets",
+            "televisores",
+            "consolas",
+          ]}
+        />
         <ProductList products={products} />
       </div>
       <Paginacion

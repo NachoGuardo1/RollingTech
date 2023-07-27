@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-
-import { crearProducto } from "../helpers/ApiProducto";
-
+import { crearProducto } from "../helpers/ApiProductos";
 
 export const FormInventario = () => {
   // state form inputs
@@ -10,7 +8,6 @@ export const FormInventario = () => {
   const [inputPrecio, setProductoPrecio] = useState("");
   const [inputCategoria, setProductoCategoria] = useState("");
   const [inputImg, setProductoImg] = useState("");
-
 
   const CrearProducto = async (e) => {
     e.preventDefault();

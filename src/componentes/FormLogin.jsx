@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { authLogin } from "../helpers/ApiLogin";
+import Swal from "sweetalert2";
+import { FormRegister } from "./FormRegister";
 
-//import "app.css";
-import "../componentes/MessageApp";
-
-export const FormLogin = ({ iniciarSesion, guardarUsuario, handleClose }) => {
+export const FormLogin = ({
+  iniciarSesion,
+  guardarUsuario,
+  handleClose,
+  tituloRegister,
+  tituloLogin,
+}) => {
   //agregado domingo 11:22
   const navigate = useNavigate();
   const [inputCorreo, setInputCorreo] = useState("");
@@ -15,53 +20,53 @@ export const FormLogin = ({ iniciarSesion, guardarUsuario, handleClose }) => {
 
   const [loading, setLoading] = useState(false);
 
-  const [closeModal, setCloseModal] = useState(false);
+  const [mostrarPrimeraP, setMostrarPrimeraP] = useState(true);
+  const [mostrarSegundaP, setMostrarSegundaP] = useState(false);
+  const siguienteParte = () => {
+    setMostrarPrimeraP(false);
+    setMostrarSegundaP(true);
+    tituloRegister();
+  };
+  const anteriorParte = () => {
+    setMostrarPrimeraP(true);
+    setMostrarSegundaP(false);
+    tituloLogin();
+  };
 
   const handleLogin = async (e) => {
-    console.log("here i go ");
     e.preventDefault();
-
     setLoading(true);
     //Obtener datos ingresados
     const datos = {
       correo: inputCorreo,
       contrasena: inputContrasena,
     };
-
-    console.log("el correo es", datos.correo);
-    console.log("el correo es", datos.contrasena);
-    //hacer petición a la API
     const resp = await authLogin(datos);
-
-    console.log("here i go ");
-
-    //Guardar token
     if (resp?.token) {
-      console.log("entro al if del token");
-
       localStorage.setItem("token", JSON.stringify(resp.token));
 
-      //ejecutar función iniciar sesión
       iniciarSesion();
-      //guardar datos del usuario
+
       const { nombre, correo, rol, uid } = resp.usuario;
+
       guardarUsuario({
         nombre,
         correo,
         rol,
         uid,
       });
-      // reset form
+
       setInputContrasena("");
       setInputCorreo("");
-      //reset form
-      setInputCorreo("");
-      setInputContrasena("");
-    
-      //redireccionar
+
       handleClose();
       navigate("/");
-
+      console.log("logeado");
+    } else {
+      console.error(
+        "El usuario no esta registrado o los datos son incorrectos"
+      );
+      Swal.fire("El usuario o la contraseña no son correctos");
     }
     setResultado(resp);
     setLoading(false);
@@ -69,40 +74,42 @@ export const FormLogin = ({ iniciarSesion, guardarUsuario, handleClose }) => {
 
   return (
     <div>
-      <form className="row ">
-        <div className="mt-3">
-          <label className="fw-bold">Correo</label>
-          <input
-            type="email"
-            className="form-control"
-            placeholder="Correo@"
-            value={inputCorreo}
-            onChange={(e) => setInputCorreo(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mt-3">
-          <label className="fw-bold">Contraseña</label>
-          <input
-            type="password"
-            className="form-control"
-            value={inputContrasena}
-            onChange={(e) => setInputContrasena(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mt-3 d-grid">
-          <button className="btn btn-success my-3" onClick={handleLogin}>
-            Iniciar
-          </button>
-        </div>
-      </form>
-      {/* {resultado?.msg (
-              <div className="mt-2">
-                <MessageApp mensaje={resultado.msg} />
-              </div>
-            )} */}
- 
+      {mostrarPrimeraP && (
+        <form className="row ">
+          <div className="mt-3">
+            <label className="fw-bold">Correo</label>
+            <input
+              type="email"
+              className="form-control"
+              placeholder="Correo@"
+              value={inputCorreo}
+              onChange={(e) => setInputCorreo(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mt-3">
+            <label className="fw-bold">Contraseña</label>
+            <input
+              type="password"
+              className="form-control"
+              value={inputContrasena}
+              onChange={(e) => setInputContrasena(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mt-3 d-grid">
+            <button className="btn btn-success my-3" onClick={handleLogin}>
+              Iniciar
+            </button>
+          </div>
+          <div className="text-center">
+            <a className="link" onClick={siguienteParte}>
+              No tiene una cuenta? Registrese
+            </a>
+          </div>
+        </form>
+      )}
+      {mostrarSegundaP && <FormRegister anteriorParte={anteriorParte} />}
     </div>
   );
 };
