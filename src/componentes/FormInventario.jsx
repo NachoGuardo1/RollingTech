@@ -1,27 +1,62 @@
 import React, { useState } from "react";
 
-export const FormInventario = () => {
-  // state array producto
-  const [products, setProducts] = useState([]);
-  // state form inputs
-  const [productoNombre, setProductoNombre] = useState("");
-  const [productoDescripcion, setProductoDescripcion] = useState("");
-  const [productoPrecio, setProductoPrecio] = useState("");
-  const [productoCategoria, setProductoCategoria] = useState("");
-  const [productoImg, setProductoImg] = useState("");
+import { crearProducto } from "../helpers/ApiProducto";
 
-  const CrearProducto = (e) => {
+
+export const FormInventario = () => {
+  // state form inputs
+  const [inputNombre, setProductoNombre] = useState("");
+  const [inputDescrip, setProductoDescripcion] = useState("");
+  const [inputPrecio, setProductoPrecio] = useState("");
+  const [inputCategoria, setProductoCategoria] = useState("");
+  const [inputImg, setProductoImg] = useState("");
+
+
+  const CrearProducto = async (e) => {
     e.preventDefault();
-    // tomar valores y crear nuevo producto
-    const productoNuevo = {
-      nombre: productoNombre,
-      precio: productoPrecio,
-      descripcion: productoDescripcion,
-      categoria: productoCategoria,
-      imagen: productoImg,
+    //Obtener datos ingresados
+    const datos = {
+      nombre: inputNombre,
+      descrip: inputDescrip,
+      precio: inputPrecio,
+      categoria: inputCategoria,
+      img: inputImg
     };
-    // funcion para guardar producto en el array
-    setProducts([...products, productoNuevo]);
+
+    const resp = await crearProducto(datos);
+    
+        
+    if (resp?.producto) {
+      console.log("Datos guardados exitosamente");
+    }else{
+      console.error("Error al guardar los datos");
+    }
+    
+/*     try {
+      const response = await fetch("http://localhost:3000/api/productos", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nombre,
+          descrip,
+          precio,
+          categoria,
+          img,
+        }),
+      });
+
+      if (response.ok) {
+        console.log("Datos guardados exitosamente");
+        // Realizar alguna acción después de guardar exitosamente
+      } else {
+        console.error("Error al guardar los datos");
+      }
+    } catch (error) {
+      console.error("Error en la comunicación con el servidor:", error);
+    }    
+ */    
     // funcion para formreset
     setProductoNombre("");
     setProductoPrecio("");
@@ -36,7 +71,7 @@ export const FormInventario = () => {
         <input
           type="text"
           className="form-control mb-3"
-          value={productoNombre}
+          value={inputNombre}
           onChange={(e) => setProductoNombre(e.target.value)}
           required
         />
@@ -44,7 +79,7 @@ export const FormInventario = () => {
         <input
           type="text"
           className="form-control mb-3"
-          value={productoDescripcion}
+          value={inputDescrip}
           onChange={(e) => setProductoDescripcion(e.target.value)}
           required
         />
@@ -52,7 +87,7 @@ export const FormInventario = () => {
         <input
           type="number"
           className="form-control mb-3"
-          value={productoPrecio}
+          value={inputPrecio}
           onChange={(e) => setProductoPrecio(e.target.value)}
           required
         />
@@ -60,7 +95,7 @@ export const FormInventario = () => {
         <input
           type="text"
           className="form-control mb-3"
-          value={productoCategoria}
+          value={inputCategoria}
           onChange={(e) => setProductoCategoria(e.target.value)}
           required
         />
@@ -68,7 +103,7 @@ export const FormInventario = () => {
         <input
           type="text"
           className="form-control mb-3"
-          value={productoImg}
+          value={inputImg}
           onChange={(e) => setProductoImg(e.target.value)}
           required
         />

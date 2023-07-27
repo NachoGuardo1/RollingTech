@@ -4,11 +4,14 @@ import { Card } from "react-bootstrap";
 import ModalInfo from "./ModalInfoProd";
 import { Carritocontext } from "../hooks/CarritoContext";
 import "../styles/productos.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const ProductList = ({ products }) => {
   const { agregarProductos, agregarFavoritos, favoritos, eliminarFavorito } =
     useContext(Carritocontext);
   const esFav = (item) => favoritos.includes(item);
+
   const { categoriaSeleccionada } = useContext(FiltrosContext);
 
   const productosFiltrados = categoriaSeleccionada
@@ -31,48 +34,35 @@ const ProductList = ({ products }) => {
             />
             <Card.Body className="text-center ">
               <div className="row h5 card-title">
-                <div className="col-10 text-center ">{item.nombre}</div>
+                <div className="col-10 text-center texto-cartas ">
+                  {item.nombre}
+                </div>
                 <div className="col-2 justify-content-center my-auto d-flex">
                   <ModalInfo item={item} />
                 </div>
-                <p className="my-1 fw-bold ">${item.precio}</p>
+                <p className="my-1 fw-bold texto-cartas">${item.precio}</p>
               </div>
               <div className="row card-footer">
                 <div className="d-flex gap-3 justify-content-around">
                   <button
-                    className="btn btn-outline-secondary"
+                    className="btn btn-outline-dark"
                     onClick={() => agregarProductos(item)}
                   >
-                    <img
-                      src="https://cdn-icons-png.flaticon.com/512/107/107831.png?w=360"
-                      width="30"
-                      height="30"
-                      className="d-inline-block align-top"
-                    ></img>
+                    <FontAwesomeIcon icon={faCartShopping} />
                   </button>
                   {esFav(item) ? (
                     <button
-                      className="btn border-danger"
+                      className="btn btn-danger"
                       onClick={() => eliminarFavorito(item.id)}
                     >
-                      <img
-                        src="https://e7.pngegg.com/pngimages/980/717/png-clipart-heart-red-heart-thumbnail.png"
-                        alt=""
-                        width="20px"
-                        height="20px"
-                      />
+                      <FontAwesomeIcon icon={faHeart} color="white" />
                     </button>
                   ) : (
                     <button
                       className="btn border-danger"
                       onClick={() => agregarFavoritos(item)}
                     >
-                      <img
-                        src="https://assets.stickpng.com/images/5a02bfca18e87004f1ca4395.png"
-                        alt=""
-                        width="20px"
-                        height="20px"
-                      />
+                      <FontAwesomeIcon icon={faHeart} color="red" />
                     </button>
                   )}
                 </div>

@@ -32,7 +32,7 @@ export const Navegador = ({ iniciarSesion, guardarUsuario }) => {
                   placeholder="Buscar"
                   className="form-control form-sm"
                 />
-                <button className="btn btn-light mx-2" type="submit">
+                <button className="btn  mx-2" type="submit">
                   <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </button>
               </form>
@@ -47,8 +47,8 @@ export const Navegador = ({ iniciarSesion, guardarUsuario }) => {
                   />
               </Link>
               <Link to="favoritos" className="text-decoration-none my-auto">
-                <button className="btn btn-danger">
-                  <FontAwesomeIcon icon={faHeart} />
+                <button className="btn">
+                  <FontAwesomeIcon icon={faHeart} color="red" />
                 </button>
               </Link>
               <Link className="text-decoration-none text-light ">
@@ -65,12 +65,12 @@ export const Navegador = ({ iniciarSesion, guardarUsuario }) => {
               onClick={() => setMostrarOffcanvas(true)}
             />
 
-            <Navbar.Brand className=" d-lg-none d-xl-none d-xxl-none ">
+            <Navbar.Brand className="  d-lg-none d-xl-none d-xxl-none ">
               <Link to="/">
                 <img
                   src={Logo}
                   alt="RollingTech"
-                  width="150"
+                  width="140"
                   height="70"
                   className="logo-nav"
                 />
@@ -90,7 +90,7 @@ export const Navegador = ({ iniciarSesion, guardarUsuario }) => {
                         type="search"
                         placeholder="Buscar"
                       />
-                      <button className="btn btn-light mx-2" type="submit">
+                      <button className="btn  mx-2" type="submit">
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
                       </button>
                     </form>
@@ -114,8 +114,8 @@ export const Navegador = ({ iniciarSesion, guardarUsuario }) => {
                   <FontAwesomeIcon icon={faUser} />
               </Link>
               <Link to="favoritos" className="text-decoration-none my-auto">
-                <button className="btn btn-danger ">
-                  <FontAwesomeIcon icon={faHeart} />
+                <button className="btn  btn-sm">
+                  <FontAwesomeIcon icon={faHeart} color="red" />
                 </button>
               </Link>
               <Link className="text-decoration-none text-light ">

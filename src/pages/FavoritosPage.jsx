@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { Carritocontext } from "../hooks/CarritoContext";
 import { Card } from "react-bootstrap";
 import ModalInfo from "../componentes/ModalInfoProd";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
 
 export const FavoritosPage = () => {
   const { favoritos, eliminarFavorito, agregarProductos } =
@@ -27,26 +29,16 @@ export const FavoritosPage = () => {
             <div className="row card-footer">
               <div className="d-flex gap-3 justify-content-center">
                 <button
-                  className="btn btn-outline-secondary"
+                  className="btn btn-outline-dark"
                   onClick={() => agregarProductos(item)}
                 >
-                  <img
-                    src="https://cdn-icons-png.flaticon.com/512/107/107831.png?w=360"
-                    width="30"
-                    height="30"
-                    className="d-inline-block align-top"
-                  ></img>
+                  <FontAwesomeIcon icon={faCartShopping} />
                 </button>
                 <button
-                  className="btn border-danger"
+                  className="btn btn-danger"
                   onClick={() => eliminarFavorito(item.id)}
                 >
-                  <img
-                    src="https://e7.pngegg.com/pngimages/980/717/png-clipart-heart-red-heart-thumbnail.png"
-                    alt=""
-                    width="20px"
-                    height="20px"
-                  />
+                  <FontAwesomeIcon icon={faHeart} />
                 </button>
               </div>
             </div>
