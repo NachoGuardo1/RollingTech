@@ -31,7 +31,18 @@ export const Navegador = ({ guardarUsuario }) => {
   };
 
   const cerrarSesion = () => {
-    setLogin(false);
+    Swal.fire({
+      title: "¿Estas seguro?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setLogin(false);
+      }
+    });
   };
 
   return (
@@ -144,11 +155,9 @@ export const Navegador = ({ guardarUsuario }) => {
                   guardarUsuario={guardarUsuario}
                 />
               </Link>
-              <Link to="favoritos" className="text-decoration-none my-auto">
-                <button className="btn  btn-sm">
-                  <FontAwesomeIcon icon={faHeart} color="red" />
-                </button>
-              </Link>
+              <button className="btn" onClick={favPage}>
+                <FontAwesomeIcon icon={faHeart} color="red" />
+              </button>
               <Link className="text-decoration-none text-light ">
                 <ModalCarrito />
               </Link>

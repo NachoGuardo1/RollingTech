@@ -6,7 +6,11 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 const ModalLogin = ({ iniciarSesion, guardarUsuario }) => {
   const [showLogin, setShowLogin] = useState(false);
-
+  const [tituloModal, setTituloModal] = useState(
+    "Ingresar con email y contraseña"
+  );
+  const tituloRegister = () => setTituloModal("Registro");
+  const tituloLogin = () => setTituloModal("Ingresar con email y contraseña");
   const handleClose = () => setShowLogin(false);
   const handleShow = () => setShowLogin(true);
   return (
@@ -16,11 +20,13 @@ const ModalLogin = ({ iniciarSesion, guardarUsuario }) => {
       </button>
       <Modal show={showLogin} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Ingresar con Email y contraseña</Modal.Title>
+          <Modal.Title>{tituloModal}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div>
             <FormLogin
+              tituloLogin={tituloLogin}
+              tituloRegister={tituloRegister}
               handleClose={handleClose}
               iniciarSesion={iniciarSesion}
               guardarUsuario={guardarUsuario}

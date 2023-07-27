@@ -4,7 +4,13 @@ import { authLogin } from "../helpers/ApiLogin";
 import Swal from "sweetalert2";
 import { FormRegister } from "./FormRegister";
 
-export const FormLogin = ({ iniciarSesion, guardarUsuario, handleClose }) => {
+export const FormLogin = ({
+  iniciarSesion,
+  guardarUsuario,
+  handleClose,
+  tituloRegister,
+  tituloLogin,
+}) => {
   //agregado domingo 11:22
 
   const navigate = useNavigate();
@@ -21,10 +27,12 @@ export const FormLogin = ({ iniciarSesion, guardarUsuario, handleClose }) => {
   const siguienteParte = () => {
     setMostrarPrimeraP(false);
     setMostrarSegundaP(true);
+    tituloRegister();
   };
   const anteriorParte = () => {
     setMostrarPrimeraP(true);
     setMostrarSegundaP(false);
+    tituloLogin();
   };
 
   const handleLogin = async (e) => {
@@ -97,20 +105,13 @@ export const FormLogin = ({ iniciarSesion, guardarUsuario, handleClose }) => {
             </button>
           </div>
           <div className="text-center">
-            <button className="btn" onClick={siguienteParte}>
+            <a className="link" onClick={siguienteParte}>
               No tiene una cuenta? Registrese
-            </button>
+            </a>
           </div>
         </form>
       )}
       {mostrarSegundaP && <FormRegister anteriorParte={anteriorParte} />}
-
-      {/*             {resultado?.msg (
-              <div className="mt-2">
-                <MessageApp mensaje={resultado.msg} />
-              </div>
-            )}
- */}
     </div>
   );
 };
