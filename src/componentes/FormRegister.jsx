@@ -55,9 +55,9 @@ export const FormRegister = ({ anteriorParte }) => {
           </button>
         </div>
         <div className="text-center">
-          <button className="btn" onClick={anteriorParte}>
-            volver
-          </button>
+          <a className="link" onClick={anteriorParte}>
+            Volver al login
+          </a>
         </div>
       </form>
     </div>
