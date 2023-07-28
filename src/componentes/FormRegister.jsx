@@ -22,7 +22,7 @@ export const FormRegister = ({ anteriorParte }) => {
       console.log('en RegistroUsuario');
       console.log(datos);
 
-      //try{
+      try{
         const resp = await crearUsuario(datos);  
         if (resp?.usuario) {
           console.log("Datos del Usuario guardados exitosamente");
@@ -34,14 +34,14 @@ export const FormRegister = ({ anteriorParte }) => {
           console.log(error);
 
         }
-      //}catch(error){
-      //  console.error("Error al guardar los datos. Crear Usuario");
-      //  console.log(resp.error);
-      //  console.error(
-      //    "No se pudo registrar el usuario. Error: "+(resp.error)
-      //  );
-      //  Swal.fire("El usuario o la contraseña no son correctos");
-      //}
+      }catch(error){
+        console.error("Error al guardar los datos. Crear Usuario");
+        console.log(resp.error);
+        console.error(
+          "No se pudo registrar el usuario. Error: "+(resp.error)
+        );
+        Swal.fire("El usuario o la contraseña no son correctos");
+      }
     };
 
   return (

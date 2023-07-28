@@ -50,7 +50,7 @@ export const Carrito = () => {
             </thead>
             <tbody>
               {carrito.map((item) => (
-                <tr key={item.id} className="text-center">
+                <tr key={item._id} className="text-center">
                   <td className="text-start"> {item.nombre}</td>
                   <td>
                     <button

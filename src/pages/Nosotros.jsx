@@ -12,7 +12,7 @@ export const Nosotros = () => {
           SOMOS ROLLING GROUP, UN GRUPO DE ESTUDIANTES DE ROLLING CODE SCHOOL
           ESPECIALIZADOS EN PROGRAMACION FULL STACK
         </h2>
-        <div className="card">
+        <div className="carta-nosotros">
           <div className="face front">
             <img src={Diego} alt="" />
             <h3>Diego</h3>
@@ -67,7 +67,7 @@ export const Nosotros = () => {
           </div>
         </div>
 
-        <div className="card">
+        <div className="carta-nosotros">
           <div className="face front">
             <img src={Nacho} alt="" />
             <h3>Nacho</h3>
@@ -116,7 +116,7 @@ export const Nosotros = () => {
           </div>
         </div>
 
-        <div className="card">
+        <div className="carta-nosotros">
           <div className="face front">
             <img src={Anita} alt="" />
             <h3>Anita</h3>

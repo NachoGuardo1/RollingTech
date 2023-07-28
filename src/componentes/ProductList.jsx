@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FiltrosContext } from "../hooks/FiltroContext";
 import { Card } from "react-bootstrap";
 import ModalInfo from "./ModalInfoProd";
@@ -6,8 +6,23 @@ import { Carritocontext } from "../hooks/CarritoContext";
 import "../styles/productos.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
+import { getProductos } from "../helpers/ApiProductos";
 
-const ProductList = ({ products }) => {
+const ProductList = () => {
+  const [productos, setProductos] = useState([]);
+  const [totalProductos, setTotalProductos] = useState(0);
+  const limite = 100;
+  const [desde, setDesde] = useState(0);
+  useEffect(() => {
+    traerProductos();
+  }, [desde]);
+
+  const traerProductos = async () => {
+    const { productos, total } = await getProductos(limite, desde);
+    setProductos(productos);
+    setTotalProductos(total);
+  };
+
   const { agregarProductos, agregarFavoritos, favoritos, eliminarFavorito } =
     useContext(Carritocontext);
   const esFav = (item) => favoritos.includes(item);
@@ -15,8 +30,8 @@ const ProductList = ({ products }) => {
   const { categoriaSeleccionada } = useContext(FiltrosContext);
 
   const productosFiltrados = categoriaSeleccionada
-    ? products.filter((product) => product.categoria === categoriaSeleccionada)
-    : products;
+    ? productos.filter((product) => product.categoria === categoriaSeleccionada)
+    : productos;
 
   return (
     <div className="container-fluid m-0 p-0 d-flex row">
@@ -24,7 +39,7 @@ const ProductList = ({ products }) => {
         {productosFiltrados.map((item) => (
           <Card
             style={{ width: "14rem", height: "25rem" }}
-            key={item.id}
+            key={item._id}
             className=" border border-secondary efectos-card p-0"
           >
             <Card.Img
@@ -53,7 +68,7 @@ const ProductList = ({ products }) => {
                   {esFav(item) ? (
                     <button
                       className="btn btn-danger"
-                      onClick={() => eliminarFavorito(item.id)}
+                      onClick={() => eliminarFavorito(item._id)}
                     >
                       <FontAwesomeIcon icon={faHeart} color="white" />
                     </button>
