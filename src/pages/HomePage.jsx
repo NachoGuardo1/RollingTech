@@ -18,6 +18,8 @@ export const HomePage = () => {
     setPaginaActual((paginaAnterior) => paginaAnterior - 1);
   };
 
+
+  
   const products = productos;
 
   return (

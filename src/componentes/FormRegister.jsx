@@ -1,10 +1,49 @@
 import React, { useState } from "react";
+import { crearUsuario } from "../helpers/ApiUsuario";
 
 export const FormRegister = ({ anteriorParte }) => {
+  
   const [inputNombre, setInputNombre] = useState("");
   const [inputCorreo, setInputCorreo] = useState("");
   const [inputContrasena, setInputContrasena] = useState("");
-  const [inputFechaNacimiento, setInputFechaNacimiento] = useState("");
+  //estados fijos
+  const v_rol="USER-ROLE";
+  
+  const RegistroUsuario = async (e) => {
+      e.preventDefault();
+      //Obtener datos ingresados
+      const datos = {
+        nombre: inputNombre,
+        correo: inputCorreo,
+        contrasena: inputContrasena,
+        rol: v_rol
+      };
+  
+      console.log('en RegistroUsuario');
+      console.log(datos);
+
+      //try{
+        const resp = await crearUsuario(datos);  
+        if (resp?.usuario) {
+          console.log("Datos del Usuario guardados exitosamente");
+          handleClose();
+          navigate("/");
+        }else{
+          console.error("Error al guardar los datos. Crear Usuario");
+          console.error(resp.msg);
+          console.log(error);
+
+        }
+      //}catch(error){
+      //  console.error("Error al guardar los datos. Crear Usuario");
+      //  console.log(resp.error);
+      //  console.error(
+      //    "No se pudo registrar el usuario. Error: "+(resp.error)
+      //  );
+      //  Swal.fire("El usuario o la contraseña no son correctos");
+      //}
+    };
+
   return (
     <div>
       <form className="row ">
@@ -39,7 +78,7 @@ export const FormRegister = ({ anteriorParte }) => {
             required
           />
         </div>
-        <div className="mt-3">
+        {/* <div className="mt-3">
           <label className="fw-bold">Fecha de Nacimiento</label>
           <input
             type="date"
@@ -48,9 +87,9 @@ export const FormRegister = ({ anteriorParte }) => {
             onChange={(e) => setInputFechaNacimiento(e.target.value)}
             required
           />
-        </div>
+        </div> */}
         <div className="mt-3 d-grid">
-          <button className="btn btn-success my-3" type="submit">
+          <button className="btn btn-success my-3" type="submit" onClick={RegistroUsuario}>
             Registrarse
           </button>
         </div>
