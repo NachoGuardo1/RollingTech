@@ -13,7 +13,7 @@ export const FavoritosPage = () => {
       {favoritos.map((item) => (
         <Card
           style={{ width: "14rem", height: "25rem" }}
-          key={item.id}
+          key={item._id}
           className=" border border-secondary efectos-card p-0"
         >
           <Card.Img variant="top" src={item.img} style={{ height: "15rem" }} />
