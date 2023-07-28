@@ -48,7 +48,7 @@ const ProductList = () => {
               style={{ height: "15rem" }}
             />
             <Card.Body className="text-center ">
-              <div className="row h5 card-title">
+              <div className="row h5 card-title align-items-center">
                 <div className="col-10 text-center texto-cartas ">
                   {item.nombre}
                 </div>
