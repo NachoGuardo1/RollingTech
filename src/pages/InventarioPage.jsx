@@ -29,7 +29,7 @@ export const InventarioPage = () => {
       }
     });
   };
-
+  const editarProducto = (productoUid) => {};
   const traerProductos = async () => {
     const { productos, total } = await getProductos(limite, desde);
     setProductos(productos);
