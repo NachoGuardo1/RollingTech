@@ -50,7 +50,7 @@ export const Carrito = () => {
             </thead>
             <tbody>
               {carrito.map((item) => (
-                <tr key={item._id} className="text-center">
+                <tr key={item.uid} className="text-center">
                   <td className="text-start"> {item.nombre}</td>
                   <td>
                     <button
@@ -68,12 +68,12 @@ export const Carrito = () => {
                     </button>
                     <p className="fs-6 fw-lighter"> x unidad ${item.precio}</p>
                   </td>
-                  <td>${item.precio * item.cantidad}</td>
+                  <td>${(item.precio * item.cantidad).toFixed(2)}</td>
                   <td>
                     <button
                       className="btn btn-danger btn-sm "
                       onClick={() => {
-                        eliminarProducto(item.id);
+                        eliminarProducto(item.uid);
                       }}
                     >
                       <FontAwesomeIcon icon={faTrashAlt} />

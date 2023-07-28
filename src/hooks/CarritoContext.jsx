@@ -10,16 +10,16 @@ const CarritoProvider = ({ children }) => {
   const agregarFavoritos = (item) => {
     setFavoritos([...favoritos, item]);
   };
-  const eliminarFavorito = (itemId) => {
-    const nuevosFavoritos = favoritos.filter((i) => i.id !== itemId);
+  const eliminarFavorito = (itemUid) => {
+    const nuevosFavoritos = favoritos.filter((i) => i.uid !== itemUid);
     setFavoritos(nuevosFavoritos);
   };
 
   const agregarProductos = (item) => {
-    const itemAgregado = carrito.find((i) => i.id === item.id);
+    const itemAgregado = carrito.find((i) => i.uid === item.uid);
     if (itemAgregado) {
       const nuevoCarrito = carrito.map((producto) => {
-        if (producto.id === item.id) {
+        if (producto.uid === item.uid) {
           return { ...producto, cantidad: producto.cantidad + 1 };
         }
         return producto;
@@ -32,10 +32,10 @@ const CarritoProvider = ({ children }) => {
   };
 
   const restarProductos = (item) => {
-    const itemSeleccionado = carrito.find((i) => i.id === item.id);
+    const itemSeleccionado = carrito.find((i) => i.uid === item.uid);
     if (itemSeleccionado) {
       const nuevoCarrito = carrito.map((producto) => {
-        if (producto.id === item.id && producto.cantidad > 1) {
+        if (producto.uid === item.uid && producto.cantidad > 1) {
           return { ...producto, cantidad: producto.cantidad - 1 };
         }
         return producto;
@@ -45,7 +45,7 @@ const CarritoProvider = ({ children }) => {
     }
   };
 
-  const eliminarProducto = (productoId) => {
+  const eliminarProducto = (productoUid) => {
     Swal.fire({
       title: "¿Estas seguro que quieres eliminar este producto?",
       icon: "warning",
@@ -56,7 +56,7 @@ const CarritoProvider = ({ children }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire("Eliminado", "El producto ha sido eliminado", "success");
-        const nuevoCarrito = carrito.filter((p) => p.id !== productoId);
+        const nuevoCarrito = carrito.filter((p) => p.uid !== productoUid);
         setCarrito(nuevoCarrito);
       }
     });

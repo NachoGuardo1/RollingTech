@@ -13,7 +13,7 @@ export const FavoritosPage = () => {
       {favoritos.map((item) => (
         <Card
           style={{ width: "14rem", height: "25rem" }}
-          key={item._id}
+          key={item.uid}
           className=" border border-secondary efectos-card p-0"
         >
           <Card.Img variant="top" src={item.img} style={{ height: "15rem" }} />
@@ -36,7 +36,7 @@ export const FavoritosPage = () => {
                 </button>
                 <button
                   className="btn btn-danger"
-                  onClick={() => eliminarFavorito(item.id)}
+                  onClick={() => eliminarFavorito(item.uid)}
                 >
                   <FontAwesomeIcon icon={faHeart} />
                 </button>
