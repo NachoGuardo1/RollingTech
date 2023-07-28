@@ -39,7 +39,7 @@ const ProductList = () => {
         {productosFiltrados.map((item) => (
           <Card
             style={{ width: "14rem", height: "25rem" }}
-            key={item._id}
+            key={item.uid}
             className=" border border-secondary efectos-card p-0"
           >
             <Card.Img
@@ -68,7 +68,7 @@ const ProductList = () => {
                   {esFav(item) ? (
                     <button
                       className="btn btn-danger"
-                      onClick={() => eliminarFavorito(item._id)}
+                      onClick={() => eliminarFavorito(item.uid)}
                     >
                       <FontAwesomeIcon icon={faHeart} color="white" />
                     </button>

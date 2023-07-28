@@ -14,7 +14,6 @@ import {
 import Swal from "sweetalert2";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
-
 export const Navegador = ({ guardarUsuario }) => {
   const [mostrarOffcanvas, setMostrarOffcanvas] = useState(false);
   const [login, setLogin] = useState(false);
@@ -151,12 +150,17 @@ export const Navegador = ({ guardarUsuario }) => {
             </Navbar.Offcanvas>
 
             <div className="d-flex gap-1 justify-content-end col-2 my-auto d-lg-none d-xl-none d-xxl-none ">
-              <Link className="text-decoration-none text-light my-auto">
+              <Link className="text-decoration-none  my-auto">
+                {login === true ? (
+                  <button className="btn" onClick={cerrarSesion}>
+                    <FontAwesomeIcon icon={faPowerOff} color="red" />
+                  </button>
+                ) : (
                   <ModalLogin
                     iniciarSesion={iniciarSesion}
                     guardarUsuario={guardarUsuario}
                   />
-                  <FontAwesomeIcon icon={faUser} />
+                )}
               </Link>
               <button className="btn" onClick={favPage}>
                 <FontAwesomeIcon icon={faHeart} color="red" />

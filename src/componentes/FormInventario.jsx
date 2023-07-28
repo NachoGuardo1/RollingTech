@@ -17,43 +17,17 @@ export const FormInventario = () => {
       descrip: inputDescrip,
       precio: inputPrecio,
       categoria: inputCategoria,
-      img: inputImg
+      img: inputImg,
     };
 
     const resp = await crearProducto(datos);
-    
-        
+
     if (resp?.producto) {
       console.log("Datos guardados exitosamente");
-    }else{
+    } else {
       console.error("Error al guardar los datos");
     }
-    
-/*     try {
-      const response = await fetch("http://localhost:3000/api/productos", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          nombre,
-          descrip,
-          precio,
-          categoria,
-          img,
-        }),
-      });
 
-      if (response.ok) {
-        console.log("Datos guardados exitosamente");
-        // Realizar alguna acción después de guardar exitosamente
-      } else {
-        console.error("Error al guardar los datos");
-      }
-    } catch (error) {
-      console.error("Error en la comunicación con el servidor:", error);
-    }    
- */    
     // funcion para formreset
     setProductoNombre("");
     setProductoPrecio("");
