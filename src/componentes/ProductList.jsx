@@ -23,6 +23,7 @@ const ProductList = () => {
     setTotalProductos(total);
   };
 
+  console.log(productos) ; 
   const { agregarProductos, agregarFavoritos, favoritos, eliminarFavorito } =
     useContext(Carritocontext);
   const esFav = (item) => favoritos.includes(item);
@@ -39,7 +40,7 @@ const ProductList = () => {
         {productosFiltrados.map((item) => (
           <Card
             style={{ width: "14rem", height: "25rem" }}
-            key={item._id}
+            key={item.uid}
             className=" border border-secondary efectos-card p-0"
           >
             <Card.Img
@@ -50,7 +51,7 @@ const ProductList = () => {
             <Card.Body className="text-center ">
               <div className="row h5 card-title">
                 <div className="col-10 text-center texto-cartas ">
-                  {item.nombre}
+                  {item.nombre  + item.key }
                 </div>
                 <div className="col-2 justify-content-center my-auto d-flex">
                   <ModalInfo item={item} />

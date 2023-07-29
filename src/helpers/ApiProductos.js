@@ -31,6 +31,8 @@ export const getProductoById = async (id) => {
       },
     });
     const data = await resp.json();
+
+    console.log(data.id);
     return data;
   } catch (error) {
     console.log(error);
