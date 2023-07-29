@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FormInventario } from "../componentes/FormInventario";
-import { getProductos } from "../helpers/ApiProductos";
+import { borrarProducto, getProductos } from "../helpers/ApiProductos";
+import Swal from "sweetalert2";
 
 export const InventarioPage = () => {
   const [totalProductos, setTotalProductos] = useState(0);
@@ -11,7 +12,24 @@ export const InventarioPage = () => {
   useEffect(() => {
     traerProductos();
   }, [desde]);
-
+  const eliminarProducto = (productoUid) => {
+    Swal.fire({
+      title: "¿Estas seguro que quieres eliminar este producto?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, estoy seguro!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Eliminado", "El producto ha sido eliminado", "success");
+        const nuevosProductos = productos.filter((p) => p.uid !== productoUid);
+        setProductos(nuevosProductos);
+        borrarProducto(productoUid);
+      }
+    });
+  };
+  const editarProducto = (productoUid) => {};
   const traerProductos = async () => {
     const { productos, total } = await getProductos(limite, desde);
     setProductos(productos);
@@ -35,11 +53,17 @@ export const InventarioPage = () => {
           </thead>
           <tbody>
             {productos.map((producto) => (
-              <tr key={producto._id} className="text-center">
+              <tr key={producto.uid} className="text-center">
                 <td className="text-start">{producto.nombre}</td>
                 <td>{producto.precio}</td>
                 <td>
-                  <button className="btn btn-danger">X</button>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => eliminarProducto(producto.uid)}
+                  >
+                    X
+                  </button>
+                  <button className="btn btn-warning mx-2">E</button>
                 </td>
               </tr>
             ))}
