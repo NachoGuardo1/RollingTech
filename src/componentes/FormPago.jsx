@@ -15,52 +15,73 @@ export const FormPago = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-
-    Swal.fire("Tu compra fue exitosa");
-    setCarrito([]);
-    navigate("/");
+    if (
+      numeroTarjeta === "" ||
+      fechaVencimiento === "" ||
+      codigoSeguridad === ""
+    ) {
+      Swal.fire("Debes completar todos los campos");
+    } else {
+      Swal.fire("Tu compra fue exitosa");
+      setCarrito([]);
+      navigate("/");
+    }
   };
 
   return (
     <div>
-      <div>
+      <form>
         <h5 className="fw-bold">Datos del comprador:</h5>
-        <p>
-          {usuarioIn.nombre}-{usuarioIn.correo}
-        </p>
-        <p>A Pagar: {total.toFixed(2)}</p>
-      </div>
+        <input
+          type="text"
+          className="fw-bold form-control my-2"
+          disabled
+          placeholder={usuarioIn.nombre}
+        />
+        <input
+          className="fw-bold form-control my-2"
+          placeholder={usuarioIn.correo}
+          disabled
+        />
+        <p className="bg-primary fw-bold">Total: ${total.toFixed(2)}</p>
+      </form>
       <form className="row ">
         <div className="row">
           <h5 className="my-3 fw-bold">Datos de Pago</h5>
           <label className="fw-bold">
             Número de tarjeta:
             <input
-              type="text"
+              type="number"
               value={numeroTarjeta}
               onChange={(e) => setNumTarjeta(e.target.value)}
               required
               className="my-1 form-control"
+              minLength={16}
+              maxLength={16}
             />
           </label>
           <label className="fw-bold">
             Fecha de vencimiento:
             <input
-              type="text"
+              type="number"
               value={fechaVencimiento}
               onChange={(e) => setFechaVenc(e.target.value)}
               required
               className="my-1 form-control"
+              minLength={4}
+              maxLength={4}
             />
           </label>
           <label className="fw-bold">
             Código de seguridad:
             <input
-              type="text"
+              type="number"
               value={codigoSeguridad}
               onChange={(e) => setCodSeguridad(e.target.value)}
               required
               className="my-1 form-control"
+              minLength={3}
+              maxLength={3}
             />
           </label>
           <button className="btn btn-success my-3" onClick={onSubmit}>

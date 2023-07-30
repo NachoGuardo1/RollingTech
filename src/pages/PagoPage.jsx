@@ -20,7 +20,7 @@ export const PagoPage = () => {
           maxHeight: "28rem",
         }}
       >
-        <h3 className="text-dark">Listado de productos en carrito:</h3>
+        <h3 className="text-dark">MI CARRITO</h3>
         <table className="table table-dark table-sm striped bordered hover fw-lighter">
           <thead>
             <tr className="text-center">
