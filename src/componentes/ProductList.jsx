@@ -13,8 +13,10 @@ import Swal from "sweetalert2";
 const ProductList = () => {
   const [productos, setProductos] = useState([]);
   const [totalProductos, setTotalProductos] = useState(0);
+
   const limite = 100;
   const [desde, setDesde] = useState(0);
+
   useEffect(() => {
     traerProductos();
   }, [desde]);
@@ -24,9 +26,11 @@ const ProductList = () => {
     setProductos(productos);
     setTotalProductos(total);
   };
+
   const { loginOk } = useContext(authContext);
   const { agregarProductos, agregarFavoritos, favoritos, eliminarFavorito } =
     useContext(Carritocontext);
+
   const esFav = (item) => favoritos.includes(item);
   const agregarAFav = (item) => {
     if (loginOk === true) {

@@ -11,8 +11,6 @@ import {
   faHeart,
   faPowerOff,
 } from "@fortawesome/free-solid-svg-icons";
-import Swal from "sweetalert2";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { authContext } from "../hooks/AuthContext";
 
 export const Navegador = () => {
@@ -20,24 +18,9 @@ export const Navegador = () => {
   const { login, logout, usuarioIn, loginOk } = useContext(authContext);
   const navigate = useNavigate();
 
-  const isloginOk = () => {
-    if (loginOk === true) {
-      navigate("/favoritos");
-    } else {
-      Swal.fire("Debes estar logeado");
-    }
-  };
-  const isAdmin = () => {
-    if (usuarioIn === null || usuarioIn.rol === "USER-ROLE") {
-      Swal.fire("No tienes los permisos necesarios");
-    } else {
-      navigate("/admin");
-    }
-  };
-
   return (
     <>
-      <div className="sticky-top">
+      <div className="sticky-top head-cont-completo">
         <div className="container-fluid head-cont">
           <div className="row justify-content-between">
             <div className="col-3 my-auto">
@@ -68,9 +51,9 @@ export const Navegador = () => {
                 )}
               </Link>
 
-              <button className="btn" onClick={isloginOk}>
+              <Link to="favoritos" className="btn">
                 <FontAwesomeIcon icon={faHeart} color="red" />
-              </button>
+              </Link>
 
               <Link className="text-decoration-none text-light ">
                 <ModalCarrito />
@@ -116,12 +99,9 @@ export const Navegador = () => {
                     </button>
                   </form>
                 </div>
-                <button
-                  onClick={isAdmin}
-                  className="text-decoration-none text-dark btn"
-                >
+                <Link to="/admin" className="text-decoration-none text-dark ">
                   Admin Page
-                </button>
+                </Link>
                 <Link to="/" className="text-decoration-none  text-dark ">
                   Home Page
                 </Link>
@@ -143,9 +123,9 @@ export const Navegador = () => {
                   <ModalLogin />
                 )}
               </Link>
-              <button className="btn" onClick={isloginOk}>
+              <Link className="btn" to="favoritos">
                 <FontAwesomeIcon icon={faHeart} color="red" />
-              </button>
+              </Link>
               <Link className="text-decoration-none text-light ">
                 <ModalCarrito />
               </Link>
