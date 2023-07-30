@@ -4,8 +4,9 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { authContext } from "../hooks/AuthContext";
 
-export const Carrito = () => {
+export const Carrito = ({ handleClose }) => {
   const navigate = useNavigate();
   const {
     eliminarProducto,
@@ -15,19 +16,26 @@ export const Carrito = () => {
     agregarProductos,
     restarProductos,
   } = useContext(Carritocontext);
+  const { loginOk } = useContext(authContext);
+
   const iniciarPago = () => {
-    Swal.fire({
-      title: "¿Quieres iniciar pago?",
-      icon: "success",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Si, estoy seguro!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        navigate("/pago");
-      }
-    });
+    if (loginOk === true) {
+      Swal.fire({
+        title: "¿Quieres iniciar pago?",
+        icon: "success",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, estoy seguro!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/pago");
+          handleClose();
+        }
+      });
+    } else {
+      Swal.fire("Debes estar logueado");
+    }
   };
 
   return (

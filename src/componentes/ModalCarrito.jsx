@@ -29,7 +29,7 @@ export const ModalCarrito = () => {
         <FontAwesomeIcon
           icon={faCartShopping}
           className="img-carrito"
-          color="grey"
+          color="black"
         />
         <div className="texto-carrito">{mostrarCantidad && carrito.length}</div>
       </button>
@@ -42,7 +42,7 @@ export const ModalCarrito = () => {
           {carrito.length === 0 ? (
             <h5 className="text-center">No hay productos en el carrito</h5>
           ) : (
-            <Carrito />
+            <Carrito handleClose={handleClose} />
           )}
         </Modal.Body>
       </Modal>

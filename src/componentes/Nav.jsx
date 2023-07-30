@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { Container, Navbar, Offcanvas } from "react-bootstrap";
 import { ModalCarrito } from "./ModalCarrito";
@@ -13,37 +13,26 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { authContext } from "../hooks/AuthContext";
 
-export const Navegador = ({ guardarUsuario }) => {
+export const Navegador = () => {
   const [mostrarOffcanvas, setMostrarOffcanvas] = useState(false);
-  const [login, setLogin] = useState(false);
+  const { login, logout, usuarioIn, loginOk } = useContext(authContext);
   const navigate = useNavigate();
 
-  const favPage = () => {
-    if (login === true) {
+  const isloginOk = () => {
+    if (loginOk === true) {
       navigate("/favoritos");
     } else {
-      Swal.fire("Debes logearte");
+      Swal.fire("Debes estar logeado");
     }
   };
-
-  const iniciarSesion = () => {
-    setLogin(true);
-  };
-
-  const cerrarSesion = () => {
-    Swal.fire({
-      title: "¿Estas seguro?",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Si",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        setLogin(false);
-      }
-    });
+  const isAdmin = () => {
+    if (usuarioIn === null || usuarioIn.rol === "USER-ROLE") {
+      Swal.fire("No tienes los permisos necesarios");
+    } else {
+      navigate("/admin");
+    }
   };
 
   return (
@@ -53,10 +42,10 @@ export const Navegador = ({ guardarUsuario }) => {
           <div className="row justify-content-between">
             <div className="col-3 my-auto">
               <Link to="/">
-                <img src={Logo} alt="RollingTech" width="180" height="80" />
+                <img src={Logo} alt="RollingTech" width="160" height="70" />
               </Link>
             </div>
-            <div className="col-6  my-auto">
+            <div className="col-4  my-auto">
               <form className="d-flex" role="search">
                 <input
                   type="search"
@@ -70,19 +59,16 @@ export const Navegador = ({ guardarUsuario }) => {
             </div>
             <div className="d-flex gap-1 justify-content-end col-2  my-auto">
               <Link className="text-decoration-none  my-auto">
-                {login === true ? (
-                  <button className="btn" onClick={cerrarSesion}>
+                {loginOk === true ? (
+                  <button className="btn" onClick={logout}>
                     <FontAwesomeIcon icon={faPowerOff} color="red" />
                   </button>
                 ) : (
-                  <ModalLogin
-                    iniciarSesion={iniciarSesion}
-                    guardarUsuario={guardarUsuario}
-                  />
+                  <ModalLogin />
                 )}
               </Link>
 
-              <button className="btn" onClick={favPage}>
+              <button className="btn" onClick={isloginOk}>
                 <FontAwesomeIcon icon={faHeart} color="red" />
               </button>
 
@@ -93,20 +79,21 @@ export const Navegador = ({ guardarUsuario }) => {
           </div>
         </div>
         <Navbar className="head-cont-nav " expand="lg">
-          <Container fluid>
+          <Container fluid className="px-0">
             <Navbar.Toggle
               aria-controls="offcanvas-show"
               show={mostrarOffcanvas}
               onClick={() => setMostrarOffcanvas(true)}
+              className="ms-2"
             />
 
-            <Navbar.Brand className="  d-lg-none d-xl-none d-xxl-none ">
+            <Navbar.Brand className="d-lg-none d-xl-none d-xxl-none ">
               <Link to="/">
                 <img
                   src={Logo}
                   alt="RollingTech"
-                  width="140"
-                  height="70"
+                  width="130"
+                  height="60"
                   className="logo-nav"
                 />
               </Link>
@@ -116,53 +103,47 @@ export const Navegador = ({ guardarUsuario }) => {
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title>Rolling Tech</Offcanvas.Title>
               </Offcanvas.Header>
-              <Offcanvas.Body>
-                <div className="d-flex gap-3 mx-auto row">
-                  <div className="d-lg-none d-xl-none d-xxl-none ">
-                    <form className="d-flex" role="search">
-                      <input
-                        className="form-control form-sm"
-                        type="search"
-                        placeholder="Buscar"
-                      />
-                      <button className="btn  mx-2" type="submit">
-                        <FontAwesomeIcon icon={faMagnifyingGlass} />
-                      </button>
-                    </form>
-                  </div>
-                  <Link to="admin" className="text-decoration-none text-dark">
-                    Admin Page
-                  </Link>
-                  <Link to="/" className="text-decoration-none  text-dark">
-                    Home Page
-                  </Link>
-                  <Link
-                    to="/nosotros"
-                    className="text-decoration-none  text-dark"
-                  >
-                    Sobre Nosotros
-                  </Link>
-                  {/* <Link to="/contacto" className="text-decoration-none  text-dark">
-                    Contacto
-                  </Link> */}
+              <div className="d-flex row gap-3 mx-auto cambio-direc">
+                <div className="d-lg-none d-xl-none d-xxl-none">
+                  <form className="d-flex" role="search">
+                    <input
+                      className="form-control form-sm"
+                      type="search"
+                      placeholder="Buscar"
+                    />
+                    <button className="btn  mx-2" type="submit">
+                      <FontAwesomeIcon icon={faMagnifyingGlass} />
+                    </button>
+                  </form>
                 </div>
-              </Offcanvas.Body>
+                <button
+                  onClick={isAdmin}
+                  className="text-decoration-none text-dark btn"
+                >
+                  Admin Page
+                </button>
+                <Link to="/" className="text-decoration-none  text-dark ">
+                  Home Page
+                </Link>
+                <Link
+                  to="/nosotros"
+                  className="text-decoration-none  text-dark "
+                >
+                  Sobre Nosotros
+                </Link>
+              </div>
             </Navbar.Offcanvas>
-
-            <div className="d-flex gap-1 justify-content-end col-2 my-auto d-lg-none d-xl-none d-xxl-none ">
+            <div className="d-flex  justify-content-end col-2 my-auto d-lg-none d-xl-none d-xxl-none ">
               <Link className="text-decoration-none  my-auto">
-                {login === true ? (
-                  <button className="btn" onClick={cerrarSesion}>
+                {loginOk === true ? (
+                  <button className="btn" onClick={logout}>
                     <FontAwesomeIcon icon={faPowerOff} color="red" />
                   </button>
                 ) : (
-                  <ModalLogin
-                    iniciarSesion={iniciarSesion}
-                    guardarUsuario={guardarUsuario}
-                  />
+                  <ModalLogin />
                 )}
               </Link>
-              <button className="btn" onClick={favPage}>
+              <button className="btn" onClick={isloginOk}>
                 <FontAwesomeIcon icon={faHeart} color="red" />
               </button>
               <Link className="text-decoration-none text-light ">

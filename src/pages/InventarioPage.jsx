@@ -176,7 +176,7 @@ export const InventarioPage = () => {
       </div>
       <div className="col-xl-5 col-lg-5 col-md-9 col-sm-9">
         <form>
-          <label className="fw-bold">Nombre</label>
+          <label className="fw-bold mb-1">Nombre</label>
           <input
             type="text"
             className="form-control mb-3"
@@ -184,7 +184,7 @@ export const InventarioPage = () => {
             onChange={(e) => setProductoNombre(e.target.value)}
             required
           />
-          <label className="fw-bold">Descripcion</label>
+          <label className="fw-bold mb-1">Descripcion</label>
           <input
             type="text"
             className="form-control mb-3"
@@ -192,7 +192,7 @@ export const InventarioPage = () => {
             onChange={(e) => setProductoDescripcion(e.target.value)}
             required
           />
-          <label className="fw-bold">Precio</label>
+          <label className="fw-bold mb-1">Precio</label>
           <input
             type="number"
             className="form-control mb-3"
@@ -200,15 +200,23 @@ export const InventarioPage = () => {
             onChange={(e) => setProductoPrecio(e.target.value)}
             required
           />
-          <label className="fw-bold">Categoria</label>
-          <input
-            type="text"
+          <label htmlFor="selectCategoria" className="fw-bold mb-1">
+            Categorias
+          </label>
+          <select
             className="form-control mb-3"
+            id="selectCategoria"
             value={inputCategoria}
             onChange={(e) => setProductoCategoria(e.target.value)}
-            required
-          />
-          <label className="fw-bold">Imagen URL</label>
+          >
+            <option value="">Seleccione la categoria</option>
+            <option value="CELULARES">Celulares</option>
+            <option value="TELEVISORES">Televisores</option>
+            <option value="TABLETS">Tablets</option>
+            <option value="Notebooks">Notebooks</option>
+            <option value="Consolas">Consolas</option>
+          </select>
+          <label className="fw-bold mb-1">Imagen URL</label>
           <input
             type="text"
             className="form-control mb-3"

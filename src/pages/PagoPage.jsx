@@ -50,12 +50,12 @@ export const PagoPage = () => {
                   </button>
                   <p className="fw-lighter"> x un ${item.precio}</p>
                 </td>
-                <td>${item.precio * item.cantidad}</td>
+                <td>${(item.precio * item.cantidad).toFixed(2)}</td>
                 <td className="text-center">
                   <button
                     className="btn btn-danger btn-sm"
                     onClick={() => {
-                      eliminarProducto(item.id);
+                      eliminarProducto(item.uid);
                     }}
                   >
                     <FontAwesomeIcon icon={faTrashAlt} />

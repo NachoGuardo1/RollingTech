@@ -4,7 +4,7 @@ import { FormLogin } from "../componentes/FormLogin";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
-const ModalLogin = ({ iniciarSesion, guardarUsuario }) => {
+const ModalLogin = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [tituloModal, setTituloModal] = useState(
     "Ingresar con email y contraseña"
@@ -29,13 +29,10 @@ const ModalLogin = ({ iniciarSesion, guardarUsuario }) => {
               tituloLogin={tituloLogin}
               tituloRegister={tituloRegister}
               handleClose={handleClose}
-              iniciarSesion={iniciarSesion}
-              guardarUsuario={guardarUsuario}
             />
           </div>
         </Modal.Body>
       </Modal>
-
     </>
   );
 };
