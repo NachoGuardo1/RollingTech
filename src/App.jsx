@@ -11,6 +11,7 @@ import { CategoriaProvider } from "./hooks/FiltroContext";
 import { Footer } from "./componentes/Footer";
 import { InventarioPage } from "./pages/InventarioPage";
 import { Nosotros } from "./pages/Nosotros";
+import { UsuariosPage } from "./pages/UsuariosPage";
 // import { Contacto } from "./pages/Contacto";
 
 function App() {
@@ -35,7 +36,7 @@ function App() {
                 <Route path="admin">
                   <Route index element={<AdminPage />} />
                   <Route path="inventario" element={<InventarioPage />} />
-                  <Route path="usuarios" />
+                  <Route path="usuarios" element={<UsuariosPage />} />
                   <Route path="ventas" />
                   <Route path="administradores" />
                 </Route>
@@ -54,8 +55,7 @@ function App() {
           </Routes>
         </Footer>
       </BrowserRouter>
- 
-  </>
+    </>
   );
 }
 
