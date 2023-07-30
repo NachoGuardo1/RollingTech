@@ -67,7 +67,7 @@ export const Navegador = () => {
               aria-controls="offcanvas-show"
               show={mostrarOffcanvas}
               onClick={() => setMostrarOffcanvas(true)}
-              className="ms-2"
+              className="ms-1"
             />
 
             <Navbar.Brand className="d-lg-none d-xl-none d-xxl-none ">
@@ -99,13 +99,22 @@ export const Navegador = () => {
                     </button>
                   </form>
                 </div>
-                <Link to="/admin" className="text-decoration-none text-dark ">
+                <Link
+                  to="/admin"
+                  onClick={mostrarOffcanvas}
+                  className="text-decoration-none text-dark "
+                >
                   Admin Page
                 </Link>
-                <Link to="/" className="text-decoration-none  text-dark ">
+                <Link
+                  to="/"
+                  onClick={mostrarOffcanvas}
+                  className="text-decoration-none  text-dark "
+                >
                   Home Page
                 </Link>
                 <Link
+                  onClick={mostrarOffcanvas}
                   to="/nosotros"
                   className="text-decoration-none  text-dark "
                 >

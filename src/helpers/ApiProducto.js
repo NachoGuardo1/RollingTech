@@ -33,17 +33,13 @@ export const getProductoById = async (id) => {
     const data = await resp.json();
     return data;
   } catch (error) {
-    console.log(error);
     throw new Error("No se pudo obtener la informacion del producto");
   }
 };
 
 //crear producto
 export const crearProducto = async (datos) => {
-    console.log('in Crear prodico');
-    console.log(datos);
-    console.log(token);
-    try {
+  try {
     const resp = await fetch(url, {
       method: "POST",
       body: JSON.stringify(datos),
