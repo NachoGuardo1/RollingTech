@@ -89,6 +89,7 @@ const CarritoProvider = ({ children }) => {
       <Carritocontext.Provider
         value={{
           carrito,
+          setCarrito,
           agregarProductos,
           eliminarProducto,
           vaciarCarrito,

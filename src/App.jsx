@@ -12,43 +12,36 @@ import { Footer } from "./componentes/Footer";
 import { InventarioPage } from "./pages/InventarioPage";
 import { Nosotros } from "./pages/Nosotros";
 import { UsuariosPage } from "./pages/UsuariosPage";
+import { AuthProvider } from "./hooks/AuthContext";
 // import { Contacto } from "./pages/Contacto";
 
 function App() {
-  const [user, setUser] = useState(null);
-
-  const guardarUsuario = (datos) => {
-    setUser(datos);
-  };
-
   return (
     <>
       <BrowserRouter>
-        <CategoriaProvider>
-          <CarritoProvider>
-            <Routes>
-              <Route
-                path="/"
-                element={<Navegador guardarUsuario={guardarUsuario} />}
-              >
-                <Route index element={<HomePage />} />
+        <AuthProvider>
+          <CategoriaProvider>
+            <CarritoProvider>
+              <Routes>
+                <Route path="/" element={<Navegador />}>
+                  <Route index element={<HomePage />} />
 
-                <Route path="admin">
-                  <Route index element={<AdminPage />} />
-                  <Route path="inventario" element={<InventarioPage />} />
-                  <Route path="usuarios" element={<UsuariosPage />} />
-                  <Route path="ventas" />
-                  <Route path="administradores" />
+                  <Route path="admin">
+                    <Route index element={<AdminPage />} />
+                    <Route path="inventario" element={<InventarioPage />} />
+                    <Route path="usuarios" element={<UsuariosPage />} />
+                    <Route path="ventas" />
+                    <Route path="administradores" />
+                  </Route>
+
+                  <Route path="nosotros" element={<Nosotros />} />
+                  <Route path="pago" element={<PagoPage />} />
+                  <Route path="favoritos" element={<FavoritosPage />} />
                 </Route>
-
-                <Route path="nosotros" element={<Nosotros />} />
-                {/* <Route path="contacto" element={< Contacto />} /> */}
-                <Route path="pago" element={<PagoPage />} />
-                <Route path="favoritos" element={<FavoritosPage />} />
-              </Route>
-            </Routes>
-          </CarritoProvider>
-        </CategoriaProvider>
+              </Routes>
+            </CarritoProvider>
+          </CategoriaProvider>
+        </AuthProvider>
         <Footer>
           <Routes>
             <Route path="/" element={<Footer />}></Route>
