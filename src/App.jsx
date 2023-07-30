@@ -1,19 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { HomePage } from "./pages/HomePage";
-import { AdminPage } from "./pages/AdminPage";
+import {
+  HomePage,
+  AdminPage,
+  FavoritosPage,
+  PagoPage,
+  Nosotros,
+  InventarioPage,
+  UsuariosPage,
+} from "./pages";
 import { Navegador } from "./componentes/Nav";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { CarritoProvider } from "./hooks/CarritoContext";
-import { FavoritosPage } from "./pages";
-import { PagoPage } from "./pages/PagoPage";
 import { CategoriaProvider } from "./hooks/FiltroContext";
 import { Footer } from "./componentes/Footer";
-import { InventarioPage } from "./pages/InventarioPage";
-import { Nosotros } from "./pages/Nosotros";
-import { UsuariosPage } from "./pages/UsuariosPage";
 import { AuthProvider } from "./hooks/AuthContext";
-// import { Contacto } from "./pages/Contacto";
+import ProtectedRoutesAdmin from "./routes/ProtectedRoutesAdmin";
 
 function App() {
   return (
@@ -26,12 +28,16 @@ function App() {
                 <Route path="/" element={<Navegador />}>
                   <Route index element={<HomePage />} />
 
-                  <Route path="admin">
-                    <Route index element={<AdminPage />} />
+                  <Route
+                    path="/admin"
+                    element={
+                      <ProtectedRoutesAdmin>
+                        <AdminPage />
+                      </ProtectedRoutesAdmin>
+                    }
+                  >
                     <Route path="inventario" element={<InventarioPage />} />
                     <Route path="usuarios" element={<UsuariosPage />} />
-                    <Route path="ventas" />
-                    <Route path="administradores" />
                   </Route>
 
                   <Route path="nosotros" element={<Nosotros />} />

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { crearUsuario } from "../helpers/ApiUsuario";
+import Swal from "sweetalert2";
 
 export const FormRegister = ({ anteriorParte }) => {
   const [inputNombre, setInputNombre] = useState("");
@@ -10,16 +11,12 @@ export const FormRegister = ({ anteriorParte }) => {
 
   const RegistroUsuario = async (e) => {
     e.preventDefault();
-    //Obtener datos ingresados
     const datos = {
       nombre: inputNombre,
       correo: inputCorreo,
       contrasena: inputContrasena,
       rol: v_rol,
     };
-
-    console.log("en RegistroUsuario");
-    console.log(datos);
 
     try {
       const resp = await crearUsuario(datos);
@@ -28,14 +25,10 @@ export const FormRegister = ({ anteriorParte }) => {
         anteriorParte();
       } else {
         console.error("Error al guardar los datos. Crear Usuario");
-        console.error(resp.msg);
-        console.log(error);
+        Swal.fire("No se pudo completar el registro");
       }
     } catch (error) {
       console.error("Error al guardar los datos. Crear Usuario");
-      console.log(resp.error);
-      console.error("No se pudo registrar el usuario. Error: " + resp.error);
-      Swal.fire("El usuario o la contraseña no son correctos");
     }
   };
 
