@@ -17,6 +17,30 @@ export const getUsuraioById = async (id) => {
 export const crearUsuario = async (datos) => {
   console.log('En ApiUsuario - crear usuario');
   console.log(datos);
+
+
+  /*fetch(url, {
+    method: 'POST', // or 'PUT'
+    body: JSON.stringify(datos), // data can be `string` or {object}!
+    headers:{
+      "Content-type": "application/json; charset=UTF-8"
+    }
+  }).then(res => res.json())
+  .catch(error => console.error('Error:', error))
+  //.then(response => console.log('Success:', response));
+
+  .then((response) => {
+    if (response.ok) {
+      console.log('Todo bien');
+    } else {
+      console.log('Respuesta de red OK pero respuesta de HTTP no OK');
+      console.log(response.errors(msg));
+      
+    }
+  })*/
+
+  
+  console.log('fin del fetch del apiUsuario')
   try {
     const resp = await fetch(url, {
       method: "POST",
@@ -25,12 +49,11 @@ export const crearUsuario = async (datos) => {
         "Content-type": "application/json; charset=UTF-8"
       },
     });
-
     const data = await resp.json();
 
     return data;
   } catch (error) {
     console.log(error);
-    return { msg: "No se conectó con backend" };
+    return { msg: "Algun dato esta mal." };
   }
 };

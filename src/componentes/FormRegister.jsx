@@ -8,6 +8,7 @@ export const FormRegister = ({ anteriorParte }) => {
   const [inputContrasena, setInputContrasena] = useState("");
   //estados fijos
   const v_rol="USER-ROLE";
+
   
   const RegistroUsuario = async (e) => {
       e.preventDefault();
@@ -26,21 +27,16 @@ export const FormRegister = ({ anteriorParte }) => {
         const resp = await crearUsuario(datos);  
         if (resp?.usuario) {
           console.log("Datos del Usuario guardados exitosamente");
-          handleClose();
-          navigate("/");
         }else{
-          console.error("Error al guardar los datos. Crear Usuario");
-          console.error(resp.msg);
-          console.log(error);
-
+          console.log("estoy en el else del resp.usuario");
+          console.log(data);
+          //  Swal.fire("El usuario o la contraseña no son correctos");
         }
       }catch(error){
-        console.error("Error al guardar los datos. Crear Usuario");
-        console.log(resp.error);
+        console.log("estoy en el catch del crear usuario");
         console.error(
-          "No se pudo registrar el usuario. Error: "+(resp.error)
+          "No se pudo registrar el usuario. Error: "
         );
-        Swal.fire("El usuario o la contraseña no son correctos");
       }
     };
 
