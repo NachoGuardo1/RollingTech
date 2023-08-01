@@ -1,61 +1,60 @@
-import React, { useState } from "react";
+import React from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { HomePage } from "./pages/HomePage";
-import { AdminPage } from "./pages/AdminPage";
+import {
+  HomePage,
+  AdminPage,
+  FavoritosPage,
+  PagoPage,
+  Nosotros,
+  InventarioPage,
+  UsuariosPage,
+} from "./pages";
 import { Navegador } from "./componentes/Nav";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { CarritoProvider } from "./hooks/CarritoContext";
-import { FavoritosPage } from "./pages";
-import { PagoPage } from "./pages/PagoPage";
 import { CategoriaProvider } from "./hooks/FiltroContext";
 import { Footer } from "./componentes/Footer";
-import { InventarioPage } from "./pages/InventarioPage";
-import { Nosotros } from "./pages/Nosotros";
-// import { Contacto } from "./pages/Contacto";
+import { AuthProvider } from "./hooks/AuthContext";
+import ProtectedRoutesAdmin from "./routes/ProtectedRoutesAdmin";
 
 function App() {
-  const [user, setUser] = useState(null);
-
-  const guardarUsuario = (datos) => {
-    setUser(datos);
-  };
-
   return (
     <>
       <BrowserRouter>
-        <CategoriaProvider>
-          <CarritoProvider>
-            <Routes>
-              <Route
-                path="/"
-                element={<Navegador guardarUsuario={guardarUsuario} />}
-              >
-                <Route index element={<HomePage />} />
+        <AuthProvider>
+          <CategoriaProvider>
+            <CarritoProvider>
+              <Routes>
+                <Route path="/" element={<Navegador />}>
+                  <Route index element={<HomePage />} />
 
-                <Route path="admin">
-                  <Route index element={<AdminPage />} />
-                  <Route path="inventario" element={<InventarioPage />} />
-                  <Route path="usuarios" />
-                  <Route path="ventas" />
-                  <Route path="administradores" />
+                  <Route
+                    path="/admin"
+                    element={
+                      <ProtectedRoutesAdmin>
+                        <AdminPage />
+                      </ProtectedRoutesAdmin>
+                    }
+                  >
+                    <Route path="inventario" element={<InventarioPage />} />
+                    <Route path="usuarios" element={<UsuariosPage />} />
+                  </Route>
+
+                  <Route path="nosotros" element={<Nosotros />} />
+                  <Route path="pago" element={<PagoPage />} />
+                  <Route path="favoritos" element={<FavoritosPage />} />
                 </Route>
-
-                <Route path="nosotros" element={<Nosotros />} />
-                {/* <Route path="contacto" element={< Contacto />} /> */}
-                <Route path="pago" element={<PagoPage />} />
-                <Route path="favoritos" element={<FavoritosPage />} />
-              </Route>
-            </Routes>
-          </CarritoProvider>
-        </CategoriaProvider>
+              </Routes>
+            </CarritoProvider>
+          </CategoriaProvider>
+        </AuthProvider>
         <Footer>
           <Routes>
             <Route path="/" element={<Footer />}></Route>
           </Routes>
         </Footer>
       </BrowserRouter>
- 
-  </>
+    </>
   );
 }
 

@@ -7,12 +7,16 @@ import "../styles/productos.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { getProductos } from "../helpers/ApiProductos";
+import { authContext } from "../hooks/AuthContext";
+import Swal from "sweetalert2";
 
 const ProductList = () => {
   const [productos, setProductos] = useState([]);
   const [totalProductos, setTotalProductos] = useState(0);
+
   const limite = 100;
   const [desde, setDesde] = useState(0);
+
   useEffect(() => {
     traerProductos();
   }, [desde]);
@@ -23,10 +27,18 @@ const ProductList = () => {
     setTotalProductos(total);
   };
 
-  console.log(productos) ; 
+  const { loginOk } = useContext(authContext);
   const { agregarProductos, agregarFavoritos, favoritos, eliminarFavorito } =
     useContext(Carritocontext);
+
   const esFav = (item) => favoritos.includes(item);
+  const agregarAFav = (item) => {
+    if (loginOk === true) {
+      agregarFavoritos(item);
+    } else {
+      Swal.fire("Primero debes loguearte");
+    }
+  };
 
   const { categoriaSeleccionada } = useContext(FiltrosContext);
 
@@ -76,7 +88,7 @@ const ProductList = () => {
                   ) : (
                     <button
                       className="btn border-danger"
-                      onClick={() => agregarFavoritos(item)}
+                      onClick={() => agregarAFav(item)}
                     >
                       <FontAwesomeIcon icon={faHeart} color="red" />
                     </button>

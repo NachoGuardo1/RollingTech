@@ -15,7 +15,7 @@ export const getUsuraioById = async (id) => {
 
 //crear un usuario (Registro)
 export const crearUsuario = async (datos) => {
-  console.log('En ApiUsuario - crear usuario');
+  console.log("En ApiUsuario - crear usuario");
   console.log(datos);
 
 
@@ -46,7 +46,7 @@ export const crearUsuario = async (datos) => {
       method: "POST",
       body: JSON.stringify(datos),
       headers: {
-        "Content-type": "application/json; charset=UTF-8"
+        "Content-type": "application/json; charset=UTF-8",
       },
     });
     const data = await resp.json();

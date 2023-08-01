@@ -1,11 +1,12 @@
+.head-cont-completo {
+  background-color: #252525a1;
+}
 .head-cont {
-  background-color: #cac1f3a1;
+  background-color: #868686a1;
   display: none;
-  opacity: 0.98;
 }
 .head-cont-nav {
-  background-color: #9986eea1;
-  opacity: 0.98;
+  background-color: #5c5c5ca1;
 }
 
 @media (min-width: 768px) {

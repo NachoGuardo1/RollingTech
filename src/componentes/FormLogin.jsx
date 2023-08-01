@@ -1,20 +1,18 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { authLogin } from "../helpers/ApiLogin";
 import Swal from "sweetalert2";
 import { FormRegister } from "./FormRegister";
+import { authContext } from "../hooks/AuthContext";
 
-export const FormLogin = ({
-  iniciarSesion,
-  guardarUsuario,
-  handleClose,
-  tituloRegister,
-  tituloLogin,
-}) => {
+
+export const FormLogin = ({ handleClose, tituloRegister, tituloLogin }) => {
   //agregado domingo 11:22
   const navigate = useNavigate();
   const [inputCorreo, setInputCorreo] = useState("");
   const [inputContrasena, setInputContrasena] = useState("");
+
+  const { login, guardarUsuario } = useContext(authContext);
 
   const [resultado, setResultado] = useState(null);
 
@@ -45,7 +43,7 @@ export const FormLogin = ({
     if (resp?.token) {
       localStorage.setItem("token", JSON.stringify(resp.token));
 
-      iniciarSesion();
+      login();
 
       const { nombre, correo, rol, uid } = resp.usuario;
 
@@ -77,7 +75,7 @@ export const FormLogin = ({
       {mostrarPrimeraP && (
         <form className="row ">
           <div className="mt-3">
-            <label className="fw-bold">Correo</label>
+            <label className="fw-bold mb-1">Correo</label>
             <input
               type="email"
               className="form-control"
@@ -88,7 +86,7 @@ export const FormLogin = ({
             />
           </div>
           <div className="mt-3">
-            <label className="fw-bold">Contraseña</label>
+            <label className="fw-bold mb-1">Contraseña</label>
             <input
               type="password"
               className="form-control"
