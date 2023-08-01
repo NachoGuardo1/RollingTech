@@ -22,9 +22,9 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <AuthProvider>
-          <CategoriaProvider>
-            <CarritoProvider>
+        <CarritoProvider>
+          <AuthProvider>
+            <CategoriaProvider>
               <Routes>
                 <Route path="/" element={<Navegador />}>
                   <Route index element={<HomePage />} />
@@ -53,9 +53,9 @@ function App() {
                   />
                 </Route>
               </Routes>
-            </CarritoProvider>
-          </CategoriaProvider>
-        </AuthProvider>
+            </CategoriaProvider>
+          </AuthProvider>
+        </CarritoProvider>
         <Footer>
           <Routes>
             <Route path="/" element={<Footer />}></Route>
