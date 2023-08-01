@@ -2,17 +2,22 @@ import React, { useState } from "react";
 import { createContext } from "react";
 import Swal from "sweetalert2";
 const Carritocontext = createContext();
+const CarritoLocal = JSON.parse(localStorage.getItem("carrito")) || [];
+const FavoritosLocal = JSON.parse(localStorage.getItem("favoritos")) || [];
 
 const CarritoProvider = ({ children }) => {
-  const [carrito, setCarrito] = useState([]);
-  const [favoritos, setFavoritos] = useState([]);
+  const [carrito, setCarrito] = useState(CarritoLocal);
+  const [favoritos, setFavoritos] = useState(FavoritosLocal);
 
   const agregarFavoritos = (item) => {
-    setFavoritos([...favoritos, item]);
+    const nuevosFavoritos = [...favoritos, item];
+    setFavoritos(nuevosFavoritos);
+    localStorage.setItem("favoritos", JSON.stringify(nuevosFavoritos));
   };
   const eliminarFavorito = (itemUid) => {
     const nuevosFavoritos = favoritos.filter((i) => i.uid !== itemUid);
     setFavoritos(nuevosFavoritos);
+    localStorage.setItem("favoritos", JSON.stringify(nuevosFavoritos));
   };
 
   const agregarProductos = (item) => {
@@ -24,10 +29,12 @@ const CarritoProvider = ({ children }) => {
         }
         return producto;
       });
-
       setCarrito(nuevoCarrito);
+      localStorage.setItem("carrito", JSON.stringify(nuevoCarrito));
     } else {
-      setCarrito([...carrito, { ...item, cantidad: 1 }]);
+      const nuevoCarrito = [...carrito, { ...item, cantidad: 1 }];
+      setCarrito(nuevoCarrito);
+      localStorage.setItem("carrito", JSON.stringify(nuevoCarrito));
     }
   };
 
@@ -40,8 +47,8 @@ const CarritoProvider = ({ children }) => {
         }
         return producto;
       });
-
       setCarrito(nuevoCarrito);
+      localStorage.setItem("carrito", JSON.stringify(nuevoCarrito));
     }
   };
 
@@ -58,6 +65,7 @@ const CarritoProvider = ({ children }) => {
         Swal.fire("Eliminado", "El producto ha sido eliminado", "success");
         const nuevoCarrito = carrito.filter((p) => p.uid !== productoUid);
         setCarrito(nuevoCarrito);
+        localStorage.setItem("carrito", JSON.stringify(nuevoCarrito));
       }
     });
   };
@@ -77,6 +85,7 @@ const CarritoProvider = ({ children }) => {
           "success"
         );
         setCarrito([]);
+        localStorage.removeItem("carrito");
       }
     });
   };

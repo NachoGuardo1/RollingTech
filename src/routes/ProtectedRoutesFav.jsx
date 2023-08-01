@@ -1,13 +1,14 @@
 import { Navigate } from "react-router-dom";
-const ProtectedRoutesAdmin = ({ children }) => {
+import Swal from "sweetalert2";
+const ProtectedRoutesFav = ({ children }) => {
   const usuario = JSON.parse(localStorage.getItem("usuario"));
 
-  if (usuario === null || usuario.rol === "USER-ROLE") {
-    console.log("error");
+  if (usuario === null) {
+    Swal.fire("Debes Loguearte");
     return <Navigate to="/" />;
   } else {
     return children;
   }
 };
 
-export default ProtectedRoutesAdmin;
+export default ProtectedRoutesFav;
