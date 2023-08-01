@@ -19,6 +19,7 @@ export const FormRegister = ({ anteriorParte }) => {
       console.log("nombre ok")
       if (inputCorreo.match(/([a-z]\w+@[a-z]+\.[a-z]{2,5})/)){
         console.log("correo ok");
+
         const datos = {
           nombre: inputNombre,
           correo: inputCorreo,
