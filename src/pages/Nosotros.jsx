@@ -6,12 +6,15 @@ import Nacho from "../../src/assets/img/avatar-nacho.jpeg";
 
 export const Nosotros = () => {
   return (
-    <div className="presentacion">
+    <div className="presentacion my-5">
+      <h2 className="text-center fw-bold text-dark">
+        Rolling Group
+        <br></br>
+        <span className="h4">
+          Somos un grupo de tres estudiantes de Rolling Code School
+        </span>
+      </h2>
       <div className="wrapper">
-        <h2 className="intro">
-          SOMOS ROLLING GROUP, UN GRUPO DE ESTUDIANTES DE ROLLING CODE SCHOOL
-          ESPECIALIZADOS EN PROGRAMACION FULL STACK
-        </h2>
         <div className="carta-nosotros">
           <div className="face front">
             <img src={Diego} alt="" />

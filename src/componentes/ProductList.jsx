@@ -17,38 +17,18 @@ const ProductList = () => {
   const [productos, setProductos] = useState([]);
   const [paginaActual, setPaginaActual] = useState(1);
   const [paginasTotales, setTotalPaginas] = useState(1);
-  const [prodXPage, setProdXPage] = useState(5);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  useEffect(() => {
-    if (windowWidth < 768) {
-      setProdXPage(3);
-    } else if (windowWidth >= 768 && windowWidth < 1024) {
-      setProdXPage(5);
-    } else {
-      setProdXPage(8);
-    }
-  }, [windowWidth]);
-  useEffect(() => {
-    const cambioTamaño = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    window.addEventListener("resize", cambioTamaño);
-    return () => {
-      window.removeEventListener("resize", cambioTamaño);
-    };
-  }, []);
   useEffect(() => {
     traerProductos();
   }, [paginaActual]);
 
-  const desde = (paginaActual - 1) * prodXPage;
-  const limite = prodXPage;
+  const desde = (paginaActual - 1) * 5;
+  const limite = 5;
 
   const traerProductos = async () => {
     const { productos, total } = await getProductos(limite, desde);
     setProductos(productos);
-    setTotalPaginas(Math.ceil(total / prodXPage));
+    setTotalPaginas(Math.ceil(total / 5));
   };
   const siguientePagina = () => {
     setPaginaActual((paginaAnterior) => paginaAnterior + 1);

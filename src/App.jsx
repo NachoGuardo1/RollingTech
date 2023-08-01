@@ -17,6 +17,7 @@ import { Footer } from "./componentes/Footer";
 import { AuthProvider } from "./hooks/AuthContext";
 import ProtectedRoutesAdmin from "./routes/ProtectedRoutesAdmin";
 import ProtectedRoutesFav from "./routes/ProtectedRoutesFav";
+import "./styles/app.css";
 
 function App() {
   return (
