@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { FormRegister } from "./FormRegister";
 import { authContext } from "../hooks/AuthContext";
 
+
 export const FormLogin = ({ handleClose, tituloRegister, tituloLogin }) => {
   //agregado domingo 11:22
   const navigate = useNavigate();

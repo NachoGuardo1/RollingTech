@@ -85,7 +85,7 @@ const ProductList = () => {
             <Card.Body className="text-center ">
               <div className="row h5 card-title align-items-center">
                 <div className="col-10 text-center texto-cartas ">
-                  {item.nombre}
+                  {item.nombre  + item.key }
                 </div>
                 <div className="col-2 justify-content-center my-auto d-flex">
                   <ModalInfo item={item} />
