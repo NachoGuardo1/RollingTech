@@ -14,8 +14,6 @@ export const FormLogin = ({ handleClose, tituloRegister, tituloLogin }) => {
 
   const { login, guardarUsuario } = useContext(authContext);
 
-  const [resultado, setResultado] = useState(null);
-
   const [loading, setLoading] = useState(false);
 
   const [mostrarPrimeraP, setMostrarPrimeraP] = useState(true);
@@ -34,7 +32,6 @@ export const FormLogin = ({ handleClose, tituloRegister, tituloLogin }) => {
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
-    //Obtener datos ingresados
     const datos = {
       correo: inputCorreo,
       contrasena: inputContrasena,
@@ -59,14 +56,12 @@ export const FormLogin = ({ handleClose, tituloRegister, tituloLogin }) => {
 
       handleClose();
       navigate("/");
-      console.log("logeado");
     } else {
       console.error(
         "El usuario no esta registrado o los datos son incorrectos"
       );
-      Swal.fire("El usuario o la contraseña no son correctos");
+      Swal.fire("El usuario o la contraseña son incorrectos");
     }
-    setResultado(resp);
     setLoading(false);
   };
 

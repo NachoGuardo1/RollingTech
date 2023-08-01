@@ -15,7 +15,7 @@ import { authContext } from "../hooks/AuthContext";
 
 export const Navegador = () => {
   const [mostrarOffcanvas, setMostrarOffcanvas] = useState(false);
-  const { login, logout, usuarioIn, loginOk } = useContext(authContext);
+  const { logout, loginOk } = useContext(authContext);
   const navigate = useNavigate();
 
   return (

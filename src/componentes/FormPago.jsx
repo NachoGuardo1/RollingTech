@@ -10,8 +10,9 @@ export const FormPago = () => {
   const [codigoSeguridad, setCodSeguridad] = useState("");
 
   const { total, setCarrito } = useContext(Carritocontext);
-  const { usuarioIn } = useContext(authContext);
   const navigate = useNavigate();
+
+  const usuarioData = JSON.parse(localStorage.getItem("usuario"));
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -24,6 +25,7 @@ export const FormPago = () => {
     } else {
       Swal.fire("Tu compra fue exitosa");
       setCarrito([]);
+      localStorage.removeItem("carrito");
       navigate("/");
     }
   };
@@ -36,11 +38,11 @@ export const FormPago = () => {
           type="text"
           className="fw-bold form-control my-2"
           disabled
-          placeholder={usuarioIn.nombre}
+          placeholder={usuarioData.nombre}
         />
         <input
           className="fw-bold form-control my-2"
-          placeholder={usuarioIn.correo}
+          placeholder={usuarioData.correo}
           disabled
         />
         <p className="bg-primary fw-bold">Total: ${total.toFixed(2)}</p>

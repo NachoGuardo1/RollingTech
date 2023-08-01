@@ -15,9 +15,31 @@ const ProductList = () => {
   const [productos, setProductos] = useState([]);
   const [paginaActual, setPaginaActual] = useState(1);
   const [paginasTotales, setTotalPaginas] = useState(1);
+  const [prodXPage, setProdXPage] = useState(5);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  const desde = (paginaActual - 1) * 2;
-  const limite = 2;
+  useEffect(() => {
+    const cambioTamaño = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", cambioTamaño);
+    return () => {
+      window.removeEventListener("resize", cambioTamaño);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (windowWidth < 768) {
+      setProdXPage(3);
+    } else if (windowWidth >= 768 && windowWidth < 1024) {
+      setProdXPage(5);
+    } else {
+      setProdXPage(8);
+    }
+  }, [windowWidth]);
+
+  const desde = (paginaActual - 1) * prodXPage;
+  const limite = prodXPage;
 
   useEffect(() => {
     traerProductos();
@@ -26,7 +48,7 @@ const ProductList = () => {
   const traerProductos = async () => {
     const { productos, total } = await getProductos(limite, desde);
     setProductos(productos);
-    setTotalPaginas(Math.ceil(total / 2));
+    setTotalPaginas(Math.ceil(total / prodXPage));
   };
   const siguientePagina = () => {
     setPaginaActual((paginaAnterior) => paginaAnterior + 1);
@@ -39,15 +61,6 @@ const ProductList = () => {
   const { loginOk } = useContext(authContext);
   const { agregarProductos, agregarFavoritos, favoritos, eliminarFavorito } =
     useContext(Carritocontext);
-
-  const esFav = (item) => favoritos.includes(item);
-  const agregarAFav = (item) => {
-    if (loginOk === true) {
-      agregarFavoritos(item);
-    } else {
-      Swal.fire("Primero debes loguearte");
-    }
-  };
 
   const { categoriaSeleccionada } = useContext(FiltrosContext);
 
@@ -87,7 +100,7 @@ const ProductList = () => {
                   >
                     <FontAwesomeIcon icon={faCartShopping} />
                   </button>
-                  {esFav(item) ? (
+                  {favoritos.includes(item) ? (
                     <button
                       className="btn btn-danger"
                       onClick={() => eliminarFavorito(item.uid)}
@@ -97,7 +110,7 @@ const ProductList = () => {
                   ) : (
                     <button
                       className="btn border-danger"
-                      onClick={() => agregarAFav(item)}
+                      onClick={() => agregarFavoritos(item)}
                     >
                       <FontAwesomeIcon icon={faHeart} color="red" />
                     </button>

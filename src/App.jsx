@@ -16,6 +16,7 @@ import { CategoriaProvider } from "./hooks/FiltroContext";
 import { Footer } from "./componentes/Footer";
 import { AuthProvider } from "./hooks/AuthContext";
 import ProtectedRoutesAdmin from "./routes/ProtectedRoutesAdmin";
+import ProtectedRoutesFav from "./routes/ProtectedRoutesFav";
 
 function App() {
   return (
@@ -42,7 +43,14 @@ function App() {
 
                   <Route path="nosotros" element={<Nosotros />} />
                   <Route path="pago" element={<PagoPage />} />
-                  <Route path="favoritos" element={<FavoritosPage />} />
+                  <Route
+                    path="favoritos"
+                    element={
+                      <ProtectedRoutesFav>
+                        <FavoritosPage />
+                      </ProtectedRoutesFav>
+                    }
+                  />
                 </Route>
               </Routes>
             </CarritoProvider>
