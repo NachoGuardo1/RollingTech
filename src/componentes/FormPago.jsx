@@ -58,20 +58,22 @@ export const FormPago = () => {
               onChange={(e) => setNumTarjeta(e.target.value)}
               required
               className="my-1 form-control"
-              minLength={16}
-              maxLength={16}
+              minLength={18}
+              maxLength={18}
+              placeholder="xxxx-xxxx-xxxx"
             />
           </label>
           <label className="fw-bold">
             Fecha de vencimiento:
             <input
-              type="number"
+              type="text"
               value={fechaVencimiento}
               onChange={(e) => setFechaVenc(e.target.value)}
               required
               className="my-1 form-control"
-              minLength={4}
-              maxLength={4}
+              minLength={5}
+              maxLength={5}
+              placeholder="dd/mm"
             />
           </label>
           <label className="fw-bold">
@@ -84,6 +86,7 @@ export const FormPago = () => {
               className="my-1 form-control"
               minLength={3}
               maxLength={3}
+              placeholder="xxx"
             />
           </label>
           <button className="btn btn-success my-3" onClick={onSubmit}>
