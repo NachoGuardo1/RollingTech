@@ -1,4 +1,4 @@
-const url = "http://localhost:3000/api/productos";
+/*const url = "http://localhost:3000/api/productos";
 const token = JSON.parse(localStorage.getItem("token"));
 const limite = 6;
 
@@ -42,6 +42,8 @@ export const getProductoById = async (id) => {
 
 //crear producto
 export const crearProducto = async (datos) => {
+  console.log("en crear prodcuto");
+  console.log(token);
   try {
     const resp = await fetch(url, {
       method: "POST",
@@ -101,3 +103,4 @@ export const borrarProducto = async (id) => {
     return { msg: "No se conectó con backend" };
   }
 };
+*/

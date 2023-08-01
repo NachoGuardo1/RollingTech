@@ -29,6 +29,14 @@ export const InventarioPage = () => {
     traerProductos();
   }, [desde]);
 
+  function primeraLetraMayus(texto){
+    console.log("en primeraLetraMayus");
+    console.log(texto);
+    console.log(texto.charAt(0).toUpperCase() + texto.slice(1));
+    return texto.charAt(0).toUpperCase() + texto.slice(1);
+}
+
+
   const resetForm = () => {
     //reset form
     setProductoNombre("");
@@ -40,6 +48,7 @@ export const InventarioPage = () => {
   const CrearProducto = async (e) => {
     e.preventDefault();
     //Obtener datos ingresados
+
     const datos = {
       nombre: inputNombre,
       descrip: inputDescrip,
@@ -47,6 +56,7 @@ export const InventarioPage = () => {
       categoria: inputCategoria,
       img: inputImg,
     };
+    console.log(datos);
 
     const resp = await crearProducto(datos);
 
@@ -77,7 +87,7 @@ export const InventarioPage = () => {
   };
 
   const guardarValores = (producto) => {
-    setProductoNombre(producto.nombre);
+    setProductoNombre(primeraLetraMayus(producto.nombre));
     setProductoCategoria(producto.categoria);
     setProductoDescripcion(producto.descrip);
     setProductoImg(producto.img);

@@ -6,7 +6,7 @@ import { Carritocontext } from "../hooks/CarritoContext";
 import "../styles/productos.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
-import { getProductos } from "../helpers/ApiProductos";
+import { getProductos } from "../helpers/ApiProducto";
 import { authContext } from "../hooks/AuthContext";
 import Swal from "sweetalert2";
 import Paginacion from "./Paginacion";
