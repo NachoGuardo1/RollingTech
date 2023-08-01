@@ -7,11 +7,11 @@ import "../styles/productos.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { getProductos } from "../helpers/ApiProductos";
-import { authContext } from "../hooks/AuthContext";
-import Swal from "sweetalert2";
 import Paginacion from "./Paginacion";
 
 const ProductList = () => {
+  const { categoriaSeleccionada } = useContext(FiltrosContext);
+
   const [productos, setProductos] = useState([]);
   const [paginaActual, setPaginaActual] = useState(1);
   const [paginasTotales, setTotalPaginas] = useState(1);
@@ -57,16 +57,12 @@ const ProductList = () => {
   const paginaAnterior = () => {
     setPaginaActual((paginaAnterior) => paginaAnterior - 1);
   };
-
-  const { loginOk } = useContext(authContext);
-  const { agregarProductos, agregarFavoritos, favoritos, eliminarFavorito } =
-    useContext(Carritocontext);
-
-  const { categoriaSeleccionada } = useContext(FiltrosContext);
-
   const productosFiltrados = categoriaSeleccionada
     ? productos.filter((product) => product.categoria === categoriaSeleccionada)
     : productos;
+
+  const { agregarProductos, agregarFavoritos, favoritos, eliminarFavorito } =
+    useContext(Carritocontext);
 
   return (
     <div className="container-fluid m-0 p-0 d-flex row">
@@ -100,7 +96,7 @@ const ProductList = () => {
                   >
                     <FontAwesomeIcon icon={faCartShopping} />
                   </button>
-                  {favoritos.includes(item) ? (
+                  {favoritos.find((producto) => producto.uid === item.uid) ? (
                     <button
                       className="btn btn-danger"
                       onClick={() => eliminarFavorito(item.uid)}
