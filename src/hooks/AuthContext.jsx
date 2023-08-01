@@ -24,6 +24,7 @@ const AuthProvider = ({ children }) => {
     localStorage.removeItem("token");
     localStorage.removeItem("usuario");
     localStorage.removeItem("carrito");
+    localStorage.removeItem("favoritos");
     navigate("/");
     setLoginOk(false);
     Swal.fire("Sesión Terminada");

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import { Container, Navbar, Offcanvas } from "react-bootstrap";
+import { Container, Nav, Navbar, Offcanvas } from "react-bootstrap";
 import { ModalCarrito } from "./ModalCarrito";
 import Logo from "../../src/assets/img/logotipo-rolling1.png";
 import "../styles/nav.css";
@@ -14,6 +14,7 @@ import {
 import { authContext } from "../hooks/AuthContext";
 
 export const Navegador = () => {
+  const usuario = JSON.parse(localStorage.getItem("usuario"));
   const [mostrarOffcanvas, setMostrarOffcanvas] = useState(false);
   const { logout, loginOk } = useContext(authContext);
   const navigate = useNavigate();
@@ -82,11 +83,14 @@ export const Navegador = () => {
               </Link>
             </Navbar.Brand>
 
-            <Navbar.Offcanvas id="offcanvas-show">
+            <Navbar.Offcanvas
+              id="offcanvas-show"
+              className="d-lg-none d-xl-none d-xxl-none "
+            >
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title>Rolling Tech</Offcanvas.Title>
               </Offcanvas.Header>
-              <div className="d-flex row gap-3 mx-auto cambio-direc">
+              <div className="d-flex row gap-3 mx-auto ">
                 <div className="d-lg-none d-xl-none d-xxl-none">
                   <form className="d-flex" role="search">
                     <input
@@ -99,29 +103,94 @@ export const Navegador = () => {
                     </button>
                   </form>
                 </div>
-                <Link
-                  to="/admin"
-                  onClick={mostrarOffcanvas}
-                  className="text-decoration-none text-dark "
-                >
-                  Admin Page
-                </Link>
+                {usuario === null || usuario.rol === "USER-ROLE" ? (
+                  <div className="row d-flex gap-3">
+                    <Link
+                      to="/"
+                      onClick={mostrarOffcanvas}
+                      className="text-decoration-none  text-dark "
+                    >
+                      Home Page
+                    </Link>
+                    <Link
+                      onClick={mostrarOffcanvas}
+                      to="/nosotros"
+                      className="text-decoration-none  text-dark "
+                    >
+                      Sobre Nosotros
+                    </Link>
+                  </div>
+                ) : (
+                  <div className="row d-flex gap-3">
+                    <Link
+                      to="/admin"
+                      onClick={mostrarOffcanvas}
+                      className="text-decoration-none text-dark "
+                    >
+                      Admin Page
+                    </Link>
+                    <Link
+                      to="/"
+                      onClick={mostrarOffcanvas}
+                      className="text-decoration-none  text-dark "
+                    >
+                      Home Page
+                    </Link>
+                    <Link
+                      onClick={mostrarOffcanvas}
+                      to="/nosotros"
+                      className="text-decoration-none  text-dark "
+                    >
+                      Sobre Nosotros
+                    </Link>
+                  </div>
+                )}
+              </div>
+            </Navbar.Offcanvas>
+
+            {usuario === null || usuario.rol === "USER-ROLE" ? (
+              <div className="d-none d-lg-block mx-auto">
                 <Link
                   to="/"
                   onClick={mostrarOffcanvas}
-                  className="text-decoration-none  text-dark "
+                  className="text-decoration-none text-dark mx-3"
                 >
                   Home Page
                 </Link>
                 <Link
                   onClick={mostrarOffcanvas}
                   to="/nosotros"
-                  className="text-decoration-none  text-dark "
+                  className="text-decoration-none text-dark mx-3"
                 >
                   Sobre Nosotros
                 </Link>
               </div>
-            </Navbar.Offcanvas>
+            ) : (
+              <div className="d-none d-lg-block mx-auto">
+                <Link
+                  to="/admin"
+                  onClick={mostrarOffcanvas}
+                  className="text-decoration-none text-dark mx-3"
+                >
+                  Admin Page
+                </Link>
+                <Link
+                  to="/"
+                  onClick={mostrarOffcanvas}
+                  className="text-decoration-none text-dark mx-3"
+                >
+                  Home Page
+                </Link>
+                <Link
+                  onClick={mostrarOffcanvas}
+                  to="/nosotros"
+                  className="text-decoration-none text-dark mx-3"
+                >
+                  Sobre Nosotros
+                </Link>
+              </div>
+            )}
+
             <div className="d-flex  justify-content-end col-2 my-auto d-lg-none d-xl-none d-xxl-none ">
               <Link className="text-decoration-none  my-auto">
                 {loginOk === true ? (
