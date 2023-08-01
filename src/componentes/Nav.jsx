@@ -10,6 +10,7 @@ import {
   faMagnifyingGlass,
   faHeart,
   faPowerOff,
+  faGear,
 } from "@fortawesome/free-solid-svg-icons";
 import { authContext } from "../hooks/AuthContext";
 
@@ -17,7 +18,6 @@ export const Navegador = () => {
   const usuario = JSON.parse(localStorage.getItem("usuario"));
   const [mostrarOffcanvas, setMostrarOffcanvas] = useState(false);
   const { logout, loginOk } = useContext(authContext);
-  const navigate = useNavigate();
 
   return (
     <>
@@ -123,13 +123,6 @@ export const Navegador = () => {
                 ) : (
                   <div className="row d-flex gap-3">
                     <Link
-                      to="/admin"
-                      onClick={mostrarOffcanvas}
-                      className="text-decoration-none text-dark "
-                    >
-                      Admin Page
-                    </Link>
-                    <Link
                       to="/"
                       onClick={mostrarOffcanvas}
                       className="text-decoration-none  text-dark "
@@ -143,6 +136,13 @@ export const Navegador = () => {
                     >
                       Sobre Nosotros
                     </Link>
+                    <Link
+                      to="/admin"
+                      onClick={mostrarOffcanvas}
+                      className="text-decoration-none text-dark "
+                    >
+                      <FontAwesomeIcon icon={faGear} />
+                    </Link>
                   </div>
                 )}
               </div>
@@ -153,14 +153,14 @@ export const Navegador = () => {
                 <Link
                   to="/"
                   onClick={mostrarOffcanvas}
-                  className="text-decoration-none text-dark mx-3"
+                  className="text-decoration-none text-dark fw-bold mx-3"
                 >
                   Home Page
                 </Link>
                 <Link
                   onClick={mostrarOffcanvas}
                   to="/nosotros"
-                  className="text-decoration-none text-dark mx-3"
+                  className="text-decoration-none text-dark fw-bold mx-3"
                 >
                   Sobre Nosotros
                 </Link>
@@ -168,25 +168,25 @@ export const Navegador = () => {
             ) : (
               <div className="d-none d-lg-block mx-auto">
                 <Link
-                  to="/admin"
-                  onClick={mostrarOffcanvas}
-                  className="text-decoration-none text-dark mx-3"
-                >
-                  Admin Page
-                </Link>
-                <Link
                   to="/"
                   onClick={mostrarOffcanvas}
-                  className="text-decoration-none text-dark mx-3"
+                  className="text-decoration-none text-dark fw-bold mx-3"
                 >
                   Home Page
                 </Link>
                 <Link
                   onClick={mostrarOffcanvas}
                   to="/nosotros"
-                  className="text-decoration-none text-dark mx-3"
+                  className="text-decoration-none text-dark fw-bold mx-3"
                 >
                   Sobre Nosotros
+                </Link>
+                <Link
+                  to="/admin"
+                  onClick={mostrarOffcanvas}
+                  className="text-decoration-none text-dark fw-bold mx-3"
+                >
+                  <FontAwesomeIcon icon={faGear} />
                 </Link>
               </div>
             )}

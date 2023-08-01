@@ -22,7 +22,7 @@ export const InventarioPage = () => {
   const [totalProductos, setTotalProductos] = useState(0);
   const [productos, setProductos] = useState([]);
   //paginacion
-  const limite = 12;
+  const limite = 100;
   const [desde, setDesde] = useState(0);
 
   useEffect(() => {
@@ -213,8 +213,8 @@ export const InventarioPage = () => {
             <option value="CELULARES">Celulares</option>
             <option value="TELEVISORES">Televisores</option>
             <option value="TABLETS">Tablets</option>
-            <option value="Notebooks">Notebooks</option>
-            <option value="Consolas">Consolas</option>
+            <option value="NOTEBOOKS">Notebooks</option>
+            <option value="CONSOLAS">Consolas</option>
           </select>
           <label className="fw-bold mb-1">Imagen URL</label>
           <input

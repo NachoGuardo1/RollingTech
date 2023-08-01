@@ -107,6 +107,7 @@ const CarritoProvider = ({ children }) => {
           favoritos,
           eliminarFavorito,
           restarProductos,
+          setFavoritos,
         }}
       >
         {children}
