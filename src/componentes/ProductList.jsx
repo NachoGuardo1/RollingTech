@@ -9,22 +9,31 @@ import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { getProductos } from "../helpers/ApiProductos";
 import { authContext } from "../hooks/AuthContext";
 import Swal from "sweetalert2";
+import Paginacion from "./Paginacion";
 
 const ProductList = () => {
   const [productos, setProductos] = useState([]);
-  const [totalProductos, setTotalProductos] = useState(0);
+  const [paginaActual, setPaginaActual] = useState(1);
+  const [paginasTotales, setTotalPaginas] = useState(1);
 
-  const limite = 100;
-  const [desde, setDesde] = useState(0);
+  const desde = (paginaActual - 1) * 2;
+  const limite = 2;
 
   useEffect(() => {
     traerProductos();
-  }, [desde]);
+  }, [paginaActual]);
 
   const traerProductos = async () => {
     const { productos, total } = await getProductos(limite, desde);
     setProductos(productos);
-    setTotalProductos(total);
+    setTotalPaginas(Math.ceil(total / 2));
+  };
+  const siguientePagina = () => {
+    setPaginaActual((paginaAnterior) => paginaAnterior + 1);
+  };
+
+  const paginaAnterior = () => {
+    setPaginaActual((paginaAnterior) => paginaAnterior - 1);
   };
 
   const { loginOk } = useContext(authContext);
@@ -99,6 +108,12 @@ const ProductList = () => {
           </Card>
         ))}
       </div>
+      <Paginacion
+        paginaActual={paginaActual}
+        paginasTotales={paginasTotales}
+        onSiguientePagina={siguientePagina}
+        onAnteriorPagina={paginaAnterior}
+      />
     </div>
   );
 };
