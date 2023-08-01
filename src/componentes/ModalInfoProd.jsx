@@ -24,7 +24,7 @@ function ModalInfo({ item }) {
         <Modal.Header closeButton>
           <Modal.Title>{item.nombre}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>{item.descrip}</Modal.Body>
+        <Modal.Body>Descripcion: {item.descrip}</Modal.Body>
       </Modal>
     </>
   );

@@ -51,21 +51,9 @@ export const InventarioPage = () => {
     const resp = await crearProducto(datos);
 
     if (resp?.producto) {
-      Swal.fire({
-        title: "¿Agregar Producto?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Si, estoy seguro!",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire("Agregado", "El producto ha sido agregado", "success");
-          console.log("Datos guardados exitosamente");
-          resetForm();
-          traerProductos();
-        }
-      });
+      Swal.fire("Producto agregado");
+      resetForm();
+      traerProductos();
     } else {
       console.error("Error al guardar los datos");
     }
@@ -96,19 +84,10 @@ export const InventarioPage = () => {
     };
     const resp = await actualizarProducto(prodEdit.uid, datos);
     if (resp?.producto) {
-      Swal.fire({
-        title: "¿Quieres guardar los cambios?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Si, estoy seguro!",
-      }).then((result) => {
-        if (result.isConfirmed) console.log("Datos actualizados exitosamente");
-        resetForm();
-        traerProductos();
-        setProdEdit(null);
-      });
+      Swal.fire("Cambios Guardados");
+      resetForm();
+      traerProductos();
+      setProdEdit(null);
     } else {
       console.error("Error al actualizar los datos");
       alert("Error al guardar los cambios");
@@ -116,32 +95,36 @@ export const InventarioPage = () => {
   };
 
   const eliminarProducto = (productoUid) => {
+    const nuevosProductos = productos.filter((p) => p.uid !== productoUid);
+    setProductos(nuevosProductos);
+    borrarProducto(productoUid);
+  };
+  const validarEliminacion = (productoUid) => {
     Swal.fire({
       title: "¿Estas seguro que quieres eliminar este producto?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Si, estoy seguro!",
+      confirmButtonText: "Si, Eliminar producto",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire("Eliminado", "El producto ha sido eliminado", "success");
-        const nuevosProductos = productos.filter((p) => p.uid !== productoUid);
-        setProductos(nuevosProductos);
-        borrarProducto(productoUid);
+        Swal.fire("Eliminado!", "El producto se eliminó", "success");
+        eliminarProducto(productoUid);
       }
     });
   };
 
   return (
     <div className="row  justify-content-around my-3">
+      <h3 className="text-center mb-3">LISTADO DE PRODUCTOS</h3>
+
       <div
-        className="table-responsive col-xl-6 col-lg-6 col-md-9 col-sm-9 "
+        className="table-responsive col-xl-6 col-lg-6 col-md-10 col-sm-10 mb-4 "
         style={{
           maxHeight: "28rem",
         }}
       >
-        <h3 className="text-center">LISTADO DE PRODUCTOS</h3>
         <table className="table table-secondary table-md table-striped table-hover fw-lighter">
           <thead className="table-dark">
             <tr className="text-center">
@@ -158,7 +141,7 @@ export const InventarioPage = () => {
                 <td>
                   <button
                     className="btn btn-danger"
-                    onClick={() => eliminarProducto(producto.uid)}
+                    onClick={() => validarEliminacion(producto.uid)}
                   >
                     <FontAwesomeIcon icon={faTrashAlt} />
                   </button>

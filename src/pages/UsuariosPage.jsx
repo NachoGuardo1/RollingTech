@@ -30,7 +30,7 @@ export const UsuariosPage = () => {
           maxHeight: "28rem",
         }}
       >
-        <h3 className="text-center">Listado de Usuarios</h3>
+        <h3 className="text-center mb-3">LISTADO DE USUARIOS</h3>
         <table className="table table-secondary table-md table-striped fw-lighter table-hover ">
           <thead className="table-dark">
             <tr className="text-center">
