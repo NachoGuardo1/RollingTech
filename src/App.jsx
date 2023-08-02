@@ -16,10 +16,8 @@ import { Footer } from "./componentes/Footer";
 import { AuthProvider } from "./hooks/AuthContext";
 import ProtectedRoutesAdmin from "./routes/ProtectedRoutesAdmin";
 import ProtectedRoutesFav from "./routes/ProtectedRoutesFav";
-import { Contacto } from "./pages/Contacto";
-
 import "./styles/app.css";
-
+import { Error404 } from "./pages/ErrorPage";
 
 function App() {
   return (
@@ -30,8 +28,6 @@ function App() {
             <Routes>
               <Route path="/" element={<Navegador />}>
                 <Route index element={<HomePage />} />
-
-
                 <Route
                   path="/admin"
                   element={
@@ -42,12 +38,9 @@ function App() {
                 >
                   <Route path="inventario" element={<InventarioPage />} />
                   <Route path="usuarios" element={<UsuariosPage />} />
-
                 </Route>
-
                 <Route path="nosotros" element={<Nosotros />} />
                 <Route path="pago" element={<PagoPage />} />
-                <Route path="contacto" element={<Contacto />} />
                 <Route
                   path="favoritos"
                   element={
@@ -56,6 +49,7 @@ function App() {
                     </ProtectedRoutesFav>
                   }
                 />
+                <Route path="error" element={<Error404 />} />
               </Route>
             </Routes>
           </AuthProvider>

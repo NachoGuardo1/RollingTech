@@ -3,7 +3,6 @@ import "../styles/footer.css";
 import Logo from "../../src/assets/img/logotipo-rolling1.png";
 import QR from "../../src/assets/img/qrLogo1.png";
 import { Link } from "react-router-dom";
-import { Contacto } from "../pages/Contacto";
 
 export const Footer = () => {
   return (
@@ -28,15 +27,9 @@ export const Footer = () => {
           </ul>
         </div>
         <div className="col-xs-12 col-md-4 col-lg-3 foot-info">
-          {/* <h5 className="mb-1">Contáctanos!</h5> */}
           <ul className="list-unstyled">
             <li>
-                <Link
-                      to="/contacto"
-                      className="text-decoration-none  text-dark "
-                    >
-                      Contactanos
-                    </Link>
+              <h5 className="text-decoration-none text-light ">Contactanos</h5>
             </li>
             <li>
               <a href="https://goo.gl/maps/sN6qjQ3f9taF82Zz9">Gral Paz 576 </a>
