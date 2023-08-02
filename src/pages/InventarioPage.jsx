@@ -29,6 +29,11 @@ export const InventarioPage = () => {
     traerProductos();
   }, [desde]);
 
+  function primeraLetraMayus(texto){
+    return texto.charAt(0).toUpperCase() + texto.slice(1);
+}
+
+
   const resetForm = () => {
     //reset form
     setProductoNombre("");
@@ -40,6 +45,7 @@ export const InventarioPage = () => {
   const CrearProducto = async (e) => {
     e.preventDefault();
     //Obtener datos ingresados
+
     const datos = {
       nombre: inputNombre,
       descrip: inputDescrip,
@@ -47,6 +53,7 @@ export const InventarioPage = () => {
       categoria: inputCategoria,
       img: inputImg,
     };
+    console.log(datos);
 
     const resp = await crearProducto(datos);
 
@@ -164,7 +171,7 @@ export const InventarioPage = () => {
             type="text"
             className="form-control mb-3"
             value={inputNombre}
-            onChange={(e) => setProductoNombre(e.target.value)}
+            onChange={(e) => setProductoNombre(primeraLetraMayus(e.target.value))}
             required
           />
           <label className="fw-bold mb-1">Descripcion</label>
@@ -172,7 +179,7 @@ export const InventarioPage = () => {
             type="text"
             className="form-control mb-3"
             value={inputDescrip}
-            onChange={(e) => setProductoDescripcion(e.target.value)}
+            onChange={(e) => setProductoDescripcion(primeraLetraMayus(e.target.value))}
             required
           />
           <label className="fw-bold mb-1">Precio</label>
