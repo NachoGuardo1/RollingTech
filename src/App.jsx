@@ -12,7 +12,6 @@ import {
 import { Navegador } from "./componentes/Nav";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { CarritoProvider } from "./hooks/CarritoContext";
-import { CategoriaProvider } from "./hooks/FiltroContext";
 import { Footer } from "./componentes/Footer";
 import { AuthProvider } from "./hooks/AuthContext";
 import ProtectedRoutesAdmin from "./routes/ProtectedRoutesAdmin";
@@ -25,36 +24,34 @@ function App() {
       <BrowserRouter>
         <CarritoProvider>
           <AuthProvider>
-            <CategoriaProvider>
-              <Routes>
-                <Route path="/" element={<Navegador />}>
-                  <Route index element={<HomePage />} />
+            <Routes>
+              <Route path="/" element={<Navegador />}>
+                <Route index element={<HomePage />} />
 
-                  <Route
-                    path="/admin"
-                    element={
-                      <ProtectedRoutesAdmin>
-                        <AdminPage />
-                      </ProtectedRoutesAdmin>
-                    }
-                  >
-                    <Route path="inventario" element={<InventarioPage />} />
-                    <Route path="usuarios" element={<UsuariosPage />} />
-                  </Route>
-
-                  <Route path="nosotros" element={<Nosotros />} />
-                  <Route path="pago" element={<PagoPage />} />
-                  <Route
-                    path="favoritos"
-                    element={
-                      <ProtectedRoutesFav>
-                        <FavoritosPage />
-                      </ProtectedRoutesFav>
-                    }
-                  />
+                <Route
+                  path="/admin"
+                  element={
+                    <ProtectedRoutesAdmin>
+                      <AdminPage />
+                    </ProtectedRoutesAdmin>
+                  }
+                >
+                  <Route path="inventario" element={<InventarioPage />} />
+                  <Route path="usuarios" element={<UsuariosPage />} />
                 </Route>
-              </Routes>
-            </CategoriaProvider>
+
+                <Route path="nosotros" element={<Nosotros />} />
+                <Route path="pago" element={<PagoPage />} />
+                <Route
+                  path="favoritos"
+                  element={
+                    <ProtectedRoutesFav>
+                      <FavoritosPage />
+                    </ProtectedRoutesFav>
+                  }
+                />
+              </Route>
+            </Routes>
           </AuthProvider>
         </CarritoProvider>
         <Footer>

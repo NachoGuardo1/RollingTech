@@ -69,6 +69,7 @@ const CarritoProvider = ({ children }) => {
       }
     });
   };
+
   const vaciarCarrito = () => {
     Swal.fire({
       title: "¿Estas seguro que quieres eliminar todos los productos?",
@@ -89,6 +90,7 @@ const CarritoProvider = ({ children }) => {
       }
     });
   };
+
   const total = carrito.reduce((acumulador, item) => {
     return acumulador + item.precio * item.cantidad;
   }, 0);
