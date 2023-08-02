@@ -1,9 +1,6 @@
 import React from "react";
 import { Carrousel } from "../componentes/Carrousel";
-import { useState } from "react";
-import Paginacion from "../componentes/Paginacion";
 import ProductList from "../componentes/ProductList";
-import { DropdownCategoria } from "../componentes/DropdownCategoria";
 
 export const HomePage = () => {
   return (

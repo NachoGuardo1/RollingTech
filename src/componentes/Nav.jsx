@@ -13,6 +13,7 @@ import {
   faGear,
 } from "@fortawesome/free-solid-svg-icons";
 import { authContext } from "../hooks/AuthContext";
+import { BtnWhatsapp } from "./BtnWhatsapp";
 
 export const Navegador = () => {
   const usuario = JSON.parse(localStorage.getItem("usuario"));
@@ -68,7 +69,7 @@ export const Navegador = () => {
               aria-controls="offcanvas-show"
               show={mostrarOffcanvas}
               onClick={() => setMostrarOffcanvas(true)}
-              className="ms-1"
+              className="ms-2"
             />
 
             <Navbar.Brand className="d-lg-none d-xl-none d-xxl-none ">
@@ -110,7 +111,7 @@ export const Navegador = () => {
                       onClick={mostrarOffcanvas}
                       className="text-decoration-none  text-dark "
                     >
-                      Home Page
+                      Inicio
                     </Link>
                     <Link
                       onClick={mostrarOffcanvas}
@@ -118,6 +119,12 @@ export const Navegador = () => {
                       className="text-decoration-none  text-dark "
                     >
                       Sobre Nosotros
+                    </Link>
+                    <Link
+                      onClick={mostrarOffcanvas}
+                      className="text-decoration-none  text-dark "
+                    >
+                      <BtnWhatsapp />
                     </Link>
                   </div>
                 ) : (
@@ -127,7 +134,7 @@ export const Navegador = () => {
                       onClick={mostrarOffcanvas}
                       className="text-decoration-none  text-dark "
                     >
-                      Home Page
+                      Inicio
                     </Link>
                     <Link
                       onClick={mostrarOffcanvas}
@@ -135,6 +142,12 @@ export const Navegador = () => {
                       className="text-decoration-none  text-dark "
                     >
                       Sobre Nosotros
+                    </Link>
+                    <Link
+                      onClick={mostrarOffcanvas}
+                      className="text-decoration-none  text-dark "
+                    >
+                      <BtnWhatsapp />
                     </Link>
                     <Link
                       to="/admin"
@@ -155,7 +168,7 @@ export const Navegador = () => {
                   onClick={mostrarOffcanvas}
                   className="text-decoration-none text-dark fw-bold mx-3"
                 >
-                  Home Page
+                  Inicio
                 </Link>
                 <Link
                   onClick={mostrarOffcanvas}
@@ -163,6 +176,12 @@ export const Navegador = () => {
                   className="text-decoration-none text-dark fw-bold mx-3"
                 >
                   Sobre Nosotros
+                </Link>
+                <Link
+                  onClick={mostrarOffcanvas}
+                  className="text-decoration-none fw-bold "
+                >
+                  <BtnWhatsapp />
                 </Link>
               </div>
             ) : (
@@ -172,7 +191,7 @@ export const Navegador = () => {
                   onClick={mostrarOffcanvas}
                   className="text-decoration-none text-dark fw-bold mx-3"
                 >
-                  Home Page
+                  Inicio
                 </Link>
                 <Link
                   onClick={mostrarOffcanvas}
@@ -180,6 +199,12 @@ export const Navegador = () => {
                   className="text-decoration-none text-dark fw-bold mx-3"
                 >
                   Sobre Nosotros
+                </Link>
+                <Link
+                  onClick={mostrarOffcanvas}
+                  className="text-decoration-none fw-bold "
+                >
+                  <BtnWhatsapp />
                 </Link>
                 <Link
                   to="/admin"

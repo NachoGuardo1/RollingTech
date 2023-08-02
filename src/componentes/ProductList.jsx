@@ -116,13 +116,13 @@ const ProductList = () => {
             />
             <Card.Body className="text-center ">
               <div className="row h5 card-title align-items-center">
-                <div className="col-10 text-center texto-cartas ">
+                <div className="col-10 text-start texto-cartas ">
                   {item.nombre}
                 </div>
                 <div className="col-2 justify-content-center my-auto d-flex">
                   <ModalInfo item={item} />
                 </div>
-                <p className="my-1 fw-bold texto-cartas">${item.precio}</p>
+                <p className="my-1 fw-bold text-start ">${item.precio}</p>
               </div>
               <div className="row card-footer">
                 <div className="d-flex gap-3 justify-content-around">

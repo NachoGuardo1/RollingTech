@@ -1,5 +1,6 @@
 .head-cont-completo {
   background-color: #252525a1;
+  margin-bottom: 0rem;
 }
 .head-cont {
   background-color: #868686a1;
@@ -18,5 +19,10 @@
 @media (min-width: 992px) {
   .head-cont {
     display: block;
+  }
+}
+@media (max-width: 768px) {
+  .head-cont-completo {
+    margin-bottom: 2rem;
   }
 }
