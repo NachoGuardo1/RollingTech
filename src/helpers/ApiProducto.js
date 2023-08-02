@@ -14,7 +14,6 @@ export const getProductos = async (desde = 0, limite) => {
     const data = await resp.json();
     return data;
   } catch (error) {
-    console.log(error);
     throw new Error("No se pudo obtener la información de los productos");
   }
 };
@@ -55,7 +54,6 @@ export const crearProducto = async (datos) => {
 
     return data;
   } catch (error) {
-    console.log(error);
     return { msg: "No se conectó con backend" };
   }
 };
@@ -76,7 +74,6 @@ export const actualizarProducto = async (id, datos) => {
 
     return data;
   } catch (error) {
-    console.log(error);
     return { msg: "No se conectó con backend" };
   }
 };

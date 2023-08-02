@@ -27,7 +27,6 @@ const ProductList = () => {
 
   useEffect(() => {
     traerProductos();
-    console.log(productos);
   }, []);
 
   const traerProductos = async () => {

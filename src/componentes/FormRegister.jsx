@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { crearUsuario } from "../helpers/ApiUsuario";
 import Swal from "sweetalert2";
 
-
 export const FormRegister = ({ anteriorParte }) => {
   const [inputNombre, setInputNombre] = useState("");
   const [inputCorreo, setInputCorreo] = useState("");
@@ -10,49 +9,48 @@ export const FormRegister = ({ anteriorParte }) => {
   //estados fijos
   const v_rol = "USER-ROLE";
 
-  const [valorValidacion, setValorValidacion] = useState(null);
-   const RegistroUsuario = async (e) => {
+  const [error, setError] = useState("");
+  const nombreRegex = /^[a-zA-Z]{6,}$/;
+  const correoRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const contraseñaRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,10}$/;
+
+  const RegistroUsuario = async (e) => {
     e.preventDefault();
+    setError("");
 
-    setValorValidacion(null);
-    if (inputNombre.match(/([A-Z]{1})([a-záéíóúñç]{2,})$/)){
-      console.log("nombre ok")
-      if (inputCorreo.match(/([a-z]\w+@[a-z]+\.[a-z]{2,5})/)){
-        console.log("correo ok");
-
-        const datos = {
-          nombre: inputNombre,
-          correo: inputCorreo,
-          contrasena: inputContrasena,
-          rol: v_rol,
-        };
-    
-        try {
-          const resp = await crearUsuario(datos);
-          if (resp?.usuario) {
-            console.log("Datos del Usuario guardados exitosamente");
-            anteriorParte();
-          } else {
-            console.error("Error al guardar los datos. Crear Usuario");
-            Swal.fire("No se pudo completar el registro");
-          }
-        } catch (error) {
-          console.error("Error al guardar los datos. Crear Usuario");
-        }
-    
-
-      }else{  
-        console.error("El formato introducido para CORREO no es el correcto");
-        setValorValidacion("El formato introducido para CORREO no es el correcto");
-        console.log(valorValidacion)
-      };
-    }else { 
-      console.error("El formato introducido para NOMBRE no es el correcto");
-      setValorValidacion("El formato introducido para NOMBRE no es el correcto");
-      console.log(valorValidacion)
+    const datos = {
+      nombre: inputNombre,
+      correo: inputCorreo,
+      contrasena: inputContrasena,
+      rol: v_rol,
     };
+    if (!nombreRegex.test(inputNombre)) {
+      setError(
+        "El nombre debe contener al menos 6 carateres y todos ellos deben ser letras"
+      );
+      return;
+    }
+    if (!correoRegex.test(inputCorreo)) {
+      setError("Dirección de correo electrónico no válida.");
+      return;
+    }
 
+    if (!contraseñaRegex.test(inputContrasena)) {
+      setError("La contraseña no cumple con los requisitos de seguridad");
+      return;
+    }
 
+    try {
+      const resp = await crearUsuario(datos);
+      if (resp?.usuario) {
+        console.log("Datos del Usuario guardados exitosamente");
+        anteriorParte();
+      } else {
+        Swal.fire("No se pudo completar el registro");
+      }
+    } catch (error) {
+      console.error("Error al guardar los datos. Crear Usuario");
+    }
   };
 
   return (
@@ -63,7 +61,7 @@ export const FormRegister = ({ anteriorParte }) => {
           <input
             type="text"
             className="form-control"
-            placeholder="Ingrese Nombre"            
+            placeholder="Ingrese Nombre"
             value={inputNombre}
             onChange={(e) => setInputNombre(e.target.value)}
             required
@@ -74,9 +72,9 @@ export const FormRegister = ({ anteriorParte }) => {
           <input
             type="email"
             className="form-control"
-            placeholder="Ingrese correo correo@...com"            
+            placeholder="Ingrese correo correo@...com"
             value={inputCorreo}
-            onChange={(e) => setInputCorreo(e.target.value) }
+            onChange={(e) => setInputCorreo(e.target.value)}
             required
           />
         </div>
@@ -85,25 +83,23 @@ export const FormRegister = ({ anteriorParte }) => {
           <input
             type="password"
             className="form-control"
-            placeholder="Ingrese Contraseña"            
+            placeholder="Ingrese Contraseña"
             value={inputContrasena}
             onChange={(e) => setInputContrasena(e.target.value)}
             required
           />
           <div class="form-text">
-            <span className="text-danger text-small d-block mb-2">
-                    {valorValidacion && valorValidacion}
-            </span>
+            8 a 10 caracteres, al menos una letra mayuscula, una minuscula y un
+            número.
           </div>
-
         </div>
+        <div>{error && <p style={{ color: "red" }}>{error}</p>}</div>
 
-        <div className="mt-3 d-grid">
+        <div className="mt-1 d-grid">
           <button
             className="btn btn-success my-3"
             type="submit"
             onClick={RegistroUsuario}
-            //onClick={validarDatos}
           >
             Registrarse
           </button>
@@ -113,12 +109,8 @@ export const FormRegister = ({ anteriorParte }) => {
             Volver al login
           </a>
         </div>
-        <script>
-
-        </script>
-
+        <script></script>
       </form>
-
     </div>
   );
 };

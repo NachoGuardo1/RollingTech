@@ -8,26 +8,36 @@ export const FormPago = () => {
   const [numeroTarjeta, setNumTarjeta] = useState("");
   const [fechaVencimiento, setFechaVenc] = useState("");
   const [codigoSeguridad, setCodSeguridad] = useState("");
-
   const { total, setCarrito } = useContext(Carritocontext);
   const navigate = useNavigate();
-
   const usuarioData = JSON.parse(localStorage.getItem("usuario"));
+
+  const [error, setError] = useState("");
+  const numTarjetaRegex = /^\d{4}-\d{4}-\d{4}-\d{4}$/;
+  const fechaVencimientoRegex = /^\d{2}\/\d{2}$/;
+  const codSeguridadRegex = /^\d{3}$/;
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (
-      numeroTarjeta === "" ||
-      fechaVencimiento === "" ||
-      codigoSeguridad === ""
-    ) {
-      Swal.fire("Debes completar todos los campos");
-    } else {
-      Swal.fire("Tu compra fue exitosa");
-      setCarrito([]);
-      localStorage.removeItem("carrito");
-      navigate("/");
+
+    if (!numTarjetaRegex.test(numeroTarjeta)) {
+      setError("Los numeros ingresados son incorrectos");
+      return;
     }
+    if (!fechaVencimientoRegex.test(fechaVencimiento)) {
+      setError("La fecha indicada no es la correcta");
+      return;
+    }
+
+    if (!codSeguridadRegex.test(codigoSeguridad)) {
+      setError("El codigo indicado no es correcto");
+      return;
+    }
+
+    Swal.fire("Tu compra fue exitosa");
+    setCarrito([]);
+    localStorage.removeItem("carrito");
+    navigate("/");
   };
 
   return (
@@ -50,20 +60,20 @@ export const FormPago = () => {
       <form className="row ">
         <div className="row">
           <h5 className="my-3 fw-bold">Datos de Pago</h5>
-          <label className="fw-bold">
+          <label className="fw-bold my-2">
             Número de tarjeta:
             <input
-              type="number"
+              type="text"
               value={numeroTarjeta}
               onChange={(e) => setNumTarjeta(e.target.value)}
               required
               className="my-1 form-control"
-              minLength={18}
-              maxLength={18}
-              placeholder="xxxx-xxxx-xxxx"
             />
+            <div class="form-text">
+              Ingrese el formato dddd-dddd-dddd-dddd, incluyendo guiones
+            </div>
           </label>
-          <label className="fw-bold">
+          <label className="fw-bold my-2">
             Fecha de vencimiento:
             <input
               type="text"
@@ -71,12 +81,10 @@ export const FormPago = () => {
               onChange={(e) => setFechaVenc(e.target.value)}
               required
               className="my-1 form-control"
-              minLength={5}
-              maxLength={5}
-              placeholder="dd/mm"
             />
+            <div class="form-text">Ingrese el formato dd/mm.</div>
           </label>
-          <label className="fw-bold">
+          <label className="fw-bold my-2">
             Código de seguridad:
             <input
               type="number"
@@ -84,11 +92,12 @@ export const FormPago = () => {
               onChange={(e) => setCodSeguridad(e.target.value)}
               required
               className="my-1 form-control"
-              minLength={3}
-              maxLength={3}
-              placeholder="xxx"
             />
+            <div class="form-text">
+              Ingrese los 3 numeros de seguridad al dorso de su tarjeta
+            </div>
           </label>
+          <div>{error && <p style={{ color: "red" }}>{error}</p>}</div>
           <button className="btn btn-success my-3" onClick={onSubmit}>
             Finalizar compra
           </button>
