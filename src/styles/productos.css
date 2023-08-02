@@ -1,0 +1,19 @@
+.efectos-card {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s box-shadow 0.3s ease;
+}
+.efectos-card:hover {
+  transform: scale(1.05);
+  z-index: 1;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+}
+.texto-cartas {
+  font-size: medium;
+}
+
+@media (max-width: 768px) {
+  .efectos-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}

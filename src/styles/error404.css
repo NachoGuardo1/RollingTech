@@ -1,0 +1,38 @@
+.error404 {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.error-img {
+  margin-top: 250px;
+}
+
+.error-title {
+  position: absolute;
+  margin-bottom: 120px;
+  font-size: 3rem;
+  color: #00000063;
+}
+
+.error-subtitle {
+  position: absolute;
+  margin-bottom: 150px;
+  bottom: 6rem;
+  color: #9c9c9c;
+}
+
+.error-a {
+  position: absolute;
+  bottom: 150px;
+  background: linear-gradient(45deg, #ff0034, #ffbc00);
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 23px;
+  border-radius: 13px;
+}

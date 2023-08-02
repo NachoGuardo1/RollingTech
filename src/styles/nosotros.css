@@ -1,0 +1,99 @@
+.presentacion .intro {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+}
+
+.carta-nosotros {
+  position: relative;
+  width: 300px;
+  height: 350px;
+  margin: 20px;
+}
+
+.carta-nosotros .face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+.carta-nosotros .front {
+  transform: perspective(600px) rotateY(0deg);
+  box-shadow: 0 5px 10px #000;
+}
+
+.carta-nosotros .front img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carta-nosotros .front h3 {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 45px;
+  line-height: 45px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+.carta-nosotros .back {
+  transform: perspective(600px) rotateY(180deg);
+  background: linear-gradient(to bottom, #3f3f3f, #666666);
+
+  padding: 15px;
+  color: #f3f3f3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  box-shadow: 0 5px 10px #000;
+}
+
+.carta-nosotros .back .redes {
+  border-top: solid 1px #faf7f7;
+  height: 50px;
+  line-height: 50px;
+}
+.lista-redes {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  list-style: none;
+  justify-content: space-around;
+}
+.carta-nosotros .back h3 {
+  font-size: 30px;
+  margin-top: 20px;
+  letter-spacing: 2px;
+}
+
+.carta-nosotros .back p {
+  letter-spacing: 1px;
+}
+
+.carta-nosotros:hover .front {
+  transform: perspective(600px) rotateY(180deg);
+}
+
+.carta-nosotros:hover .back {
+  transform: perspective(600px) rotateY(360deg);
+}
