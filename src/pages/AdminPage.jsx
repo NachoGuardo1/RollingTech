@@ -1,10 +1,13 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 export const AdminPage = () => {
-  const navigate = useNavigate();
+  const mantenimiento = () => {
+    Swal.fire("Pagina en mantimiento");
+  };
 
   return (
     <>
-      <div className="m-5 container-fluid row gap-4 justify-content-center">
+      <div className="my-5 container-fluid row gap-4 justify-content-center">
         <Link
           to="/admin/usuarios"
           className="p-4 bg-dark text-light col-3 text-center btn"
@@ -13,7 +16,7 @@ export const AdminPage = () => {
         </Link>
         <button
           className="p-4 bg-dark text-light col-3 text-center btn"
-          onClick={() => navigate("/admin/ventas")}
+          onClick={mantenimiento}
         >
           Ventas
         </button>

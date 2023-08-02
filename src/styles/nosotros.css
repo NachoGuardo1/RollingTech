@@ -2,8 +2,7 @@
   text-align: center;
   justify-content: center;
   align-items: center;
-  color: #f3f3f3;
-  background: rgb(3, 35, 54);
+  color: black;
 }
 
 .wrapper {
@@ -12,7 +11,6 @@
   align-items: center;
   justify-content: center;
   min-height: 70vh;
-  background: rgb(3, 35, 54);
 }
 
 .carta-nosotros {
@@ -57,7 +55,8 @@
 
 .carta-nosotros .back {
   transform: perspective(600px) rotateY(180deg);
-  background: rgb(3, 35, 54);
+  background: linear-gradient(to bottom, #3f3f3f, #666666);
+
   padding: 15px;
   color: #f3f3f3;
   display: flex;

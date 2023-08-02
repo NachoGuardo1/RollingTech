@@ -19,6 +19,9 @@ import ProtectedRoutesAdmin from "./routes/ProtectedRoutesAdmin";
 import ProtectedRoutesFav from "./routes/ProtectedRoutesFav";
 import { Contacto } from "./pages/Contacto";
 
+import "./styles/app.css";
+
+
 function App() {
   return (
     <>

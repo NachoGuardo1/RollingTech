@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { FiltrosContext } from "../hooks/FiltroContext";
 import { Card } from "react-bootstrap";
 import ModalInfo from "./ModalInfoProd";
 import { Carritocontext } from "../hooks/CarritoContext";
@@ -10,62 +9,70 @@ import { getProductos } from "../helpers/ApiProducto";
 import Paginacion from "./Paginacion";
 import { authContext } from "../hooks/AuthContext";
 import Swal from "sweetalert2";
+import { DropdownCategoria } from "./DropdownCategoria";
+import { useMediaQuery, useTheme } from "@material-ui/core";
 
 const ProductList = () => {
-  const { categoriaSeleccionada } = useContext(FiltrosContext);
-
   const [productos, setProductos] = useState([]);
+  const [prodPorPag, setProdPorPag] = useState(6);
   const [paginaActual, setPaginaActual] = useState(1);
-  const [paginasTotales, setTotalPaginas] = useState(1);
-  const [prodXPage, setProdXPage] = useState(5);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("");
+  const categorias = [
+    "CELULARES",
+    "TELEVISORES",
+    "NOTEBOOKS",
+    "CONSOLAS",
+    "TABLETS",
+  ];
 
-  useEffect(() => {
-    if (windowWidth < 768) {
-      setProdXPage(3);
-    } else if (windowWidth >= 768 && windowWidth < 1024) {
-      setProdXPage(5);
-    } else {
-      setProdXPage(8);
-    }
-  }, [windowWidth]);
-  useEffect(() => {
-    const cambioTamaño = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    window.addEventListener("resize", cambioTamaño);
-    return () => {
-      window.removeEventListener("resize", cambioTamaño);
-    };
-  }, []);
   useEffect(() => {
     traerProductos();
-  }, [paginaActual]);
-
-  const desde = (paginaActual - 1) * prodXPage;
-  const limite = prodXPage;
+    console.log(productos);
+  }, []);
 
   const traerProductos = async () => {
-    const { productos, total } = await getProductos(limite, desde);
+    const { productos } = await getProductos(limite, desde);
     setProductos(productos);
-    setTotalPaginas(Math.ceil(total / prodXPage));
-  };
-  const siguientePagina = () => {
-    setPaginaActual((paginaAnterior) => paginaAnterior + 1);
-  };
-
-  const paginaAnterior = () => {
-    setPaginaActual((paginaAnterior) => paginaAnterior - 1);
   };
 
   const productosFiltrados = categoriaSeleccionada
-    ? productos.filter((product) => product.categoria === categoriaSeleccionada)
+    ? productos.filter(
+        (producto) => producto.categoria === categoriaSeleccionada
+      )
     : productos;
+
+  const totalProducts = productosFiltrados.length;
+  const paginasTotales = Math.ceil(totalProducts / prodPorPag);
+  const desde = (paginaActual - 1) * prodPorPag;
+  const limite = desde + prodPorPag;
+  const productosFinales = productosFiltrados.slice(desde, limite);
+
+  const cambioCategoria = (e) => {
+    setCategoriaSeleccionada(e.target.value);
+    setPaginaActual(1);
+  };
+
+  const cambioPagina = (paginaNueva) => {
+    if (paginaNueva >= 1 && paginaNueva <= paginasTotales) {
+      setPaginaActual(paginaNueva);
+    }
+  };
+
+  const cambioPaginaAnterior = () => {
+    if (paginaActual > 1) {
+      setPaginaActual(paginaActual - 1);
+    }
+  };
+
+  const cambioPagSiguiente = () => {
+    if (paginaActual < paginasTotales) {
+      setPaginaActual(paginaActual + 1);
+    }
+  };
 
   const { agregarProductos, agregarFavoritos, favoritos, eliminarFavorito } =
     useContext(Carritocontext);
   const { loginOk } = useContext(authContext);
-
   const agregarFav = (item) => {
     if (loginOk === true) {
       agregarFavoritos(item);
@@ -74,14 +81,34 @@ const ProductList = () => {
     }
   };
 
+  const theme = useTheme();
+  const tamañoMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const tamañoTablet = useMediaQuery(theme.breakpoints.between("md", "lg"));
+  const tamañoNotebook = useMediaQuery(theme.breakpoints.up("lg"));
+
+  useEffect(() => {
+    if (tamañoMobile) {
+      setProdPorPag(10);
+    } else if (tamañoTablet) {
+      setProdPorPag(12);
+    } else if (tamañoNotebook) {
+      setProdPorPag(15);
+    }
+  }, [tamañoMobile, tamañoTablet, tamañoNotebook]);
+
   return (
     <div className="container-fluid m-0 p-0 d-flex row">
+      <DropdownCategoria
+        categoriaSeleccionada={categoriaSeleccionada}
+        cambioCategoria={cambioCategoria}
+        categorias={categorias}
+      />
       <div className="row d-flex gap-3 justify-content-center">
-        {productosFiltrados.map((item) => (
+        {productosFinales.map((item) => (
           <Card
             style={{ width: "14rem", height: "25rem" }}
             key={item.uid}
-            className=" border border-secondary efectos-card p-0"
+            className=" border border-dark efectos-card p-0"
           >
             <Card.Img
               variant="top"
@@ -128,10 +155,11 @@ const ProductList = () => {
         ))}
       </div>
       <Paginacion
-        paginaActual={paginaActual}
         paginasTotales={paginasTotales}
-        onSiguientePagina={siguientePagina}
-        onAnteriorPagina={paginaAnterior}
+        cambioPagina={cambioPagina}
+        cambioPagSiguiente={cambioPagSiguiente}
+        cambioPaginaAnterior={cambioPaginaAnterior}
+        paginaActual={paginaActual}
       />
     </div>
   );

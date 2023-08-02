@@ -1,8 +1,7 @@
 const url = "http://localhost:3000/api/productos";
 const token = JSON.parse(localStorage.getItem("token"));
-const limite = 6;
 
-export const getProductos = async (desde = 0) => {
+export const getProductos = async (desde = 0, limite) => {
   try {
     const resp = await fetch(url + "?limite=" + limite + "&desde=" + desde, {
       method: "GET",
