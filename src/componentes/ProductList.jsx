@@ -7,26 +7,18 @@ import "../styles/productos.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { getProductos } from "../helpers/ApiProducto";
+import Paginacion from "./Paginacion";
 import { authContext } from "../hooks/AuthContext";
 import Swal from "sweetalert2";
-import Paginacion from "./Paginacion";
 
 const ProductList = () => {
+  const { categoriaSeleccionada } = useContext(FiltrosContext);
+
   const [productos, setProductos] = useState([]);
   const [paginaActual, setPaginaActual] = useState(1);
   const [paginasTotales, setTotalPaginas] = useState(1);
   const [prodXPage, setProdXPage] = useState(5);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const cambioTamaño = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    window.addEventListener("resize", cambioTamaño);
-    return () => {
-      window.removeEventListener("resize", cambioTamaño);
-    };
-  }, []);
 
   useEffect(() => {
     if (windowWidth < 768) {
@@ -37,13 +29,21 @@ const ProductList = () => {
       setProdXPage(8);
     }
   }, [windowWidth]);
-
-  const desde = (paginaActual - 1) * prodXPage;
-  const limite = prodXPage;
-
+  useEffect(() => {
+    const cambioTamaño = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", cambioTamaño);
+    return () => {
+      window.removeEventListener("resize", cambioTamaño);
+    };
+  }, []);
   useEffect(() => {
     traerProductos();
   }, [paginaActual]);
+
+  const desde = (paginaActual - 1) * prodXPage;
+  const limite = prodXPage;
 
   const traerProductos = async () => {
     const { productos, total } = await getProductos(limite, desde);
@@ -58,15 +58,21 @@ const ProductList = () => {
     setPaginaActual((paginaAnterior) => paginaAnterior - 1);
   };
 
-  const { loginOk } = useContext(authContext);
-  const { agregarProductos, agregarFavoritos, favoritos, eliminarFavorito } =
-    useContext(Carritocontext);
-
-  const { categoriaSeleccionada } = useContext(FiltrosContext);
-
   const productosFiltrados = categoriaSeleccionada
     ? productos.filter((product) => product.categoria === categoriaSeleccionada)
     : productos;
+
+  const { agregarProductos, agregarFavoritos, favoritos, eliminarFavorito } =
+    useContext(Carritocontext);
+  const { loginOk } = useContext(authContext);
+
+  const agregarFav = (item) => {
+    if (loginOk === true) {
+      agregarFavoritos(item);
+    } else {
+      Swal.fire("Debes Loguearte");
+    }
+  };
 
   return (
     <div className="container-fluid m-0 p-0 d-flex row">
@@ -85,7 +91,7 @@ const ProductList = () => {
             <Card.Body className="text-center ">
               <div className="row h5 card-title align-items-center">
                 <div className="col-10 text-center texto-cartas ">
-                  {item.nombre  + item.key }
+                  {item.nombre}
                 </div>
                 <div className="col-2 justify-content-center my-auto d-flex">
                   <ModalInfo item={item} />
@@ -100,7 +106,7 @@ const ProductList = () => {
                   >
                     <FontAwesomeIcon icon={faCartShopping} />
                   </button>
-                  {favoritos.includes(item) ? (
+                  {favoritos.find((producto) => producto.uid === item.uid) ? (
                     <button
                       className="btn btn-danger"
                       onClick={() => eliminarFavorito(item.uid)}
@@ -110,7 +116,7 @@ const ProductList = () => {
                   ) : (
                     <button
                       className="btn border-danger"
-                      onClick={() => agregarFavoritos(item)}
+                      onClick={() => agregarFav(item)}
                     >
                       <FontAwesomeIcon icon={faHeart} color="red" />
                     </button>

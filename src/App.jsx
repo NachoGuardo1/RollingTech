@@ -17,14 +17,15 @@ import { Footer } from "./componentes/Footer";
 import { AuthProvider } from "./hooks/AuthContext";
 import ProtectedRoutesAdmin from "./routes/ProtectedRoutesAdmin";
 import ProtectedRoutesFav from "./routes/ProtectedRoutesFav";
+import { Contacto } from "./pages/Contacto";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <AuthProvider>
-          <CategoriaProvider>
-            <CarritoProvider>
+        <CarritoProvider>
+          <AuthProvider>
+            <CategoriaProvider>
               <Routes>
                 <Route path="/" element={<Navegador />}>
                   <Route index element={<HomePage />} />
@@ -43,6 +44,7 @@ function App() {
 
                   <Route path="nosotros" element={<Nosotros />} />
                   <Route path="pago" element={<PagoPage />} />
+                  <Route path="contacto" element={<Contacto />} />
                   <Route
                     path="favoritos"
                     element={
@@ -53,9 +55,9 @@ function App() {
                   />
                 </Route>
               </Routes>
-            </CarritoProvider>
-          </CategoriaProvider>
-        </AuthProvider>
+            </CategoriaProvider>
+          </AuthProvider>
+        </CarritoProvider>
         <Footer>
           <Routes>
             <Route path="/" element={<Footer />}></Route>

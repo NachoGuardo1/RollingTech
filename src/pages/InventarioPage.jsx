@@ -22,7 +22,7 @@ export const InventarioPage = () => {
   const [totalProductos, setTotalProductos] = useState(0);
   const [productos, setProductos] = useState([]);
   //paginacion
-  const limite = 12;
+  const limite = 100;
   const [desde, setDesde] = useState(0);
 
   useEffect(() => {
@@ -30,9 +30,6 @@ export const InventarioPage = () => {
   }, [desde]);
 
   function primeraLetraMayus(texto){
-    console.log("en primeraLetraMayus");
-    console.log(texto);
-    console.log(texto.charAt(0).toUpperCase() + texto.slice(1));
     return texto.charAt(0).toUpperCase() + texto.slice(1);
 }
 
@@ -87,7 +84,7 @@ export const InventarioPage = () => {
   };
 
   const guardarValores = (producto) => {
-    setProductoNombre(primeraLetraMayus(producto.nombre));
+    setProductoNombre(producto.nombre);
     setProductoCategoria(producto.categoria);
     setProductoDescripcion(producto.descrip);
     setProductoImg(producto.img);
@@ -191,7 +188,7 @@ export const InventarioPage = () => {
             type="text"
             className="form-control mb-3"
             value={inputNombre}
-            onChange={(e) => setProductoNombre(e.target.value)}
+            onChange={(e) => setProductoNombre(primeraLetraMayus(e.target.value))}
             required
           />
           <label className="fw-bold mb-1">Descripcion</label>
@@ -199,7 +196,7 @@ export const InventarioPage = () => {
             type="text"
             className="form-control mb-3"
             value={inputDescrip}
-            onChange={(e) => setProductoDescripcion(e.target.value)}
+            onChange={(e) => setProductoDescripcion(primeraLetraMayus(e.target.value))}
             required
           />
           <label className="fw-bold mb-1">Precio</label>
@@ -223,8 +220,8 @@ export const InventarioPage = () => {
             <option value="CELULARES">Celulares</option>
             <option value="TELEVISORES">Televisores</option>
             <option value="TABLETS">Tablets</option>
-            <option value="Notebooks">Notebooks</option>
-            <option value="Consolas">Consolas</option>
+            <option value="NOTEBOOKS">Notebooks</option>
+            <option value="CONSOLAS">Consolas</option>
           </select>
           <label className="fw-bold mb-1">Imagen URL</label>
           <input
