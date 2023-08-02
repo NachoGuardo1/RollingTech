@@ -17,7 +17,10 @@ import { Footer } from "./componentes/Footer";
 import { AuthProvider } from "./hooks/AuthContext";
 import ProtectedRoutesAdmin from "./routes/ProtectedRoutesAdmin";
 import ProtectedRoutesFav from "./routes/ProtectedRoutesFav";
+import { Contacto } from "./pages/Contacto";
+
 import "./styles/app.css";
+
 
 function App() {
   return (
@@ -44,6 +47,7 @@ function App() {
 
                   <Route path="nosotros" element={<Nosotros />} />
                   <Route path="pago" element={<PagoPage />} />
+                  <Route path="contacto" element={<Contacto />} />
                   <Route
                     path="favoritos"
                     element={

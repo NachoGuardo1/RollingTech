@@ -42,6 +42,8 @@ export const getProductoById = async (id) => {
 
 //crear producto
 export const crearProducto = async (datos) => {
+  console.log("en crear prodcuto");
+  console.log(token);
   try {
     const resp = await fetch(url, {
       method: "POST",
