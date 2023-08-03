@@ -1,4 +1,4 @@
-const url = "rolling-tech-back-dw95t5bsa-jeredlt.vercel.app";
+const url = "rolling-tech-back-dw95t5bsa-jeredlt.vercel.app/api/auth/login";
 
 export const authLogin = async (datos) => {
   try {
