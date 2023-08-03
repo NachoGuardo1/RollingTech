@@ -1,4 +1,4 @@
-const url = "https://rolling-tech-back.vercel.app/";
+const url = "rolling-tech-back-dw95t5bsa-jeredlt.vercel.app";
 
 //traer usuario por id
 export const getUsuraioById = async (id) => {
