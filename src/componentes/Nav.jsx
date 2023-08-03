@@ -116,7 +116,7 @@ export const Navegador = () => {
                     <Link
                       onClick={mostrarOffcanvas}
                       to="/nosotros"
-                      className="text-decoration-none  text-dark "
+                      className="text-decoration-none text-dark fw-bold mx-3"
                     >
                       Sobre Nosotros
                     </Link>
@@ -139,7 +139,7 @@ export const Navegador = () => {
                     <Link
                       onClick={mostrarOffcanvas}
                       to="/nosotros"
-                      className="text-decoration-none  text-dark "
+                      className="text-decoration-none text-dark fw-bold mx-3"
                     >
                       Sobre Nosotros
                     </Link>
