@@ -9,7 +9,9 @@ export const UsuariosPage = () => {
 
   async function getUsuarios() {
     try {
-      const response = await fetch("https://rolling-tech-back.vercel.app/");
+      const response = await fetch(
+        "rolling-tech-back-dw95t5bsa-jeredlt.vercel.app"
+      );
 
       if (!response.ok) {
         throw new Error("Error al obtener los usuarios");
