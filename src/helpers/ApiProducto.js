@@ -1,4 +1,4 @@
-const url = "rolling-tech-back-dw95t5bsa-jeredlt.vercel.app/api/productos";
+const url = "rolling-tech-back.vercel.app/api/productos";
 const token = JSON.parse(localStorage.getItem("token"));
 
 export const getProductos = async (desde = 0, limite) => {
