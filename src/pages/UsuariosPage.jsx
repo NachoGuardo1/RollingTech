@@ -10,7 +10,7 @@ export const UsuariosPage = () => {
   async function getUsuarios() {
     try {
       const response = await fetch(
-        "rolling-tech-back-dw95t5bsa-jeredlt.vercel.app"
+        "https://rolling-tech-back-iota.vercel.app/api/usuarios"
       );
 
       if (!response.ok) {
