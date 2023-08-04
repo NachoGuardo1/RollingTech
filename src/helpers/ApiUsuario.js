@@ -1,4 +1,4 @@
-const url = "http://localhost:3000/api/usuarios";
+const url = "https://rolling-tech-back-iota.vercel.app/api/usuarios";
 
 //traer usuario por id
 export const getUsuraioById = async (id) => {
@@ -17,7 +17,6 @@ export const getUsuraioById = async (id) => {
 export const crearUsuario = async (datos) => {
   console.log("En ApiUsuario - crear usuario");
   console.log(datos);
-
 
   /*fetch(url, {
     method: 'POST', // or 'PUT'
@@ -39,8 +38,7 @@ export const crearUsuario = async (datos) => {
     }
   })*/
 
-  
-  console.log('fin del fetch del apiUsuario')
+  console.log("fin del fetch del apiUsuario");
   try {
     const resp = await fetch(url, {
       method: "POST",

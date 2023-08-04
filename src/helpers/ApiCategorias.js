@@ -1,4 +1,4 @@
-const url = "http://localhost:3000/api/categorias";
+const url = "https://rolling-tech-back-iota.vercel.app/api/categorias";
 const limite = 5;
 
 export const getCategorias = async (desde = 0) => {

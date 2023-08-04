@@ -1,4 +1,4 @@
-const url = "http://localhost:3000/api/productos";
+const url = "https://rolling-tech-back-iota.vercel.app/api/productos";
 const token = JSON.parse(localStorage.getItem("token"));
 const limite = 6;
 
