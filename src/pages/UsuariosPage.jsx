@@ -10,7 +10,7 @@ export const UsuariosPage = () => {
   async function getUsuarios() {
     try {
       const response = await fetch(
-        URL+"/api/usuarios"
+        `${import.meta.env.VITE_URL}api/usuarios`
       );
 
       if (!response.ok) {

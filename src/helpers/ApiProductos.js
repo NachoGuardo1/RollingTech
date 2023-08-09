@@ -4,7 +4,7 @@ const limite = 6;
 
 export const getProductos = async (limite = 0, desde = 0) => {
   try {
-    const resp = await fetch(URL + "?limite=" + limite + "&desde=" + desde, {
+    const resp = await fetch(import.meta.env.VITE_URL + "api/productos" + "?limite=" + limite + "&desde=" + desde, {
       method: "GET",
 
       headers: {
@@ -23,7 +23,7 @@ export const getProductos = async (limite = 0, desde = 0) => {
 //Traer prodcuto por el id
 export const getProductoById = async (id) => {
   try {
-    const resp = await fetch(URL + "/" + id, {
+    const resp = await fetch(import.meta.env.VITE_URL + "api/productos" + "/" + id, {
       method: "GET",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
@@ -45,7 +45,7 @@ export const crearProducto = async (datos) => {
   console.log("en crear prodcuto");
   console.log(token);
   try {
-    const resp = await fetch(URL, {
+    const resp = await fetch(import.meta.env.VITE_URL + "api/productos", {
       method: "POST",
       body: JSON.stringify(datos),
       headers: {
@@ -66,7 +66,7 @@ export const crearProducto = async (datos) => {
 //Actualizar Producto
 export const actualizarProducto = async (id, datos) => {
   try {
-    const resp = await fetch(URL + "/" + id, {
+    const resp = await fetch(import.meta.env.VITE_URL + "api/productos" + "/" + id, {
       method: "PUT",
       body: JSON.stringify(datos),
       headers: {
@@ -87,7 +87,7 @@ export const actualizarProducto = async (id, datos) => {
 //Borrar Categoría
 export const borrarProducto = async (id) => {
   try {
-    const resp = await fetch(URL + "/" + id, {
+    const resp = await fetch(import.meta.env.VITE_URL + "api/productos"+ "/" + id, {
       method: "DELETE",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
