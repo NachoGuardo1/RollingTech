@@ -1,8 +1,7 @@
-const url = "https://rolling-tech-back-iota.vercel.app/api/auth/login";
 
 export const authLogin = async (datos) => {
   try {
-    const resp = await fetch(url, {
+    const resp = await fetch(URL, {
       method: "POST",
       body: JSON.stringify(datos),
       headers: {

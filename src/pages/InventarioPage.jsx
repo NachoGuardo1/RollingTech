@@ -62,6 +62,7 @@ export const InventarioPage = () => {
       resetForm();
       traerProductos();
     } else {
+
       console.error("Error al guardar los datos");
     }
   };
