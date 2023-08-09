@@ -1,9 +1,9 @@
-const url = "https://rolling-tech-back-iota.vercel.app/api/categorias";
+
 const limite = 5;
 
 export const getCategorias = async (desde = 0) => {
   try {
-    const resp = await fetch(url + "?limite=" + limite + "&desde=" + desde, {
+    const resp = await fetch(URL + "?limite=" + limite + "&desde=" + desde, {
       method: "GET",
 
       headers: {

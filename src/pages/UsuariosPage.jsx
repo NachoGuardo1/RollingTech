@@ -10,7 +10,7 @@ export const UsuariosPage = () => {
   async function getUsuarios() {
     try {
       const response = await fetch(
-        "https://rolling-tech-back-iota.vercel.app/api/usuarios"
+        URL+"/api/usuarios"
       );
 
       if (!response.ok) {

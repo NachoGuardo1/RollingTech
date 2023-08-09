@@ -1,9 +1,8 @@
-const url = "https://rolling-tech-back-iota.vercel.app/api/productos";
 const token = JSON.parse(localStorage.getItem("token"));
 
 export const getProductos = async (desde = 0, limite) => {
   try {
-    const resp = await fetch(url + "?limite=" + limite + "&desde=" + desde, {
+    const resp = await fetch(URL + "?limite=" + limite + "&desde=" + desde, {
       method: "GET",
 
       headers: {
@@ -21,7 +20,7 @@ export const getProductos = async (desde = 0, limite) => {
 //Traer prodcuto por el id
 export const getProductoById = async (id) => {
   try {
-    const resp = await fetch(url + "/" + id, {
+    const resp = await fetch(URL + "/" + id, {
       method: "GET",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
@@ -41,7 +40,7 @@ export const crearProducto = async (datos) => {
   console.log(token);
   console.log(datos);
   try {
-    const resp = await fetch(url, {
+    const resp = await fetch(URL, {
       method: "POST",
       body: JSON.stringify(datos),
       headers: {
@@ -61,7 +60,7 @@ export const crearProducto = async (datos) => {
 //Actualizar Producto
 export const actualizarProducto = async (id, datos) => {
   try {
-    const resp = await fetch(url + "/" + id, {
+    const resp = await fetch(URL + "/" + id, {
       method: "PUT",
       body: JSON.stringify(datos),
       headers: {
@@ -81,7 +80,7 @@ export const actualizarProducto = async (id, datos) => {
 //Borrar Categoría
 export const borrarProducto = async (id) => {
   try {
-    const resp = await fetch(url + "/" + id, {
+    const resp = await fetch(URL + "/" + id, {
       method: "DELETE",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
