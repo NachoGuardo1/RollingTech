@@ -26,10 +26,12 @@ const ProductList = () => {
   ];
 
   useEffect(() => {
+    console.log(1)
     traerProductos();
   }, []);
 
   const traerProductos = async () => {
+    console.log(2)
     const { productos } = await getProductos(limite, desde);
     setProductos(productos);
   };

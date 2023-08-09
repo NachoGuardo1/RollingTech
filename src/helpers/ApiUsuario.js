@@ -3,7 +3,7 @@
 //traer usuario por id
 export const getUsuraioById = async (id) => {
   try {
-    const resp = await fetch(URL + "/" + id);
+    const resp = await fetch(import.meta.env.VITE_URL + "api/usuarios" + "/" + id);
     const data = await resp.json();
 
     return data;
@@ -40,7 +40,7 @@ export const crearUsuario = async (datos) => {
 
   console.log("fin del fetch del apiUsuario");
   try {
-    const resp = await fetch(URL, {
+    const resp = await fetch(import.meta.env.VITE_URL  + "api/usuarios", {
       method: "POST",
       body: JSON.stringify(datos),
       headers: {
