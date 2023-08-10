@@ -43,7 +43,6 @@ export const FormRegister = ({ anteriorParte }) => {
     try {
       const resp = await crearUsuario(datos);
       if (resp?.usuario) {
-        console.log("Datos del Usuario guardados exitosamente");
         anteriorParte();
       } else {
         Swal.fire("No se pudo completar el registro");

@@ -53,7 +53,6 @@ export const InventarioPage = () => {
       categoria: inputCategoria,
       img: inputImg,
     };
-    console.log(datos);
 
     const resp = await crearProducto(datos);
 

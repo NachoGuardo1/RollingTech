@@ -1,20 +1,26 @@
 const token = JSON.parse(localStorage.getItem("token"));
 
 export const getProductos = async (desde = 0, limite) => {
-  console.log(3, import.meta.env.VITE_URL+ "api/productos" + "?limite=" + limite + "&desde=" + desde)
   try {
-    const resp = await fetch(import.meta.env.VITE_URL+ "api/productos" + "?limite=" + limite + "&desde=" + desde, {
-      method: "GET",
+    const resp = await fetch(
+      import.meta.env.VITE_URL +
+        "api/productos" +
+        "?limite=" +
+        limite +
+        "&desde=" +
+        desde,
+      {
+        method: "GET",
 
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-        "x-token": token,
-      },
-    });
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          "x-token": token,
+        },
+      }
+    );
     const data = await resp.json();
     return data;
   } catch (error) {
-    console.log(error, 4)
     throw new Error("No se pudo obtener la información de los productos");
   }
 };
@@ -22,13 +28,16 @@ export const getProductos = async (desde = 0, limite) => {
 //Traer prodcuto por el id
 export const getProductoById = async (id) => {
   try {
-    const resp = await fetch(import.meta.env.VITE_URL +"api/productos" + "/" + id, {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-        "x-token": token,
-      },
-    });
+    const resp = await fetch(
+      import.meta.env.VITE_URL + "api/productos" + "/" + id,
+      {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          "x-token": token,
+        },
+      }
+    );
     const data = await resp.json();
     return data;
   } catch (error) {
@@ -38,9 +47,6 @@ export const getProductoById = async (id) => {
 
 //crear producto
 export const crearProducto = async (datos) => {
-  console.log("en ApiProducto -> crear producto");
-  console.log(token);
-  console.log(datos);
   try {
     const resp = await fetch(import.meta.env.VITE_URL + "api/productos", {
       method: "POST",
@@ -62,14 +68,17 @@ export const crearProducto = async (datos) => {
 //Actualizar Producto
 export const actualizarProducto = async (id, datos) => {
   try {
-    const resp = await fetch(import.meta.env.VITE_URL + "api/productos" + "/" + id, {
-      method: "PUT",
-      body: JSON.stringify(datos),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-        "x-token": token,
-      },
-    });
+    const resp = await fetch(
+      import.meta.env.VITE_URL + "api/productos" + "/" + id,
+      {
+        method: "PUT",
+        body: JSON.stringify(datos),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          "x-token": token,
+        },
+      }
+    );
 
     const data = await resp.json();
 
@@ -82,19 +91,21 @@ export const actualizarProducto = async (id, datos) => {
 //Borrar Categoría
 export const borrarProducto = async (id) => {
   try {
-    const resp = await fetch(import.meta.env.VITE_URL + "api/productos" + "/" + id, {
-      method: "DELETE",
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-        "x-token": token,
-      },
-    });
+    const resp = await fetch(
+      import.meta.env.VITE_URL + "api/productos" + "/" + id,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          "x-token": token,
+        },
+      }
+    );
 
     const data = await resp.json();
 
     return data;
   } catch (error) {
-    console.log(error);
     return { msg: "No se conectó con backend" };
   }
 };

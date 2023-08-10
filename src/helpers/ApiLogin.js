@@ -1,4 +1,3 @@
-
 export const authLogin = async (datos) => {
   try {
     const resp = await fetch(import.meta.env.VITE_URL + "api/auth/login", {
@@ -13,7 +12,6 @@ export const authLogin = async (datos) => {
     return data;
   } catch (error) {
     //Los errores
-    console.log(error);
     return { msg: "No se conectó con backend" };
   }
 };
