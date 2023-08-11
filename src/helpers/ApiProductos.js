@@ -1,6 +1,6 @@
 const token = JSON.parse(localStorage.getItem("token"));
 const limite = 6;
-
+console.log(import.meta.env.VITE_URL);
 export const getProductos = async (limite = 0, desde = 0) => {
   try {
     const resp = await fetch(
