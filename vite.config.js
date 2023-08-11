@@ -5,14 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
 
-  build: {
-    // genera el archivo manifest.json en outDir
-    manifest: true,
-    rollupOptions: {
-      // sobreescribe la entrada por defecto .html
-      input: '/src/main.jsx'
-    }
-  }
+  
 
 })
 
