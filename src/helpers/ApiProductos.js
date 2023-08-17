@@ -4,7 +4,7 @@ const limite = 6;
 export const getProductos = async (limite = 0, desde = 0) => {
   try {
     const resp = await fetch(
-      process.env.VITE_URL +
+      import.meta.env.VITE_URL +
         "api/productos" +
         "?limite=" +
         limite +
