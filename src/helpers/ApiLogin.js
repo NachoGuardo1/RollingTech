@@ -1,6 +1,6 @@
 export const authLogin = async (datos) => {
   try {
-    const resp = await fetch(import.meta.env.VITE_URL + "api/auth/login", {
+    const resp = await fetch(process.env.VITE_URL + "api/auth/login", {
       method: "POST",
       body: JSON.stringify(datos),
       headers: {

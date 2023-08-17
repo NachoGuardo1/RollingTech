@@ -3,7 +3,7 @@ const limite = 5;
 export const getCategorias = async (desde = 0) => {
   try {
     const resp = await fetch(
-      import.meta.env.VITE_URL +
+      process.env.VITE_URL +
         "api/categorias" +
         "?limite=" +
         limite +
