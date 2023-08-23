@@ -1,6 +1,6 @@
-const limite = 5;
+const token = JSON.parse(localStorage.getItem("token"));
 
-export const getCategorias = async (desde = 0) => {
+export const getCategorias = async (limite = 0, desde = 0) => {
   try {
     const resp = await fetch(
       import.meta.env.VITE_URL +
@@ -14,6 +14,7 @@ export const getCategorias = async (desde = 0) => {
 
         headers: {
           "Content-type": "application/json; charset=UTF-8",
+          "x-token": token,
         },
       }
     );

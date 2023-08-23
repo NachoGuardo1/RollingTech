@@ -1,5 +1,4 @@
 const token = JSON.parse(localStorage.getItem("token"));
-const limite = 6;
 
 export const getProductos = async (limite = 0, desde = 0) => {
   try {
@@ -90,7 +89,7 @@ export const actualizarProducto = async (id, datos) => {
   }
 };
 
-//Borrar Categoría
+//Borrar Producto
 export const borrarProducto = async (id) => {
   try {
     const resp = await fetch(

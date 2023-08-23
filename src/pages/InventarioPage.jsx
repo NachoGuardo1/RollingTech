@@ -29,10 +29,9 @@ export const InventarioPage = () => {
     traerProductos();
   }, [desde]);
 
-  function primeraLetraMayus(texto){
+  function primeraLetraMayus(texto) {
     return texto.charAt(0).toUpperCase() + texto.slice(1);
-}
-
+  }
 
   const resetForm = () => {
     //reset form
@@ -42,9 +41,15 @@ export const InventarioPage = () => {
     setProductoCategoria("");
     setProductoImg("");
   };
+
+  const [error, setError] = useState("");
+
+  const nombreRegex = /^[a-zA-Z]{6,18}$/;
+  const descripcionRegex = /^[a-zA-Z]{6,30}$/;
+
   const CrearProducto = async (e) => {
     e.preventDefault();
-    //Obtener datos ingresados
+    setError("");
 
     const datos = {
       nombre: inputNombre,
@@ -54,6 +59,26 @@ export const InventarioPage = () => {
       img: inputImg,
     };
 
+    if (!nombreRegex.test(inputNombre)) {
+      setError("El nombre debe contener entre 6 y 18 carateres");
+      return;
+    }
+    if (!descripcionRegex.test(inputDescrip)) {
+      setError("La descripcion debe contener entre 6 y 30 carateres");
+      return;
+    }
+    if (inputPrecio <= 0) {
+      setError("El precio debe ser mayor a $1");
+      return;
+    }
+    if (inputCategoria === "") {
+      setError("Debe seleccionar una categoria");
+    }
+    if (inputImg === "") {
+      setError("Debe ingresar una url con la imagen del producto");
+      return;
+    }
+
     const resp = await crearProducto(datos);
 
     if (resp?.producto) {
@@ -61,10 +86,10 @@ export const InventarioPage = () => {
       resetForm();
       traerProductos();
     } else {
-
       console.error("Error al guardar los datos");
     }
   };
+
   const traerProductos = async () => {
     const { productos, total } = await getProductos(limite, desde);
     setProductos(productos);
@@ -79,8 +104,10 @@ export const InventarioPage = () => {
     setProductoPrecio(producto.precio);
     setProdEdit(producto);
   };
+
   const editarProductos = async (e) => {
     e.preventDefault();
+    setError("");
     //guardar en datos para pasar a api
     const datos = {
       nombre: inputNombre,
@@ -89,6 +116,27 @@ export const InventarioPage = () => {
       categoria: inputCategoria,
       img: inputImg,
     };
+
+    if (!nombreRegex.test(inputNombre)) {
+      setError("El nombre debe contener entre 6 y 18 carateres");
+      return;
+    }
+    if (!descripcionRegex.test(inputDescrip)) {
+      setError("La descripcion debe contener entre 6 y 30 carateres");
+      return;
+    }
+    if (inputPrecio <= 0) {
+      setError("El precio debe ser mayor a $1");
+      return;
+    }
+    if (inputCategoria === "") {
+      setError("Debe seleccionar una categoria");
+    }
+    if (inputImg === "") {
+      setError("Debe ingresar una url con la imagen del producto");
+      return;
+    }
+
     const resp = await actualizarProducto(prodEdit.uid, datos);
     if (resp?.producto) {
       Swal.fire("Cambios Guardados");
@@ -106,6 +154,7 @@ export const InventarioPage = () => {
     setProductos(nuevosProductos);
     borrarProducto(productoUid);
   };
+
   const validarEliminacion = (productoUid) => {
     Swal.fire({
       title: "¿Estas seguro que quieres eliminar este producto?",
@@ -171,7 +220,9 @@ export const InventarioPage = () => {
             type="text"
             className="form-control mb-3"
             value={inputNombre}
-            onChange={(e) => setProductoNombre(primeraLetraMayus(e.target.value))}
+            onChange={(e) =>
+              setProductoNombre(primeraLetraMayus(e.target.value))
+            }
             required
           />
           <label className="fw-bold mb-1">Descripcion</label>
@@ -179,7 +230,9 @@ export const InventarioPage = () => {
             type="text"
             className="form-control mb-3"
             value={inputDescrip}
-            onChange={(e) => setProductoDescripcion(primeraLetraMayus(e.target.value))}
+            onChange={(e) =>
+              setProductoDescripcion(primeraLetraMayus(e.target.value))
+            }
             required
           />
           <label className="fw-bold mb-1">Precio</label>
@@ -226,6 +279,8 @@ export const InventarioPage = () => {
             </div>
           ) : (
             <div className="d-grid">
+              <div>{error && <p style={{ color: "red" }}>{error}</p>}</div>
+
               <button className="btn btn-success mb-3" onClick={CrearProducto}>
                 Agregar Producto
               </button>

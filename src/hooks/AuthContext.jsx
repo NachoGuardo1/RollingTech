@@ -23,6 +23,7 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   const logout = () => {
+    navigate("/");
     localStorage.removeItem("token");
     localStorage.removeItem("usuario");
     localStorage.removeItem("carrito");
@@ -31,7 +32,6 @@ const AuthProvider = ({ children }) => {
     setFavoritos([]);
     setLoginOk(false);
     Swal.fire("Sesión Terminada");
-    navigate("/");
   };
 
   const guardarUsuario = (datos) => {

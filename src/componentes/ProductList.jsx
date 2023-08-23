@@ -11,12 +11,18 @@ import { authContext } from "../hooks/AuthContext";
 import Swal from "sweetalert2";
 import { DropdownCategoria } from "./DropdownCategoria";
 import { useMediaQuery, useTheme } from "@material-ui/core";
+import { getCategorias } from "../helpers/ApiCategorias";
 
 const ProductList = () => {
   const [productos, setProductos] = useState([]);
+  const [total, setTotalProd] = useState(0);
+
   const [prodPorPag, setProdPorPag] = useState(6);
   const [paginaActual, setPaginaActual] = useState(1);
+
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("");
+  const limite = total;
+
   const categorias = [
     "CELULARES",
     "TELEVISORES",
@@ -30,8 +36,9 @@ const ProductList = () => {
   }, []);
 
   const traerProductos = async () => {
-    const { productos } = await getProductos(limite, desde);
+    const { productos, total } = await getProductos(limite, 0);
     setProductos(productos);
+    setTotalProd(total);
   };
 
   const productosFiltrados = categoriaSeleccionada
@@ -43,8 +50,8 @@ const ProductList = () => {
   const totalProducts = productosFiltrados.length;
   const paginasTotales = Math.ceil(totalProducts / prodPorPag);
   const desde = (paginaActual - 1) * prodPorPag;
-  const limite = desde + prodPorPag;
-  const productosFinales = productosFiltrados.slice(desde, limite);
+  const hasta = desde + prodPorPag;
+  const productosFinales = productosFiltrados.slice(desde, hasta);
 
   const cambioCategoria = (e) => {
     setCategoriaSeleccionada(e.target.value);
@@ -96,18 +103,18 @@ const ProductList = () => {
   }, [tamañoMobile, tamañoTablet, tamañoNotebook]);
 
   return (
-    <div className="container-fluid m-0 p-0 d-flex row">
+    <div className="container-fluid m-0 p-0 d-flex row justify-content-center">
       <DropdownCategoria
         categoriaSeleccionada={categoriaSeleccionada}
         cambioCategoria={cambioCategoria}
         categorias={categorias}
       />
-      <div className="row d-flex gap-3 justify-content-center">
+      <div className="row d-flex gap-4 justify-content-center">
         {productosFinales.map((item) => (
           <Card
-            style={{ width: "14rem", height: "25rem" }}
+            className="border border-dark efectos-card p-0 my-3"
+            style={{ width: "18rem", height: "25rem" }}
             key={item.uid}
-            className=" border border-dark efectos-card p-0"
           >
             <Card.Img
               variant="top"

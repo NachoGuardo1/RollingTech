@@ -1,6 +1,5 @@
 import {
   faBackwardStep,
-  faForward,
   faForwardStep,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -22,6 +21,7 @@ const Paginacion = ({
       >
         <FontAwesomeIcon icon={faBackwardStep} />
       </button>
+
       {Array.from({ length: paginasTotales }, (_, index) => index + 1).map(
         (pagina) => (
           <button
@@ -33,6 +33,7 @@ const Paginacion = ({
           </button>
         )
       )}
+
       <button
         onClick={cambioPagSiguiente}
         disabled={paginaActual === paginasTotales}

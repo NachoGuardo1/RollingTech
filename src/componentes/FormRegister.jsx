@@ -6,11 +6,13 @@ export const FormRegister = ({ anteriorParte }) => {
   const [inputNombre, setInputNombre] = useState("");
   const [inputCorreo, setInputCorreo] = useState("");
   const [inputContrasena, setInputContrasena] = useState("");
+  const [inputRepContraseña, setInputRepContraseña] = useState("");
   //estados fijos
   const v_rol = "USER-ROLE";
 
   const [error, setError] = useState("");
-  const nombreRegex = /^[a-zA-Z]{6,}$/;
+
+  const nombreRegex = /^[a-zA-Z' ]{6,20}$/;
   const correoRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const contraseñaRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,10}$/;
 
@@ -24,19 +26,21 @@ export const FormRegister = ({ anteriorParte }) => {
       contrasena: inputContrasena,
       rol: v_rol,
     };
+
     if (!nombreRegex.test(inputNombre)) {
-      setError(
-        "El nombre debe contener al menos 6 carateres y todos ellos deben ser letras"
-      );
+      setError("El nombre debe contener entre 6 y 20 carateres");
       return;
     }
     if (!correoRegex.test(inputCorreo)) {
       setError("Dirección de correo electrónico no válida.");
       return;
     }
-
     if (!contraseñaRegex.test(inputContrasena)) {
       setError("La contraseña no cumple con los requisitos de seguridad");
+      return;
+    }
+    if (inputContrasena !== inputRepContraseña) {
+      setError("Las contraseñas no coinciden");
       return;
     }
 
@@ -92,6 +96,18 @@ export const FormRegister = ({ anteriorParte }) => {
             número.
           </div>
         </div>
+        <div className="my-3">
+          <label className="fw-bold mb-1">Repetir Contraseña</label>
+          <input
+            type="password"
+            className="form-control"
+            placeholder="Repita su contraseña"
+            value={inputRepContraseña}
+            onChange={(e) => setInputRepContraseña(e.target.value)}
+            required
+          />
+        </div>
+
         <div>{error && <p style={{ color: "red" }}>{error}</p>}</div>
 
         <div className="mt-1 d-grid">
