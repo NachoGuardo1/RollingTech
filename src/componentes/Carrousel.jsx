@@ -9,7 +9,8 @@ export const Carrousel = () => {
       <Carousel.Item>
         <Link to="/error">
           <img
-            className="d-block w-10"
+            className="d-block w-100"
+            style={{ height: "15rem" }}
             src="https://compumundoar.vtexassets.com/assets/vtex.file-manager-graphql/images/6bbe80c9-b7be-4008-b169-f52e846d3fc1___450ff3c1fc2398fc91c44657b41bf1d2.jpg"
           />
         </Link>
@@ -17,8 +18,9 @@ export const Carrousel = () => {
       <Carousel.Item>
         <Link to="/error">
           <img
-            className="d-block w-10 "
-            src="https://compumundoar.vtexassets.com/assets/vtex.file-manager-graphql/images/6bbe80c9-b7be-4008-b169-f52e846d3fc1___450ff3c1fc2398fc91c44657b41bf1d2.jpg"
+            className="d-block w-100 "
+            style={{ height: "15rem" }}
+            src="https://medias.musimundo.com/medias/banner-landing-hotsale.jpg?context=bWFzdGVyfGltYWdlc3wxNjcyODR8aW1hZ2UvanBlZ3xoNjUvaDYwLzEwNDc0ODk5MjQzMDM4L2Jhbm5lci1sYW5kaW5nX2hvdHNhbGUuanBnfDAzODljZGY2ZTI3YWI1NGNkMjRlMTY1MWNlYTFiYjc1NTg4NmM3ZTgzOTRjODVkN2VlODY5NTlmM2EwYmZlNzE"
           />
         </Link>
       </Carousel.Item>
@@ -26,6 +28,7 @@ export const Carrousel = () => {
         <Link to="/error">
           <img
             className="d-block w-100"
+            style={{ height: "15rem" }}
             src="https://compumundoar.vtexassets.com/assets/vtex.file-manager-graphql/images/ce957462-ff4c-4bbc-8e23-de67ef4c3913___10fcf6e0b136401b13dc27fa463b98ef.jpg"
           />
         </Link>

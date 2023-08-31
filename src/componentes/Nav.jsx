@@ -86,7 +86,7 @@ export const Navegador = () => {
 
             <Navbar.Offcanvas
               id="offcanvas-show"
-              className="d-lg-none d-xl-none d-xxl-none "
+              className="d-lg-none d-xl-none d-xxl-none bg-secondary text-dark w-50"
             >
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title>Rolling Tech</Offcanvas.Title>
@@ -109,7 +109,7 @@ export const Navegador = () => {
                     <Link
                       to="/"
                       onClick={mostrarOffcanvas}
-                      className="text-decoration-none  text-dark "
+                      className="text-decoration-none  text-dark"
                     >
                       Inicio
                     </Link>

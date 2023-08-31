@@ -86,7 +86,7 @@ export const Footer = () => {
         </div>
         <div className="text-white text-center col-xs-12 pt-4">
           <div>
-            <Link to="https://cace.org.ar/">
+            <Link target="blanck" to="https://cace.org.ar/">
               <img
                 src="https://cace.org.ar/wp-content/themes/cace/assets/dist/images/logo.svg"
                 alt=""
