@@ -31,37 +31,24 @@ export const Nosotros = () => {
               <ul className="list-unstyled lista-redes">
                 <li>
                   <a
-                    href="https://www.facebook.com/diegofenino"
+                    href="https://www.linkedin.com/in/diego-fenino-72311724a/"
                     target="_BLANK"
                   >
                     <img
-                      width="40"
-                      height="40"
-                      src="https://img.icons8.com/3d-fluency/94/facebook-circled.png"
-                      alt="facebook-circled"
+                      width="30"
+                      height="30"
+                      src="https://cdn-icons-png.flaticon.com/512/38/38669.png"
+                      alt="LinkedIn"
                     />
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="https://www.instagram.com/diegofenino/"
-                    target="_BLANK"
-                  >
+                  <a href="https://github.com/DiegoFenino" target="_BLANK">
                     <img
-                      width="40"
-                      height="40"
-                      src="https://img.icons8.com/3d-fluency/94/instagram-new.png"
-                      alt="instagram-new"
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a href="https://twitter.com/FeninoD" target="_BLANK">
-                    <img
-                      width="40"
-                      height="40"
-                      src="https://img.icons8.com/3d-fluency/94/twitter-circled.png"
-                      alt="twitter-circled"
+                      width="30"
+                      height="30"
+                      src="https://seeklogo.com/images/G/github-logo-2E3852456C-seeklogo.com.png"
+                      alt="GitHub"
                     />
                   </a>
                 </li>
@@ -85,32 +72,25 @@ export const Nosotros = () => {
             <div className="redes">
               <ul className="list-unstyled lista-redes">
                 <li>
-                  <a href="">
+                  <a
+                    href="https://www.linkedin.com/in/ignacio-guardo-ruiz-2449a5289/"
+                    target="_BLANK"
+                  >
                     <img
-                      width="40"
-                      height="40"
-                      src="https://img.icons8.com/3d-fluency/94/facebook-circled.png"
-                      alt="facebook-circled"
+                      width="30"
+                      height="30"
+                      src="https://cdn-icons-png.flaticon.com/512/38/38669.png"
+                      alt="linkedIn"
                     />
                   </a>
                 </li>
                 <li>
-                  <a href="">
+                  <a href="https://github.com/NachoGuardo1" target="_BLANK">
                     <img
-                      width="40"
-                      height="40"
-                      src="https://img.icons8.com/3d-fluency/94/instagram-new.png"
-                      alt="instagram-new"
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a href="">
-                    <img
-                      width="40"
-                      height="40"
-                      src="https://img.icons8.com/3d-fluency/94/twitter-circled.png"
-                      alt="twitter-circled"
+                      width="30"
+                      height="30"
+                      src="https://seeklogo.com/images/G/github-logo-2E3852456C-seeklogo.com.png"
+                      alt="GitHub"
                     />
                   </a>
                 </li>
@@ -133,32 +113,22 @@ export const Nosotros = () => {
             <div className="redes">
               <ul className="list-unstyled lista-redes">
                 <li>
-                  <a href="">
+                  <a href="https://www.linkedin.com/feed/" target="_BLANK">
                     <img
-                      width="40"
-                      height="40"
-                      src="https://img.icons8.com/3d-fluency/94/facebook-circled.png"
-                      alt="facebook-circled"
+                      width="30"
+                      height="30"
+                      src="https://cdn-icons-png.flaticon.com/512/38/38669.png"
+                      alt="LinkedIn"
                     />
                   </a>
                 </li>
                 <li>
-                  <a href="">
+                  <a href="https://github.com/aeiturre" target="_BLANK">
                     <img
-                      width="40"
-                      height="40"
-                      src="https://img.icons8.com/3d-fluency/94/instagram-new.png"
-                      alt="instagram-new"
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a href="">
-                    <img
-                      width="40"
-                      height="40"
-                      src="https://img.icons8.com/3d-fluency/94/twitter-circled.png"
-                      alt="twitter-circled"
+                      width="30"
+                      height="30"
+                      src="https://seeklogo.com/images/G/github-logo-2E3852456C-seeklogo.com.png"
+                      alt="GitHub"
                     />
                   </a>
                 </li>
