@@ -80,7 +80,7 @@ export const Navegador = () => {
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title>Rolling Tech</Offcanvas.Title>
               </Offcanvas.Header>
-              <div className="d-flex row gap-3 mx-auto ">
+              <Offcanvas.Body>
                 <div className="d-lg-none d-xl-none d-xxl-none"></div>
                 {usuario === null || usuario.rol === "USER-ROLE" ? (
                   <div className="row d-flex gap-3">
@@ -136,7 +136,7 @@ export const Navegador = () => {
                     </Link>
                   </div>
                 )}
-              </div>
+              </Offcanvas.Body>
             </Navbar.Offcanvas>
 
             {usuario === null || usuario.rol === "USER-ROLE" ? (
