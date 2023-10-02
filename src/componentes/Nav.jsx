@@ -93,8 +93,9 @@ export const Navegador = () => {
                       Inicio
                     </Link>
                     <Link
-                      onClick={() => navigate("/nosotros")}
-                      className="text-decoration-none text-dark "
+                      to={"/nosotros"}
+                      onClick={mostrarOffcanvas}
+                      className="text-decoration-none text-dark link"
                     >
                       Sobre Nosotros
                     </Link>
@@ -116,7 +117,7 @@ export const Navegador = () => {
                     </Link>
                     <Link
                       onClick={mostrarOffcanvas}
-                      to="/nosotros"
+                      to={"/nosotros"}
                       className="text-decoration-none text-dark"
                     >
                       Sobre Nosotros
@@ -128,7 +129,7 @@ export const Navegador = () => {
                       <BtnWhatsapp />
                     </Link>
                     <Link
-                      to="/admin"
+                      to={"/admin"}
                       onClick={mostrarOffcanvas}
                       className="text-decoration-none text-dark "
                     >
