@@ -19,6 +19,7 @@ export const Navegador = () => {
   const usuario = JSON.parse(localStorage.getItem("usuario"));
   const [mostrarOffcanvas, setMostrarOffcanvas] = useState(false);
   const { logout, loginOk } = useContext(authContext);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -91,13 +92,12 @@ export const Navegador = () => {
                     >
                       Inicio
                     </Link>
-                    <NavLink
-                      onClick={mostrarOffcanvas}
-                      to="/nosotros"
+                    <Link
+                      onClick={navigate("/nosotros")}
                       className="text-decoration-none text-dark "
                     >
                       Sobre Nosotros
-                    </NavLink>
+                    </Link>
                     <Link
                       onClick={mostrarOffcanvas}
                       className="text-decoration-none  text-dark "
