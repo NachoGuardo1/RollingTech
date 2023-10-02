@@ -93,7 +93,7 @@ export const Navegador = () => {
                       Inicio
                     </Link>
                     <Link
-                      onClick={navigate("/nosotros")}
+                      onClick={() => navigate("/nosotros")}
                       className="text-decoration-none text-dark "
                     >
                       Sobre Nosotros
