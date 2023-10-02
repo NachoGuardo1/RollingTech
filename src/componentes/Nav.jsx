@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import { Container, Nav, Navbar, Offcanvas } from "react-bootstrap";
 import { ModalCarrito } from "./ModalCarrito";
 import Logo from "../../src/assets/img/logotipo-rolling1.png";
@@ -91,13 +91,13 @@ export const Navegador = () => {
                     >
                       Inicio
                     </Link>
-                    <Link
+                    <NavLink
                       onClick={mostrarOffcanvas}
                       to="/nosotros"
                       className="text-decoration-none text-dark "
                     >
                       Sobre Nosotros
-                    </Link>
+                    </NavLink>
                     <Link
                       onClick={mostrarOffcanvas}
                       className="text-decoration-none  text-dark "
