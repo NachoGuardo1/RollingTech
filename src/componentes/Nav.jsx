@@ -30,18 +30,7 @@ export const Navegador = () => {
                 <img src={Logo} alt="RollingTech" width="160" height="70" />
               </Link>
             </div>
-            <div className="col-4  my-auto">
-              <form className="d-flex" role="search">
-                <input
-                  type="search"
-                  placeholder="Buscar"
-                  className="form-control form-sm"
-                />
-                <button className="btn  mx-2" type="submit">
-                  <FontAwesomeIcon icon={faMagnifyingGlass} />
-                </button>
-              </form>
-            </div>
+            <div className="col-4  my-auto"></div>
             <div className="d-flex gap-1 justify-content-end col-2  my-auto">
               <Link className="text-decoration-none  my-auto">
                 {loginOk === true ? (
@@ -92,18 +81,7 @@ export const Navegador = () => {
                 <Offcanvas.Title>Rolling Tech</Offcanvas.Title>
               </Offcanvas.Header>
               <div className="d-flex row gap-3 mx-auto ">
-                <div className="d-lg-none d-xl-none d-xxl-none">
-                  <form className="d-flex" role="search">
-                    <input
-                      className="form-control form-sm"
-                      type="search"
-                      placeholder="Buscar"
-                    />
-                    <button className="btn  mx-2" type="submit">
-                      <FontAwesomeIcon icon={faMagnifyingGlass} />
-                    </button>
-                  </form>
-                </div>
+                <div className="d-lg-none d-xl-none d-xxl-none"></div>
                 {usuario === null || usuario.rol === "USER-ROLE" ? (
                   <div className="row d-flex gap-3">
                     <Link
