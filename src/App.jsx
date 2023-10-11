@@ -17,7 +17,6 @@ import { AuthProvider } from "./hooks/AuthContext";
 import ProtectedRoutesAdmin from "./routes/ProtectedRoutesAdmin";
 import ProtectedRoutesFav from "./routes/ProtectedRoutesFav";
 import "./styles/app.css";
-import { Error404 } from "./pages/ErrorPage";
 
 function App() {
   return (
@@ -26,37 +25,37 @@ function App() {
         <CarritoProvider>
           <AuthProvider>
             <Routes>
-              <Route path="/" element={<Navegador />}>
-                <Route index element={<HomePage />} />
-                <Route
-                  path="/admin"
-                  element={
-                    <ProtectedRoutesAdmin>
-                      <AdminPage />
-                    </ProtectedRoutesAdmin>
-                  }
-                >
-                  <Route path="inventario" element={<InventarioPage />} />
-                  <Route path="usuarios" element={<UsuariosPage />} />
-                </Route>
-                <Route path="nosotros" element={<Nosotros />} />
-                <Route path="pago" element={<PagoPage />} />
-                <Route
-                  path="favoritos"
-                  element={
-                    <ProtectedRoutesFav>
-                      <FavoritosPage />
-                    </ProtectedRoutesFav>
-                  }
-                />
-                <Route path="error" element={<Error404 />} />
+              <Route path="*" element={<Navegador />} />
+            </Routes>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route
+                path="/admin"
+                element={
+                  <ProtectedRoutesAdmin>
+                    <AdminPage />
+                  </ProtectedRoutesAdmin>
+                }
+              >
+                <Route path="inventario" element={<InventarioPage />} />
+                <Route path="usuarios" element={<UsuariosPage />} />
               </Route>
+              <Route path="nosotros" element={<Nosotros />} />
+              <Route path="pago" element={<PagoPage />} />
+              <Route
+                path="favoritos"
+                element={
+                  <ProtectedRoutesFav>
+                    <FavoritosPage />
+                  </ProtectedRoutesFav>
+                }
+              />
             </Routes>
           </AuthProvider>
         </CarritoProvider>
         <Footer>
           <Routes>
-            <Route path="/" element={<Footer />}></Route>
+            <Route path="*" element={<Footer />}></Route>
           </Routes>
         </Footer>
       </BrowserRouter>
