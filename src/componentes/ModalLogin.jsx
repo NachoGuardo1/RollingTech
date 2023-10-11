@@ -16,7 +16,7 @@ const ModalLogin = () => {
 
   return (
     <>
-      <button className="btn" onClick={handleShow}>
+      <button className="btn btn-sm" onClick={handleShow}>
         <FontAwesomeIcon icon={faUser} color="blue" />
       </button>
       <Modal show={showLogin} onHide={handleClose}>
