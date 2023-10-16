@@ -2,12 +2,13 @@ import React from "react";
 import { Carousel } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../styles/carouselMQ.css";
+import Swal from "sweetalert2";
 
 export const Carrousel = () => {
   return (
     <Carousel className="p-0 mb-5 mq">
       <Carousel.Item>
-        <Link to="/error">
+        <Link onClick={() => Swal.fire("Pagina en mantenimiento")}>
           <img
             className="d-block w-100"
             style={{ height: "15rem" }}
@@ -16,7 +17,7 @@ export const Carrousel = () => {
         </Link>
       </Carousel.Item>
       <Carousel.Item>
-        <Link to="/error">
+        <Link onClick={() => Swal.fire("Pagina en mantenimiento")}>
           <img
             className="d-block w-100 "
             style={{ height: "15rem" }}
@@ -25,7 +26,7 @@ export const Carrousel = () => {
         </Link>
       </Carousel.Item>
       <Carousel.Item>
-        <Link to="/error">
+        <Link onClick={() => Swal.fire("Pagina en mantenimiento")}>
           <img
             className="d-block w-100"
             style={{ height: "15rem" }}

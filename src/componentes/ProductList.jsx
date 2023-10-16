@@ -11,7 +11,6 @@ import { authContext } from "../hooks/AuthContext";
 import Swal from "sweetalert2";
 import { DropdownCategoria } from "./DropdownCategoria";
 import { useMediaQuery, useTheme } from "@material-ui/core";
-import { getCategorias } from "../helpers/ApiCategorias";
 
 const ProductList = () => {
   const [productos, setProductos] = useState([]);
@@ -113,7 +112,7 @@ const ProductList = () => {
         {productosFinales.map((item) => (
           <Card
             className="border border-dark efectos-card p-0 my-3"
-            style={{ width: "18rem", height: "25rem" }}
+            style={{ width: "16rem", height: "25rem" }}
             key={item.uid}
           >
             <Card.Img

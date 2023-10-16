@@ -25,7 +25,7 @@ export const ModalCarrito = () => {
   });
   return (
     <>
-      <button className="btn btn-sm px-0 boton-carrito" onClick={handleShow}>
+      <button className="btn  px-0 boton-carrito" onClick={handleShow}>
         <FontAwesomeIcon
           icon={faCartShopping}
           className="img-carrito"

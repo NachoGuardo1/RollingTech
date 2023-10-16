@@ -24,7 +24,15 @@ function ModalInfo({ item }) {
         <Modal.Header closeButton>
           <Modal.Title>{item.nombre}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Descripcion: {item.descrip}</Modal.Body>
+        <Modal.Body>
+          <div className="container-fluid row">
+            <img className="col-5" src={item.img} style={{ height: "10rem" }} />
+            <aside className="my-auto col-6">
+              <p>{item.descrip}</p>
+            </aside>
+            <p className="blockquote-footer text-end">3 cuotas sin interes</p>
+          </div>
+        </Modal.Body>
       </Modal>
     </>
   );
