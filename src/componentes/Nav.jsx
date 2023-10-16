@@ -20,16 +20,14 @@ export const Navegador = () => {
         <Navbar className="barra-nav" data-bs-theme="dark" expand="lg">
           <Container fluid className="justify-content-between d-flex">
             <Navbar.Toggle aria-controls="offcanvas-show" />
-            <Navbar.Brand
-              href="/"
-              className="d-none d-sm-none d-md-none d-lg-block"
-            >
+
+            <Navbar.Brand href="/">
               <img
                 src={Logo}
                 alt="RollingTech"
-                width="160"
-                height="70"
-                className="col-10"
+                width="100"
+                height="50"
+                className=" logo-nav"
               />
             </Navbar.Brand>
 

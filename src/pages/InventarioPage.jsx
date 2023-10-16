@@ -173,7 +173,7 @@ export const InventarioPage = () => {
 
   return (
     <div className="row  justify-content-around my-3">
-      <h3 className="text-center mb-3">LISTADO DE PRODUCTOS</h3>
+      <h3 className="text-center text-light mb-3">LISTADO DE PRODUCTOS</h3>
 
       <div
         className="table-responsive col-xl-6 col-lg-6 col-md-10 col-sm-10 mb-4 "
@@ -196,13 +196,13 @@ export const InventarioPage = () => {
                 <td>${producto.precio}</td>
                 <td>
                   <button
-                    className="btn btn-danger"
+                    className="btn btn-sm btn-danger m-1"
                     onClick={() => validarEliminacion(producto.uid)}
                   >
                     <FontAwesomeIcon icon={faTrashAlt} />
                   </button>
                   <button
-                    className="btn btn-warning ms-2"
+                    className="btn btn-sm btn-warning "
                     onClick={() => guardarValores(producto)}
                   >
                     <FontAwesomeIcon icon={faPenToSquare} />

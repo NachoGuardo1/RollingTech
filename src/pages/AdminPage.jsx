@@ -8,22 +8,16 @@ export const AdminPage = () => {
   return (
     <>
       <div className="my-5 container-fluid row gap-4 justify-content-center">
-        <Link
-          to="/admin/usuarios"
-          className="p-4 bg-dark text-light col-3 text-center btn"
-        >
+        <Link to="/admin/usuarios" className=" bg-dark text-light col-3  btn">
           Usuarios
         </Link>
         <button
-          className="p-4 bg-dark text-light col-3 text-center btn"
+          className=" bg-dark text-light col-3  btn"
           onClick={mantenimiento}
         >
           Ventas
         </button>
-        <Link
-          to="/admin/inventario"
-          className="p-4 bg-dark text-light col-3 text-center btn"
-        >
+        <Link to="/admin/inventario" className=" bg-dark text-light col-3  btn">
           Inventario
         </Link>
         <Outlet />

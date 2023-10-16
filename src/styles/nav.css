@@ -20,3 +20,16 @@
     margin-bottom: 2rem;
   }
 }
+
+@media (min-width: 576px) {
+  .logo-nav {
+    width: 150px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 576px) {
+  .logo-nav {
+    margin-left: 2rem;
+  }
+}
