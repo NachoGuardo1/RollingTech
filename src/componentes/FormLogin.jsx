@@ -5,14 +5,13 @@ import Swal from "sweetalert2";
 import { FormRegister } from "./FormRegister";
 import { authContext } from "../hooks/AuthContext";
 
-
 export const FormLogin = ({ handleClose, tituloRegister, tituloLogin }) => {
   //agregado domingo 11:22
   const navigate = useNavigate();
   const [inputCorreo, setInputCorreo] = useState("");
   const [inputContrasena, setInputContrasena] = useState("");
 
-  const { login, guardarUsuario } = useContext(authContext);
+  const { login, guardarUsuario, usuarioIn } = useContext(authContext);
 
   const [loading, setLoading] = useState(false);
 
@@ -56,6 +55,7 @@ export const FormLogin = ({ handleClose, tituloRegister, tituloLogin }) => {
 
       handleClose();
       navigate("/");
+      Swal.fire(`Bienvenido ${usuarioIn.nombre}!`);
     } else {
       console.error(
         "El usuario no esta registrado o los datos son incorrectos"

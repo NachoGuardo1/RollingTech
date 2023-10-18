@@ -31,7 +31,7 @@ const AuthProvider = ({ children }) => {
     setCarrito([]);
     setFavoritos([]);
     setLoginOk(false);
-    Swal.fire("Sesión Terminada");
+    Swal.fire(`Hasta luego ${usuarioIn.nombre}`);
   };
 
   const guardarUsuario = (datos) => {

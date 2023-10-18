@@ -82,7 +82,7 @@ const ProductList = () => {
     if (loginOk === true) {
       agregarFavoritos(item);
     } else {
-      Swal.fire("Debes Loguearte");
+      Swal.fire("Debes iniciar sesión");
     }
   };
 

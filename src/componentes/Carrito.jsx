@@ -34,7 +34,7 @@ export const Carrito = ({ handleClose }) => {
         }
       });
     } else {
-      Swal.fire("Debes estar logueado");
+      Swal.fire("Debes iniciar sesión");
     }
   };
 

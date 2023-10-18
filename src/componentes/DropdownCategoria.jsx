@@ -12,10 +12,11 @@ export const DropdownCategoria = ({
         onChange={cambioCategoria}
         className="form-control form-control-sm text-center"
       >
-        <option value="">Todas las categorias</option>
+        <option value="">Categorias</option>
         {categorias.map((categoria) => (
           <option key={categoria} value={categoria}>
-            {categoria}
+            {categoria.charAt(0).toUpperCase() +
+              categoria.slice(1).toLowerCase()}
           </option>
         ))}
       </select>

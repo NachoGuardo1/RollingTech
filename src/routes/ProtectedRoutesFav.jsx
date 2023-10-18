@@ -4,7 +4,7 @@ const ProtectedRoutesFav = ({ children }) => {
   const usuario = JSON.parse(localStorage.getItem("usuario"));
 
   if (usuario === null) {
-    Swal.fire("Debes Loguearte");
+    Swal.fire("Debes iniciar sesión");
     return <Navigate to="/" />;
   } else {
     return children;

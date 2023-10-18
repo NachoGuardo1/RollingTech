@@ -1,6 +1,8 @@
 import {
   faBackwardStep,
   faForwardStep,
+  faSquareCaretLeft,
+  faSquareCaretRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
@@ -17,15 +19,15 @@ const Paginacion = ({
       <button
         onClick={cambioPaginaAnterior}
         disabled={paginaActual === 1}
-        className="btn btn-sm"
+        className="btn"
       >
-        <FontAwesomeIcon icon={faBackwardStep} />
+        <FontAwesomeIcon icon={faSquareCaretLeft} />
       </button>
 
       {Array.from({ length: paginasTotales }, (_, index) => index + 1).map(
         (pagina) => (
           <button
-            className="btn btn-sm btn-dark mx-1"
+            className="btn btn-sm btn-outline-dark mx-1"
             key={pagina}
             onClick={() => cambioPagina(pagina)}
           >
@@ -37,9 +39,9 @@ const Paginacion = ({
       <button
         onClick={cambioPagSiguiente}
         disabled={paginaActual === paginasTotales}
-        className="btn btn-sm"
+        className="btn"
       >
-        <FontAwesomeIcon icon={faForwardStep} />
+        <FontAwesomeIcon icon={faSquareCaretRight} />
       </button>
     </div>
   );

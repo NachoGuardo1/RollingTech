@@ -36,7 +36,7 @@ export const Navegador = () => {
               placement="start"
               className="w-75 barra-nav"
             >
-              <Offcanvas.Header closeButton className="barra-nav text-light">
+              <Offcanvas.Header closeButton className="barra-nav mb-0">
                 <Offcanvas.Title id="offcanvas-show" className="text-start">
                   <img
                     src={Logo}
@@ -48,18 +48,14 @@ export const Navegador = () => {
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
-                <Nav className="my-auto d-lg-none d-xl-none d-xxl-none ">
-                  <NavLink href="/" className="fw-bold">
-                    Inicio
-                  </NavLink>
-                  <NavLink href="nosotros" className="fw-bold">
-                    Nosotros
-                  </NavLink>
-                  <NavLink className="fw-bold">
+                <Nav className="p-0 d-lg-none d-xl-none d-xxl-none ">
+                  <NavLink href="/">Inicio</NavLink>
+                  <NavLink href="nosotros">Sobre Nosotros</NavLink>
+                  <NavLink>
                     <BtnWhatsapp />
                   </NavLink>
                   {usuario !== null && usuario.rol === "ADMIN-ROLE" ? (
-                    <NavLink href="admin" className="">
+                    <NavLink href="admin">
                       <FontAwesomeIcon icon={faGear} />
                     </NavLink>
                   ) : null}
@@ -91,7 +87,7 @@ export const Navegador = () => {
               Inicio
             </NavLink>
             <NavLink href="nosotros" className="text-dark">
-              Nosotros
+              Sobre Nosotros
             </NavLink>
             <NavLink className="">
               <BtnWhatsapp />
