@@ -11,8 +11,8 @@
   justify-content: center;
   align-items: center;
   margin: auto;
-  color: rgb(254, 254, 254);
-  background-color: #252525a1;
+  color: #534b49;
+  background: linear-gradient(to bottom, #d5cecc, #8b7b77);
 }
 
 .foot-redes {

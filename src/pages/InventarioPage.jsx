@@ -173,7 +173,7 @@ export const InventarioPage = () => {
 
   return (
     <div className="row  justify-content-around my-3">
-      <h3 className="text-center text-light mb-3">LISTADO DE PRODUCTOS</h3>
+      <h3 className="text-center mb-3">LISTADO DE PRODUCTOS</h3>
 
       <div
         className="table-responsive col-xl-6 col-lg-6 col-md-10 col-sm-10 mb-4 "
@@ -181,8 +181,8 @@ export const InventarioPage = () => {
           maxHeight: "28rem",
         }}
       >
-        <table className="table table-secondary table-md table-striped table-hover fw-lighter">
-          <thead className="table-dark">
+        <table className="table table-ligth table-md table-striped table-hover fw-lighter">
+          <thead>
             <tr className="text-center">
               <th className="text-start">Producto</th>
               <th>Precio</th>

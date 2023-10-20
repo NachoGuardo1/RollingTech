@@ -8,16 +8,25 @@ export const AdminPage = () => {
   return (
     <>
       <div className="my-5 container-fluid row gap-4 justify-content-center">
-        <Link to="/admin/usuarios" className=" bg-dark text-light col-3  btn">
+        <Link
+          to="/admin/usuarios"
+          className=" col-3  btn"
+          style={{ background: "linear-gradient(to bottom, #b3a5a2, #8b7b77)" }}
+        >
           Usuarios
         </Link>
         <button
-          className=" bg-dark text-light col-3  btn"
+          className=" col-3  btn"
           onClick={mantenimiento}
+          style={{ background: "linear-gradient(to bottom, #b3a5a2, #8b7b77)" }}
         >
           Ventas
         </button>
-        <Link to="/admin/inventario" className=" bg-dark text-light col-3  btn">
+        <Link
+          to="/admin/inventario"
+          className=" col-3  btn"
+          style={{ background: "linear-gradient(to bottom, #b3a5a2, #8b7b77)" }}
+        >
           Inventario
         </Link>
         <Outlet />

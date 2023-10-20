@@ -21,7 +21,7 @@ export const PagoPage = () => {
         }}
       >
         <h3 className="text-dark">MI CARRITO</h3>
-        <table className="table table-dark table-sm striped bordered hover fw-lighter">
+        <table className="table table-light table-striped table-sm striped bordered hover fw-lighter">
           <thead>
             <tr className="text-center">
               <th className="text-start">Producto</th>
@@ -63,7 +63,7 @@ export const PagoPage = () => {
                 </td>
               </tr>
             ))}
-            <tr className="table-primary">
+            <tr className="table-secondary">
               <td className="fw-bold">Total de su compra:</td>
               <td></td>
               <td></td>

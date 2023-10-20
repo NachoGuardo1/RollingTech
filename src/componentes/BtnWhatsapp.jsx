@@ -7,7 +7,11 @@ export const BtnWhatsapp = () => {
     window.open(whatsappLink, "_blank");
   };
   return (
-    <Link className="text-decoration-none text-dark " onClick={AbrirWPLink}>
+    <Link
+      className="text-decoration-none "
+      style={{ color: "#534b49" }}
+      onClick={AbrirWPLink}
+    >
       Contactanos
     </Link>
   );

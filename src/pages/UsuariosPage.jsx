@@ -57,8 +57,8 @@ export const UsuariosPage = () => {
         }}
       >
         <h3 className="text-center mb-3">LISTADO DE USUARIOS</h3>
-        <table className="table table-secondary table-md table-striped fw-lighter table-hover ">
-          <thead className="table-dark">
+        <table className="table table-ligth table-md table-striped fw-lighter table-hover ">
+          <thead>
             <tr className="text-center">
               <th className="text-start">Nombre</th>
               <th>Correo</th>

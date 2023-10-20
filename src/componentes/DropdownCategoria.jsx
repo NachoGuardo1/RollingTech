@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/app.css";
 
 export const DropdownCategoria = ({
   categoriaSeleccionada,
@@ -10,7 +11,7 @@ export const DropdownCategoria = ({
       <select
         value={categoriaSeleccionada}
         onChange={cambioCategoria}
-        className="form-control form-control-sm text-center"
+        className="selectEstilos"
       >
         <option value="">Categorias</option>
         {categorias.map((categoria) => (

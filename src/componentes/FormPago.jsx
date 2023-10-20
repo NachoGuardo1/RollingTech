@@ -55,7 +55,12 @@ export const FormPago = () => {
           placeholder={usuarioData.correo}
           disabled
         />
-        <p className="bg-primary fw-bold">Total: ${total.toFixed(2)}</p>
+        <p
+          className=" fw-bold p-2"
+          style={{ background: "linear-gradient(to bottom, #b3a5a2, #8b7b77)" }}
+        >
+          Total: ${total.toFixed(2)}
+        </p>
       </form>
       <form className="row ">
         <div className="row">

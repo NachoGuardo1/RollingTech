@@ -47,7 +47,7 @@ export const Carrito = ({ handleClose }) => {
             maxHeight: "28rem",
           }}
         >
-          <table className="table table-dark table-md table-striped  fw-lighter">
+          <table className="my-2 table table-light table-md table-striped  fw-lighter">
             <thead>
               <tr className="text-center">
                 <th className="text-start">Producto</th>
@@ -74,7 +74,9 @@ export const Carrito = ({ handleClose }) => {
                     >
                       <FontAwesomeIcon icon={faPlus} size="2xs" />
                     </button>
-                    <p className="fs-6 fw-lighter"> x unidad ${item.precio}</p>
+                    <p className="fs-6 fw-lighter mt-1">
+                      unidad ${item.precio}
+                    </p>
                   </td>
                   <td>${(item.precio * item.cantidad).toFixed(2)}</td>
                   <td>
@@ -96,11 +98,10 @@ export const Carrito = ({ handleClose }) => {
         <div className="d-flex justify-content-center fw-bold">
           Total de su compra: ${total.toFixed(2)}
         </div>
-
-        <button onClick={vaciarCarrito} className="btn btn-danger">
+        <button onClick={vaciarCarrito} className="btn btn-danger col-6">
           Vaciar Carrito
         </button>
-        <button onClick={iniciarPago} className="btn btn-success">
+        <button onClick={iniciarPago} className="btn btn-success col-6">
           Iniciar Pago
         </button>
       </div>

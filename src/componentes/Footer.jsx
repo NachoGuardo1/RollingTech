@@ -29,7 +29,7 @@ export const Footer = () => {
         <div className="col-xs-12 col-md-4 col-lg-3 foot-info">
           <ul className="list-unstyled">
             <li>
-              <h5 className="text-decoration-none text-light ">Contactanos</h5>
+              <h5 className="text-decoration-none ">Contactanos</h5>
             </li>
             <li>
               <a href="https://goo.gl/maps/sN6qjQ3f9taF82Zz9">Gral Paz 576 </a>
@@ -48,7 +48,10 @@ export const Footer = () => {
           <h5 className="mb-1">Seguinos</h5>
           <ul className="list-unstyled foot-redes">
             <li>
-              <a href="https://www.facebook.com/RollingCodeSchool">
+              <a
+                href="https://www.facebook.com/RollingCodeSchool"
+                target="blank"
+              >
                 <img
                   width="25"
                   height="25"
@@ -56,7 +59,10 @@ export const Footer = () => {
                   alt="facebook-circled"
                 />
               </a>
-              <a href="https://www.instagram.com/rollingcodeschool/">
+              <a
+                href="https://www.instagram.com/rollingcodeschool/"
+                target="blank"
+              >
                 <img
                   width="25"
                   height="25"
@@ -64,7 +70,10 @@ export const Footer = () => {
                   alt="instagram-new"
                 />
               </a>
-              <a href="https://twitter.com/i/flow/login?redirect_after_login=%2F%3Flang%3Des">
+              <a
+                href="https://twitter.com/i/flow/login?redirect_after_login=%2F%3Flang%3Des"
+                target="blank"
+              >
                 <img
                   width="25"
                   height="25"
@@ -72,7 +81,7 @@ export const Footer = () => {
                   alt="twitter-circled"
                 />
               </a>
-              <a href="https://www.youtube.com/@rollingcode7175">
+              <a href="https://www.youtube.com/@rollingcode7175" target="blank">
                 <img
                   width="25"
                   height="25"
@@ -84,7 +93,7 @@ export const Footer = () => {
           </ul>
           <img src={QR} alt="" width="100" height="100" />
         </div>
-        <div className="text-white text-center col-xs-12 pt-4">
+        <div className="text-center col-xs-12 pt-4">
           <div>
             <Link target="blanck" to="https://cace.org.ar/">
               <img

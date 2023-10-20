@@ -17,7 +17,7 @@ export const Navegador = () => {
   return (
     <>
       <div className=" sticky-top">
-        <Navbar className="barra-nav" data-bs-theme="dark" expand="lg">
+        <Navbar className="barra-nav" data-bs-theme="light" expand="lg">
           <Container fluid className="justify-content-between d-flex">
             <Navbar.Toggle aria-controls="offcanvas-show" />
 
@@ -49,14 +49,18 @@ export const Navegador = () => {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="p-0 d-lg-none d-xl-none d-xxl-none ">
-                  <NavLink href="/">Inicio</NavLink>
-                  <NavLink href="nosotros">Sobre Nosotros</NavLink>
+                  <NavLink href="/" style={{ color: "#534b49" }}>
+                    Inicio
+                  </NavLink>
+                  <NavLink href="nosotros" style={{ color: "#534b49" }}>
+                    Sobre Nosotros
+                  </NavLink>
                   <NavLink>
                     <BtnWhatsapp />
                   </NavLink>
                   {usuario !== null && usuario.rol === "ADMIN-ROLE" ? (
                     <NavLink href="admin">
-                      <FontAwesomeIcon icon={faGear} />
+                      <FontAwesomeIcon icon={faGear} color="#534b49" />
                     </NavLink>
                   ) : null}
                 </Nav>
@@ -83,10 +87,10 @@ export const Navegador = () => {
 
         <div className="container-fluid bg-secondary d-none d-sm-none d-md-none d-lg-block head-nav">
           <Nav className="my-auto justify-content-center">
-            <NavLink href="/" className="text-dark">
+            <NavLink href="/" style={{ color: "#534b49" }}>
               Inicio
             </NavLink>
-            <NavLink href="nosotros" className="text-dark">
+            <NavLink href="nosotros" style={{ color: "#534b49" }}>
               Sobre Nosotros
             </NavLink>
             <NavLink className="">
@@ -94,7 +98,7 @@ export const Navegador = () => {
             </NavLink>
             {usuario !== null && usuario.rol === "ADMIN-ROLE" ? (
               <NavLink href="admin" className="">
-                <FontAwesomeIcon icon={faGear} color="black" />
+                <FontAwesomeIcon icon={faGear} color="#534b49" />
               </NavLink>
             ) : null}
           </Nav>
