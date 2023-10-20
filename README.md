@@ -8,6 +8,7 @@ Añadir al Carrito: Los usuarios pueden agregar productos al carrito de compras 
 Añador Productos favoritos: Los usuarios pueden añadir productos favoritos y luego visualizarlos en su respectiva pagina.
 Realizar Compra Simulada: Los usuarios pueden proceder a la compra simulada, proporcionando método de pago.
 Gestión de Usuarios: Los usuarios pueden registrarse e iniciar sesión.
+Tareas de Administrador: Permite eliminar, editar o agregar productos nuevos en dashboard y visualizar listado de usuarios.
 
 Frontend: React.js, CSS, Bootstrap
 Backend: Node.js, Express.js, MongoDB
