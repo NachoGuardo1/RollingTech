@@ -13,6 +13,8 @@ import { DropdownCategoria } from "./DropdownCategoria";
 import { useMediaQuery, useTheme } from "@material-ui/core";
 
 const ProductList = () => {
+  const [loading, setLoading] = useState(true);
+
   const [productos, setProductos] = useState([]);
   const [total, setTotalProd] = useState(0);
 
@@ -38,6 +40,7 @@ const ProductList = () => {
     const { productos, total } = await getProductos(limite, 0);
     setProductos(productos);
     setTotalProd(total);
+    setLoading(false);
   };
 
   const productosFiltrados = categoriaSeleccionada
@@ -96,70 +99,80 @@ const ProductList = () => {
   }, [tamañoMobile, tamañoTablet, tamañoNotebook]);
 
   return (
-    <div className="container-fluid m-0 p-0 d-flex row justify-content-center">
-      <DropdownCategoria
-        categoriaSeleccionada={categoriaSeleccionada}
-        cambioCategoria={cambioCategoria}
-        categorias={categorias}
-      />
-      <div className="row d-flex gap-4 justify-content-center">
-        {productosFinales.map((item) => (
-          <Card
-            className="border border-dark efectos-card p-0 my-3"
-            style={{ width: "16rem", height: "25rem" }}
-            key={item.uid}
-          >
-            <Card.Img
-              variant="top"
-              src={item.img}
-              style={{ height: "15rem" }}
-            />
-            <Card.Body className="text-center ">
-              <div className="row h5 card-title align-items-center">
-                <div className="col-10 text-start texto-cartas ">
-                  {item.nombre}
-                </div>
-                <div className="col-2 justify-content-center my-auto d-flex">
-                  <ModalInfo item={item} />
-                </div>
-                <p className="my-1 fw-bold text-start ">${item.precio}</p>
-              </div>
-              <div className="row card-footer">
-                <div className="d-flex gap-3 justify-content-around">
-                  <button
-                    className="btn btn-outline-dark"
-                    onClick={() => agregarProductos(item)}
-                  >
-                    <FontAwesomeIcon icon={faCartShopping} />
-                  </button>
-                  {favoritos.find((producto) => producto.uid === item.uid) ? (
-                    <button
-                      className="btn btn-danger"
-                      onClick={() => eliminarFavorito(item.uid)}
-                    >
-                      <FontAwesomeIcon icon={faHeart} color="white" />
-                    </button>
-                  ) : (
-                    <button
-                      className="btn border-danger"
-                      onClick={() => agregarFav(item)}
-                    >
-                      <FontAwesomeIcon icon={faHeart} color="red" />
-                    </button>
-                  )}
-                </div>
-              </div>
-            </Card.Body>
-          </Card>
-        ))}
-      </div>
-      <Paginacion
-        paginasTotales={paginasTotales}
-        cambioPagSiguiente={cambioPagSiguiente}
-        cambioPaginaAnterior={cambioPaginaAnterior}
-        paginaActual={paginaActual}
-      />
-    </div>
+    <>
+      {loading ? (
+        <h4 className="text-center my-2">Loading..</h4>
+      ) : (
+        <div className="container-fluid m-0 p-0 d-flex row justify-content-center">
+          <DropdownCategoria
+            categoriaSeleccionada={categoriaSeleccionada}
+            cambioCategoria={cambioCategoria}
+            categorias={categorias}
+          />
+
+          <div className="row d-flex gap-4 justify-content-center">
+            {productosFinales.map((item) => (
+              <Card
+                className="border border-dark efectos-card p-0 my-3"
+                style={{ width: "16rem", height: "25rem" }}
+                key={item.uid}
+              >
+                <Card.Img
+                  variant="top"
+                  src={item.img}
+                  style={{ height: "15rem" }}
+                />
+                <Card.Body className="text-center ">
+                  <div className="row h5 card-title align-items-center">
+                    <div className="col-10 text-start texto-cartas ">
+                      {item.nombre}
+                    </div>
+                    <div className="col-2 justify-content-center my-auto d-flex">
+                      <ModalInfo item={item} />
+                    </div>
+                    <p className="my-1 fw-bold text-start ">${item.precio}</p>
+                  </div>
+                  <div className="row card-footer">
+                    <div className="d-flex gap-3 justify-content-around">
+                      <button
+                        className="btn btn-outline-dark"
+                        onClick={() => agregarProductos(item)}
+                      >
+                        <FontAwesomeIcon icon={faCartShopping} />
+                      </button>
+                      {favoritos.find(
+                        (producto) => producto.uid === item.uid
+                      ) ? (
+                        <button
+                          className="btn btn-danger"
+                          onClick={() => eliminarFavorito(item.uid)}
+                        >
+                          <FontAwesomeIcon icon={faHeart} color="white" />
+                        </button>
+                      ) : (
+                        <button
+                          className="btn border-danger"
+                          onClick={() => agregarFav(item)}
+                        >
+                          <FontAwesomeIcon icon={faHeart} color="red" />
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </Card.Body>
+              </Card>
+            ))}
+          </div>
+
+          <Paginacion
+            paginasTotales={paginasTotales}
+            cambioPagSiguiente={cambioPagSiguiente}
+            cambioPaginaAnterior={cambioPaginaAnterior}
+            paginaActual={paginaActual}
+          />
+        </div>
+      )}
+    </>
   );
 };
 

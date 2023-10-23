@@ -7,7 +7,7 @@ export const AdminPage = () => {
 
   return (
     <>
-      <div className="my-5 container-fluid row gap-4 justify-content-center">
+      <div className="my-5 container-fluid row gap-4 justify-content-center mx-auto">
         <Link
           to="/admin/usuarios"
           className=" col-3  btn"

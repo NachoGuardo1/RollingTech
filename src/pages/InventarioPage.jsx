@@ -172,7 +172,7 @@ export const InventarioPage = () => {
   };
 
   return (
-    <div className="row  justify-content-around my-3">
+    <div className="row justify-content-around my-3 mx-auto">
       <h3 className="text-center mb-3">LISTADO DE PRODUCTOS</h3>
 
       <div

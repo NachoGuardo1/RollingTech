@@ -24,7 +24,7 @@ const AuthProvider = ({ children }) => {
 
   const logout = () => {
     navigate("/");
-    Swal.fire(`Hasta luego ${usuarioIn.nombre}!`);
+    Swal.fire(`Hasta luego!`);
     localStorage.removeItem("token");
     localStorage.removeItem("usuario");
     localStorage.removeItem("carrito");

@@ -6,7 +6,6 @@ import { FormRegister } from "./FormRegister";
 import { authContext } from "../hooks/AuthContext";
 
 export const FormLogin = ({ handleClose, tituloRegister, tituloLogin }) => {
-  //agregado domingo 11:22
   const navigate = useNavigate();
   const [inputCorreo, setInputCorreo] = useState("");
   const [inputContrasena, setInputContrasena] = useState("");
@@ -91,13 +90,17 @@ export const FormLogin = ({ handleClose, tituloRegister, tituloLogin }) => {
             />
           </div>
           <div className="mt-3 d-grid">
-            <button className="btn btn-success my-3" onClick={handleLogin}>
+            <button
+              className="btn btn-success my-3"
+              onClick={handleLogin}
+              disabled={loading && true}
+            >
               Iniciar
             </button>
           </div>
           <div className="text-center">
             <a className="link" onClick={siguienteParte}>
-              No tiene una cuenta? Registrese
+              No tienes una cuenta? Registrate!
             </a>
           </div>
         </form>

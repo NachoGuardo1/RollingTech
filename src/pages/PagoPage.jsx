@@ -13,7 +13,7 @@ export const PagoPage = () => {
     restarProductos,
   } = useContext(Carritocontext);
   return (
-    <div className="container-fluid row d-flex justify-content-around">
+    <div className="container-fluid row d-flex justify-content-around mx-auto">
       <div
         className="col-xl-6 col-lg-6 col-md-10 col-sm-10 col-xs-10 table-responsive"
         style={{
