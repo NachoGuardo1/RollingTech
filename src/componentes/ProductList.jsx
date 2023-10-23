@@ -57,12 +57,6 @@ const ProductList = () => {
     setPaginaActual(1);
   };
 
-  const cambioPagina = (paginaNueva) => {
-    if (paginaNueva >= 1 && paginaNueva <= paginasTotales) {
-      setPaginaActual(paginaNueva);
-    }
-  };
-
   const cambioPaginaAnterior = () => {
     if (paginaActual > 1) {
       setPaginaActual(paginaActual - 1);
@@ -161,7 +155,6 @@ const ProductList = () => {
       </div>
       <Paginacion
         paginasTotales={paginasTotales}
-        cambioPagina={cambioPagina}
         cambioPagSiguiente={cambioPagSiguiente}
         cambioPaginaAnterior={cambioPaginaAnterior}
         paginaActual={paginaActual}

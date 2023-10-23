@@ -9,7 +9,6 @@ import React from "react";
 
 const Paginacion = ({
   paginasTotales,
-  cambioPagina,
   cambioPagSiguiente,
   cambioPaginaAnterior,
   paginaActual,
@@ -23,23 +22,13 @@ const Paginacion = ({
       >
         <FontAwesomeIcon icon={faSquareCaretLeft} />
       </button>
-
-      {Array.from({ length: paginasTotales }, (_, index) => index + 1).map(
-        (pagina) => (
-          <button
-            className="btn btn-sm btn-outline-dark mx-1"
-            key={pagina}
-            onClick={() => cambioPagina(pagina)}
-          >
-            {pagina}
-          </button>
-        )
-      )}
-
+      <span className="mx-2">
+        Página {paginaActual} de {paginasTotales}
+      </span>
       <button
         onClick={cambioPagSiguiente}
         disabled={paginaActual === paginasTotales}
-        className="btn"
+        className="btn "
       >
         <FontAwesomeIcon icon={faSquareCaretRight} />
       </button>

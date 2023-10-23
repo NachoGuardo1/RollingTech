@@ -55,7 +55,7 @@ export const FormLogin = ({ handleClose, tituloRegister, tituloLogin }) => {
 
       handleClose();
       navigate("/");
-      Swal.fire(`Bienvenido ${usuarioIn.nombre}!`);
+      Swal.fire(`Bienvenido ${resp.usuario.nombre}!`);
     } else {
       console.error(
         "El usuario no esta registrado o los datos son incorrectos"

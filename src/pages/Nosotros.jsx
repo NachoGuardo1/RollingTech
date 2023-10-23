@@ -8,13 +8,17 @@ export const Nosotros = () => {
   return (
     <div className="presentacion my-5">
       <h2 className="text-center fw-bold text-dark">
-        Rolling Group
+        ¡Bienvenidos a Rolling Tech!
         <br></br>
-        <span className="h4">
-          Somos un grupo de tres estudiantes de Rolling Code School
+        <span className="h5">
+          Somos un grupo de estudiantes del curso Full Stack Developer dictado
+          por Rolling Code School. Nuestro camino empezo un 14 de septiembre de
+          2022 y luego de aproximadamente un año y mucho aprendizaje en el
+          camino hemos creado un proyecto final sobre un e-commerce construido
+          con React y con una base de datos en MongoDB.
         </span>
       </h2>
-      <div className="wrapper">
+      <div className="wrapper mt-3">
         <div className="carta-nosotros">
           <div className="face front">
             <img src={Diego} alt="" />
@@ -136,6 +140,18 @@ export const Nosotros = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="text-center my-3">
+        <p className="h5 my-3">
+          ¡Gracias por visitar nuestro sitio! Esperamos que disfrutes explorando
+          nuestros productos tanto como nosotros disfrutamos creando este
+          proyecto. Si tienes alguna pregunta o comentario, no dudes en ponerte
+          en contacto con nosotros.
+        </p>
+        <p className="blockquote">
+          Rolling Code School - Full Stack Developer{" "}
+        </p>
       </div>
     </div>
   );
